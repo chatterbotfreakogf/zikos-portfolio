@@ -11,8 +11,8 @@
 
   --ink:       #0F1015;          /* Headlines */
   --ink-soft:  #1F222A;          /* Body Lede */
-  --ink-mute:  #353945;          /* Mono Default — 5.6:1 auf bg-base */
-  --ink-dim:   #4A4F5C;          /* Mono dim — 4.6:1 (AA für large text & UI) */
+  --ink-mute:  #353945;          /* Mono Default — ~4.9:1 auf bg-base */
+  --ink-dim:   #3F4350;          /* Mono dim — ~4.6:1 auf bg-base, AA für 12px */
 
   --snow:      #FFFFFF;
   --snow-dim:  #ECEEF1;

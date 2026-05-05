@@ -4,156 +4,102 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="Portfolio von Zikos Zissis — E-Commerce-Generalist mit Hands-on-Schwerpunkt: Sortimentssteuerung, Conversion-Optimierung und eigene Tools." />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Portfolio — Zikos Zissis</title>
+  <title>Zikos Zissis — Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="assets/style.css?v=2026-05-05-c" />
-  <link rel="stylesheet" href="assets/shop.css?v=2026-05-05-c" />
-  <link rel="stylesheet" href="assets/case.css?v=2026-05-05-c" />
-  <link rel="stylesheet" href="assets/macro.css?v=2026-05-05-c" />
+  <link rel="stylesheet" href="assets/style.css?v=2026-05-05-d" />
+  <link rel="stylesheet" href="assets/shop.css?v=2026-05-05-d" />
+  <link rel="stylesheet" href="assets/case.css?v=2026-05-05-d" />
+  <link rel="stylesheet" href="assets/macro.css?v=2026-05-05-d" />
 
   <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23A0A5B1'/><circle cx='16' cy='16' r='6' fill='none' stroke='%23fff' stroke-width='1.2' opacity='0.85'/></svg>" />
+
+  <meta property="og:title" content="Zikos Zissis — Portfolio" />
+  <meta property="og:description" content="E-Commerce-Generalist mit Hands-on-Schwerpunkt: Sortimentssteuerung, Conversion-Optimierung und eigene Tools." />
+  <meta property="og:type" content="website" />
 </head>
 <body data-page="shop">
 
-  <a class="skip" href="#main">Zum Inhalt springen</a>
+  <a class="skip" href="#work">Zum Inhalt springen</a>
 
-  <canvas id="scene" aria-hidden="true"></canvas>
-
-  <!-- ============================================================
-       HEADER
-       ============================================================ -->
   <header class="topbar" role="banner">
     <div class="topbar__row">
       <a href="portfolio.html" class="brand" aria-label="Zur Startseite">
         <span class="brand__mark" aria-hidden="true">Z</span>
         <span class="brand__name">Zikos Zissis</span>
-        <span class="brand__suffix mono mono--dim">Portfolio</span>
       </a>
 
       <nav class="nav" aria-label="Hauptnavigation">
-        <a href="#collection" class="nav__link" data-active="true">Arbeitsproben</a>
+        <a href="#work" class="nav__link" data-active="true">Arbeitsproben</a>
         <a href="#experience" class="nav__link">Berufserfahrung</a>
-        <a href="#" class="nav__link">&Uuml;ber mich</a>
-        <a href="#contact" class="nav__link">Kontakt</a>
+        <a href="#about" class="nav__link">Kontakt</a>
       </nav>
 
-      <div class="utils" role="group" aria-label="Aktionen">
-        <button class="util" type="button" aria-label="Suche">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        </button>
-        <button id="logout" class="util util--text mono" type="button" aria-label="Abmelden">Abmelden</button>
-        <button id="cart-open" class="util util--cart" type="button" aria-label="Warenkorb öffnen, 0 Artikel" aria-controls="cart" aria-expanded="false">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 7h14l-1.4 10.2a2 2 0 0 1-2 1.8H8.4a2 2 0 0 1-2-1.8L5 7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-          <span class="util__count" data-cart-count>0</span>
-        </button>
-      </div>
+      <button id="logout" class="topbar__logout mono" type="button">Abmelden</button>
     </div>
+
+    <nav class="subnav" aria-label="Sektionen">
+      <a href="#work" class="subnav__link">Arbeitsproben</a>
+      <a href="#experience" class="subnav__link">Berufserfahrung</a>
+      <a href="#about" class="subnav__link">Kontakt</a>
+    </nav>
   </header>
 
   <main id="main" class="shop">
 
-    <!-- ============================================================
-         INTRO · Über mich · ganz oben, persönlich, ehrlich
-         ============================================================ -->
-    <section class="intro" aria-labelledby="intro-title">
-      <figure class="intro__portrait" aria-hidden="true">
-        <img src="assets/portrait.png" alt="Porträt von Zikos Zissis" width="96" height="96" loading="eager" decoding="async" />
-      </figure>
-      <div class="intro__copy">
-        <p class="eyebrow mono">
-          <span class="dot" aria-hidden="true"></span>
-          Über mich
-        </p>
-        <h1 class="intro__title" id="intro-title">Zikos Zissis</h1>
-        <p class="intro__lede">
-          E-Commerce-Generalist mit Hands-on-Schwerpunkt: Sortimentssteuerung, Conversion-Optimierung und eigene Tools. 2,5&nbsp;Jahre Decathlon Fitness DE/AT (bis 10/2025), zuletzt Freelance-Aufbau des Macro-Intelligence-Tools für athenum.xyz (12/2025 – 04/2026). Offen für die nächste Station.
-        </p>
-        <p class="intro__meta mono mono--dim">
-          Plochingen, DE &middot; BWL-Bachelor &middot; Master Digital Business (lfd.) &middot; remote
-        </p>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         MICRO-HERO · ein-Zeiler, direkt vor den Produkten
-         ============================================================ -->
-    <section class="micro-hero" aria-labelledby="hero-title">
-      <p class="eyebrow mono">
-        <span class="dot" aria-hidden="true"></span>
-        Portfolio &middot; 2026
-      </p>
-      <h2 class="micro-hero__title" id="hero-title">
-        Ein Portfolio, aufgebaut wie ein Shop.
-      </h2>
-      <p class="micro-hero__hint mono mono--dim">
-        Hinweis: Die markierten Live-Arbeitsproben sind direkt im Browser bedienbar.
-      </p>
-    </section>
-
-    <!-- ============================================================
-         ARBEITSPROBEN · klickbar, demonstrativ — alles, was direkt
-         im Browser bedienbar ist (Eigenentwicklungen, Cases, Service)
-         ============================================================ -->
-    <section class="collection" id="collection" aria-labelledby="col-title">
+    <section class="work" id="work" aria-labelledby="work-title">
       <header class="section-head">
         <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Arbeitsproben</p>
-        <h2 class="section-head__title" id="col-title">Direkt erlebbar</h2>
-        <span class="section-head__meta mono mono--dim">03 Stück &middot; klickbar</span>
+        <h1 class="section-head__title" id="work-title">Direkt im Browser erlebbar.</h1>
       </header>
 
       <ol class="grid" role="list">
 
-        <!-- 01 · Live-Arbeitsprobe · Smart-Cart -->
         <li class="card card--live" data-stagger="1">
           <a href="#" class="card__link" data-action="cart-demo" aria-label="Live-Demo: Smart-Cart-Drawer öffnen">
             <figure class="card__media" aria-hidden="true" data-cover='{"brand":"Smart Cart","subtitle":"Drawer · Eigenentwicklung","stats":"CROSS-SELL · BUNDLE-LOGIK · SHOPIFY-READY"}'>
-              <span class="badge badge--live">Live &middot; klickbar</span>
+              <span class="badge badge--live">Live</span>
             </figure>
             <div class="card__body">
-              <h3 class="card__title">Smart-Cart-Drawer</h3>
-              <p class="card__meta mono mono--dim">Eigenentwicklung &middot; Cross-Sell &middot; Shopify-ready</p>
+              <h2 class="card__title">Smart-Cart-Drawer</h2>
               <p class="card__excerpt">Eigener Cart-Drawer mit Cross-Sell, Bundle-Logik und Shipping-Bar. Im Browser klickbar, als Shopify-Embed nutzbar.</p>
               <div class="card__foot">
-                <span class="mono mono--dim">Arbeitsprobe &middot; live</span>
+                <span class="mono mono--dim">Eigenentwicklung</span>
                 <span class="card__cta">Öffnen <span aria-hidden="true">&rarr;</span></span>
               </div>
             </div>
           </a>
         </li>
 
-        <!-- 02 · Live-Arbeitsprobe · Athenum Macro Intelligence -->
         <li class="card card--live" data-stagger="2">
-          <a href="#" class="card__link" data-action="case-athenum" aria-label="Live-Demo: Macro Intelligence öffnen">
+          <a href="#" class="card__link" data-action="case-athenum" aria-label="Demo: Macro Intelligence öffnen">
             <figure class="card__media" aria-hidden="true" data-cover='{"brand":"Athenum","subtitle":"Macro Intelligence · Eigenentwicklung","stats":"75 LAYER · 100K+ DATAPOINTS · 12 QUELLEN"}'>
-              <span class="badge badge--live">Demo &middot; klickbar</span>
+              <span class="badge badge--live">Demo</span>
             </figure>
             <div class="card__body">
-              <h3 class="card__title">Athenum &middot; Macro Intelligence</h3>
-              <p class="card__meta mono mono--dim">Eigenentwicklung &middot; 75 Layer &middot; 100K+ Datapoints</p>
+              <h2 class="card__title">Athenum &middot; Macro Intelligence</h2>
               <p class="card__excerpt">Macro-Intelligence-Tool für Athenum: 75 Geo-Layer aus 12 offenen Quellen auf einer GPU-nativen Welt-Karte. Konzept, Daten-Pipeline und Frontend von mir entwickelt.</p>
               <div class="card__foot">
-                <span class="mono mono--dim">Arbeitsprobe &middot; live</span>
+                <span class="mono mono--dim">Eigenentwicklung</span>
                 <span class="card__cta">Öffnen <span aria-hidden="true">&rarr;</span></span>
               </div>
             </div>
           </a>
         </li>
 
-        <!-- 03 · Live-Arbeitsprobe · KI-Berater -->
         <li class="card card--live" data-stagger="3">
           <a href="#" class="card__link" data-action="advisor-demo" aria-label="Live-Demo: KI-Berater starten">
             <figure class="card__media" aria-hidden="true" data-cover='{"brand":"KI Berater","subtitle":"RAG · Anthropic API","stats":"EIGENER KORPUS · ECHTZEIT-ANTWORTEN"}'>
-              <span class="badge badge--live">Live &middot; klickbar</span>
+              <span class="badge badge--live">Live</span>
             </figure>
             <div class="card__body">
-              <h3 class="card__title">KI-Berater</h3>
-              <p class="card__meta mono mono--dim">RAG &middot; Anthropic API &middot; eigener Korpus</p>
+              <h2 class="card__title">KI-Berater</h2>
               <p class="card__excerpt">Beantwortet Fragen zu meinen Projekten, meinem Profil und CV in Echtzeit.</p>
               <div class="card__foot">
-                <span class="mono mono--dim">Arbeitsprobe &middot; live</span>
+                <span class="mono mono--dim">RAG &middot; Anthropic API</span>
                 <span class="card__cta">Öffnen <span aria-hidden="true">&rarr;</span></span>
               </div>
             </div>
@@ -163,20 +109,14 @@
       </ol>
     </section>
 
-    <!-- ============================================================
-         BERUFSERFAHRUNG · Anstellungen chronologisch absteigend
-         CV-Stil-Liste — sachlich, lesbar, scanbar
-         ============================================================ -->
     <section class="experience" id="experience" aria-labelledby="exp-title">
       <header class="section-head">
         <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Berufserfahrung</p>
         <h2 class="section-head__title" id="exp-title">Stationen</h2>
-        <span class="section-head__meta mono mono--dim">04 Anstellungen</span>
       </header>
 
       <ol class="exp-list" role="list">
 
-        <!-- athenum.xyz · Freelance / Projektanstellung -->
         <li class="exp-item">
           <header class="exp-head">
             <time class="exp-time mono" datetime="2025-12-11/2026-04-30">12/25 &mdash; 04/26</time>
@@ -190,10 +130,8 @@
               <li>75 Layer</li><li>100K+ Datapoints</li><li>GPU-Map</li><li>Geo-Pipeline</li><li>UCDP/IAEA/USGS</li>
             </ul>
           </div>
-          <span class="exp-cta mono mono--dim">&mdash;</span>
         </li>
 
-        <!-- Decathlon · Junior Online Category Manager -->
         <li class="exp-item exp-item--clickable" data-action="case-decathlon" tabindex="0" role="button" aria-label="Details zur Decathlon-Anstellung öffnen">
           <header class="exp-head">
             <time class="exp-time mono">04/23 &mdash; 10/25</time>
@@ -210,7 +148,6 @@
           <span class="exp-cta mono">Öffnen <span aria-hidden="true">&rarr;</span></span>
         </li>
 
-        <!-- Decathlon · Praktikum -->
         <li class="exp-item">
           <header class="exp-head">
             <time class="exp-time mono">10/22 &mdash; 02/23</time>
@@ -221,10 +158,8 @@
             <h3 class="exp-role">Praktikum &middot; Online Category Management</h3>
             <p class="exp-summary">Einstieg ins Online Category Management: Pflege von Produktdaten und Listings, erste eigene KPI-Reports, Vorbereitung des Sportnahrungs-Relaunchs.</p>
           </div>
-          <span class="exp-cta mono mono--dim">&mdash;</span>
         </li>
 
-        <!-- Fischer Möbel -->
         <li class="exp-item">
           <header class="exp-head">
             <time class="exp-time mono">02/18 &mdash; 09/22</time>
@@ -238,67 +173,30 @@
               <li>D2C Premium</li><li>SEO</li><li>Web-Backend</li><li>Produktdaten</li><li>Daten-QA</li>
             </ul>
           </div>
-          <span class="exp-cta mono mono--dim">&mdash;</span>
         </li>
 
       </ol>
     </section>
 
-    <!-- ============================================================
-         TRUST-BAR · Belege, jetzt unter dem Grid
-         ============================================================ -->
-    <section class="trustbar" aria-label="Belege">
-      <div class="trustbar__item">
-        <span class="mono mono--dim">01</span>
-        <span>14.000+ SKUs operativ betreut</span>
-      </div>
-      <div class="trustbar__item">
-        <span class="mono mono--dim">02</span>
-        <span>2,5 Jahre Decathlon Fitness DE/AT</span>
-      </div>
-      <div class="trustbar__item">
-        <span class="mono mono--dim">03</span>
-        <span>BWL-Bachelor &middot; Master Digital Business</span>
-      </div>
-      <div class="trustbar__item">
-        <span class="mono mono--dim">04</span>
-        <span>Eigene Tools von Cart bis KI-Berater</span>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         FEATURE BAND
-         ============================================================ -->
-    <section class="feature" aria-labelledby="feat-title">
-      <div class="feature__copy">
-        <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Arbeitsproben</p>
-        <h2 class="feature__title" id="feat-title">Arbeitsprobe im Fokus</h2>
-        <p class="feature__lede">
-          Hier wird eine einzelne Arbeitsprobe ausf&uuml;hrlich vorgestellt &mdash;
-          erlebbar, dokumentiert, mit Hypothese und Ergebnis.
+    <section class="about" id="about" aria-labelledby="about-title">
+      <figure class="about__portrait" aria-hidden="true">
+        <img src="assets/portrait.png" alt="" width="96" height="96" loading="lazy" decoding="async" />
+      </figure>
+      <div class="about__copy">
+        <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Über mich</p>
+        <h2 class="about__title" id="about-title">Sprechen wir.</h2>
+        <p class="about__lede">
+          E-Commerce-Generalist mit Hands-on-Schwerpunkt: Sortimentssteuerung, Conversion-Optimierung und eigene Tools. 2,5&nbsp;Jahre Decathlon Fitness DE/AT, zuletzt Freelance-Aufbau des Macro-Intelligence-Tools für athenum.xyz. Offen für die nächste Station.
         </p>
-        <a href="#" class="btn btn--ghost">Arbeitsprobe &ouml;ffnen <span aria-hidden="true">&rarr;</span></a>
-      </div>
-      <div class="feature__media" aria-hidden="true">
-        <div class="feature__skeleton"></div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         CONTACT BAND
-         ============================================================ -->
-    <section class="contact" id="contact" aria-labelledby="con-title">
-      <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Kontakt</p>
-      <h2 class="contact__title" id="con-title">Sprechen wir.</h2>
-      <p class="contact__lede">
-        Eine kurze Mail gen&uuml;gt. Antwort meist am selben Tag.
-      </p>
-      <div class="contact__cta">
-        <a href="#" class="btn btn--primary">
-          <span>Anfrage senden</span>
-          <span aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="#" class="btn btn--ghost">Lebenslauf ansehen</a>
+        <p class="about__meta mono mono--dim">
+          Plochingen, DE &middot; BWL-Bachelor &middot; Master Digital Business (lfd.) &middot; remote
+        </p>
+        <div class="about__cta">
+          <a class="btn btn--primary" href="mailto:zikoszissis232@gmail.com?subject=Portfolio">
+            <span>Anfrage senden</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -307,10 +205,6 @@
   <footer class="foot" role="contentinfo">
     <div class="foot__row">
       <span class="mono">&copy; 2026 Zikos Zissis</span>
-      <nav class="foot__nav" aria-label="Footer-Navigation">
-        <a href="#" class="mono mono--link">Impressum</a>
-        <a href="#" class="mono mono--link">Datenschutz</a>
-      </nav>
       <span class="mono mono--dim">Plochingen, Deutschland</span>
     </div>
   </footer>
@@ -335,7 +229,7 @@
   <aside id="case-decathlon" class="case-drawer" aria-hidden="true" aria-labelledby="case-title" tabindex="-1">
     <div class="case-drawer__panel" role="dialog" aria-modal="true">
       <header class="case-drawer__head">
-        <span class="case-drawer__eyebrow">CASE STUDY &middot; 03</span>
+        <span class="case-drawer__eyebrow">CASE STUDY</span>
         <h2 class="case-drawer__title" id="case-title">Decathlon &middot; Fitness DE/AT</h2>
         <span class="case-drawer__meta">10/2022 &rarr; 10/2025 &middot; 14.247 SKUs &middot; 100&nbsp;% Remote</span>
         <button class="case-drawer__close" type="button" data-case-close aria-label="Case schließen">&times;</button>
@@ -349,7 +243,7 @@
   <aside id="case-athenum" class="case-drawer" aria-hidden="true" aria-labelledby="athenum-title" tabindex="-1">
     <div class="case-drawer__panel" role="dialog" aria-modal="true">
       <header class="case-drawer__head">
-        <span class="case-drawer__eyebrow">CASE STUDY &middot; 03</span>
+        <span class="case-drawer__eyebrow">DEMO</span>
         <h2 class="case-drawer__title" id="athenum-title">Athenum &middot; Macro Intelligence</h2>
         <span class="case-drawer__meta">PROJEKTVERTRAG &middot; 75 LAYER &middot; DEMO</span>
         <button class="case-drawer__close" type="button" data-case-close aria-label="Case schließen">&times;</button>
@@ -394,7 +288,6 @@
     </div>
   </div>
 
-  <script src="assets/scene.js" defer></script>
   <script src="assets/cover-builder.js" defer></script>
   <script src="assets/cart-data.js" defer></script>
   <script src="assets/cart.js" defer></script>

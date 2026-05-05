@@ -6,6 +6,7 @@ inhalte/_privat/
 
 # Test-Artefakte / lokale Tools
 .playwright-mcp/
+audit/
 *.log
 
 # Playwright-Verifikations-Screenshots im Root

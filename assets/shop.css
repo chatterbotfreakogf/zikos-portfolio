@@ -58,12 +58,6 @@
   }
   .brand:hover .brand__mark { transform: rotate(-6deg); }
   .brand__name { font-size: 15px; letter-spacing: -0.005em; }
-  .brand__suffix {
-    padding-left: 10px;
-    border-left: 1px solid var(--line-soft);
-    margin-left: 2px;
-    font-size: 11px;
-  }
 
   .nav {
     display: flex;
@@ -92,48 +86,54 @@
   .nav__link:hover::after,
   .nav__link[data-active="true"]::after { transform: scaleX(1); transform-origin: left center; }
 
-  .utils { display: inline-flex; align-items: center; gap: 4px; }
-
-  .util {
+  .topbar__logout {
     appearance: none;
     border: 0;
     background: transparent;
-    color: var(--ink);
-    width: 38px; height: 38px;
-    border-radius: 8px;
-    display: inline-grid;
-    place-items: center;
+    color: var(--ink-mute);
     cursor: pointer;
-    position: relative;
-    transition: background 220ms var(--ease-out), color 220ms var(--ease-out);
-  }
-  .util:hover { background: rgba(255,255,255,0.45); }
-  .util:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-
-  .util--text {
-    width: auto;
-    padding: 0 12px;
-    font-size: 12px;
-  }
-
-  .util--cart .util__count {
-    position: absolute;
-    top: 4px; right: 4px;
-    min-width: 18px;
-    height: 18px;
-    padding: 0 5px;
-    border-radius: 999px;
-    background: var(--ink);
-    color: var(--snow);
+    padding: 6px 2px;
     font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 500;
-    display: inline-grid;
-    place-items: center;
-    transform: scale(0.92);
-    transition: transform 280ms var(--ease-out);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    transition: color 220ms var(--ease-out);
   }
-  .util--cart[data-pulse="1"] .util__count { transform: scale(1.12); }
+  .topbar__logout:hover { color: var(--ink); }
+  .topbar__logout:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+
+  /* Sprungnav · nur Mobile (unter Topbar) */
+  .subnav {
+    display: none;
+  }
+  @media (max-width: 880px) {
+    .subnav {
+      display: flex;
+      gap: 18px;
+      padding: 10px var(--pad-x) 12px;
+      border-top: 1px solid var(--line-soft);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .subnav::-webkit-scrollbar { display: none; }
+    .subnav__link {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--ink-mute);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 220ms var(--ease-out), border-color 220ms var(--ease-out);
+    }
+    .subnav__link:hover,
+    .subnav__link:focus-visible {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+      outline: 0;
+    }
+  }
 
   /* ============================================================
      LAYOUT FRAME
@@ -144,68 +144,26 @@
     z-index: 4;
     max-width: 1320px;
     margin: 0 auto;
-    padding: clamp(20px, 2.6vw, 36px) var(--pad-x) clamp(60px, 8vw, 120px);
+    padding: clamp(28px, 4vw, 56px) var(--pad-x) clamp(60px, 8vw, 120px);
   }
 
   .section-head {
     display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: baseline;
-    column-gap: 16px;
-    row-gap: 4px;
+    grid-template-columns: 1fr;
+    row-gap: 6px;
     margin-bottom: clamp(20px, 2.6vw, 32px);
   }
   .section-head .eyebrow {
-    grid-column: 1 / -1;
     margin: 0 0 2px;
-  }
-  .section-head__title { grid-column: 1; }
-  .section-head__meta  { grid-column: 2; justify-self: end; }
-  .section-head--inline {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: clamp(14px, 1.6vw, 20px);
   }
   .section-head__title {
     margin: 0;
-    font-size: clamp(20px, 2vw, 26px);
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  .section-head__sub {
-    margin: 0;
-    color: var(--ink-soft);
-    font-size: 15px;
-    max-width: 50ch;
-  }
-  .section-head__meta { font-size: 11.5px; }
-
-  /* ============================================================
-     MICRO-HERO · ein-Zeiler vor dem Grid
-     ============================================================ */
-
-  .micro-hero {
-    display: grid;
-    gap: 8px;
-    padding: clamp(14px, 2vw, 22px) 0 clamp(18px, 2.4vw, 28px);
-    max-width: 920px;
-    animation: fade-in 700ms var(--ease-out) 0.1s both;
-  }
-  .micro-hero__title {
-    margin: 0;
-    font-size: clamp(22px, 2.6vw, 30px);
-    line-height: 1.18;
+    font-size: clamp(28px, 3.2vw, 40px);
     font-weight: 400;
-    letter-spacing: -0.018em;
+    letter-spacing: -0.022em;
+    line-height: 1.1;
     color: var(--ink);
-    max-width: 30ch;
-  }
-  .micro-hero__hint {
-    margin: 4px 0 0;
-    font-size: 11.5px;
+    max-width: 22ch;
   }
 
   /* ============================================================
@@ -253,34 +211,10 @@
   .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
   /* ============================================================
-     TRUST-BAR — unter dem Grid
+     WORK GRID — Arbeitsproben
      ============================================================ */
 
-  .trustbar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin: clamp(40px, 5vw, 64px) 0 clamp(20px, 3vw, 36px);
-    padding: 14px 0;
-    border-top: 1px solid var(--line-soft);
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .trustbar__item {
-    display: flex;
-    gap: 10px;
-    align-items: baseline;
-    padding: 8px 14px 8px 0;
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    border-right: 1px solid var(--line-soft);
-  }
-  .trustbar__item:last-child { border-right: 0; }
-
-  /* ============================================================
-     COLLECTION GRID — direkt nach Micro-Hero, ohne Top-Padding
-     ============================================================ */
-
-  .collection { padding-top: 0; }
+  .work { padding-top: 0; }
 
   /* Live-Tile bekommt einen subtilen Akzent als Eye-Catcher */
   .card--live {
@@ -351,7 +285,7 @@
   .card__media {
     position: relative;
     margin: 0;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
     background: linear-gradient(135deg, #B7BCC6, #969BA8);
   }
@@ -371,7 +305,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center right;
+    object-position: center;
     display: block;
     transition: transform 700ms var(--ease-out), filter 700ms var(--ease-out);
   }
@@ -475,86 +409,79 @@
   .card:hover .card__cta span { transform: translateX(3px); }
 
   /* ============================================================
-     FEATURE BAND
+     ABOUT · Über mich + Kontakt, kompakt unten
      ============================================================ */
 
-  .feature {
-    margin-top: clamp(48px, 7vw, 96px);
+  .about {
+    margin-top: clamp(56px, 7vw, 96px);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(18px, 3vw, 40px);
-    align-items: center;
-  }
-  .feature__copy { display: grid; gap: 12px; }
-  .feature__title {
-    margin: 0;
-    font-size: clamp(28px, 3.2vw, 44px);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-  }
-  .feature__lede {
-    margin: 0;
-    max-width: 46ch;
-    font-size: 15.5px;
-    color: var(--ink-soft);
-    line-height: 1.55;
-  }
-  .feature__copy .btn { justify-self: start; margin-top: 6px; }
-
-  .feature__media {
-    aspect-ratio: 16 / 11;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid var(--line-soft);
-    background: linear-gradient(135deg, #B7BCC6, #8E94A1);
-    position: relative;
-  }
-  .feature__skeleton {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.28) 45%, transparent 70%),
-      radial-gradient(60% 80% at 30% 30%, rgba(255,255,255,0.30), transparent 60%);
-    background-size: 200% 100%, 100% 100%;
-    animation: shimmer 5.6s linear infinite;
-  }
-
-  /* ============================================================
-     CONTACT BAND
-     ============================================================ */
-
-  .contact {
-    margin-top: clamp(56px, 8vw, 112px);
-    padding: clamp(28px, 4vw, 56px);
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    column-gap: clamp(20px, 2.6vw, 32px);
+    padding: clamp(28px, 3.6vw, 44px);
     border-radius: 18px;
     background: rgba(255,255,255,0.42);
     border: 1px solid var(--line-soft);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    display: grid;
-    gap: 14px;
-    text-align: center;
-    justify-items: center;
   }
-  .contact__title {
+  .about__portrait {
     margin: 0;
-    font-size: clamp(28px, 3.4vw, 48px);
+    width: 96px;
+    height: 96px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(15,16,21,0.06);
+    border: 1px solid var(--line-soft);
+  }
+  .about__portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+    display: block;
+  }
+  .about__copy {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+  }
+  .about__copy .eyebrow { margin: 0; }
+  .about__title {
+    margin: 4px 0 4px;
+    font-size: clamp(28px, 3vw, 40px);
     font-weight: 400;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.022em;
+    line-height: 1.1;
     color: var(--ink);
   }
-  .contact__lede {
+  .about__lede {
     margin: 0;
-    max-width: 44ch;
+    max-width: 60ch;
+    font-size: 15px;
+    line-height: 1.55;
     color: var(--ink-soft);
-    font-size: 15.5px;
   }
-  .contact__cta {
+  .about__meta {
+    margin: 4px 0 0;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .about__cta {
+    margin-top: 14px;
     display: inline-flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
-    margin-top: 6px;
+  }
+  @media (max-width: 560px) {
+    .about {
+      grid-template-columns: 1fr;
+      row-gap: 14px;
+      padding: 24px;
+    }
+    .about__portrait { width: 72px; height: 72px; }
   }
 
   /* ============================================================
@@ -576,7 +503,6 @@
     gap: 16px;
     flex-wrap: wrap;
   }
-  .foot__nav { display: flex; gap: 18px; }
 
   /* ============================================================
      CART DRAWER — editorial paper canvas, hairline grid
@@ -823,20 +749,11 @@
      ============================================================ */
 
   @media (max-width: 880px) {
-    .topbar__row { grid-template-columns: auto auto; gap: 12px; }
+    .topbar__row { grid-template-columns: 1fr auto; gap: 12px; }
     .nav { display: none; }
-    .feature { grid-template-columns: 1fr; }
-    .feature__copy { order: 2; }
-    .trustbar { grid-template-columns: 1fr 1fr; }
-    .trustbar__item:nth-child(2) { border-right: 0; }
   }
 
   @media (max-width: 540px) {
-    .brand__suffix { display: none; }
-    .util--text { display: none; }
-    .trustbar { grid-template-columns: 1fr; }
-    .trustbar__item { border-right: 0; border-bottom: 1px solid var(--line-soft); padding: 6px 0; }
-    .trustbar__item:last-child { border-bottom: 0; }
     .grid { grid-template-columns: 1fr; }
     .advisor__label { display: none; }
     .advisor__bubble { padding: 12px; }
@@ -844,7 +761,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .card { opacity: 1; transform: none; animation: none; }
-    .card__skeleton, .feature__skeleton { animation: none; }
+    .card__skeleton { animation: none; }
     .advisor__bubble { animation: none; }
     .ghost-cursor { display: none !important; }
     .line, .bundle, .xsell { animation: none !important; }
@@ -1526,79 +1443,17 @@
     .cart-bubble { display: none !important; }
   }
 
-  /* ============================================================
-     INTRO · Über mich, ganz oben, mit Portrait
-     ============================================================ */
-  .intro {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    column-gap: clamp(16px, 2vw, 26px);
-    margin: clamp(20px, 3vw, 36px) 0 clamp(28px, 3.5vw, 44px);
-    padding: clamp(14px, 1.6vw, 20px) clamp(16px, 1.8vw, 22px);
-    background: rgba(255, 255, 255, 0.42);
-    border: 1px solid var(--line-soft);
-    border-radius: 16px;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-  }
-  .intro__portrait {
-    margin: 0;
-    width: 76px;
-    height: 76px;
-    border-radius: 999px;
-    overflow: hidden;
-    background: rgba(15, 16, 21, 0.06);
-    border: 1px solid var(--line-soft);
-    flex-shrink: 0;
-  }
-  .intro__portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    object-position: center 22%;
-  }
-  .intro__copy { display: grid; gap: 4px; min-width: 0; }
-  .intro__copy .eyebrow { margin: 0 0 2px; }
-  .intro__title {
-    margin: 0;
-    font-size: clamp(20px, 2.2vw, 26px);
-    font-weight: 500;
-    letter-spacing: -0.012em;
-    color: var(--ink);
-    line-height: 1.1;
-  }
-  .intro__lede {
-    margin: 4px 0 0;
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--ink-soft);
-    max-width: 64ch;
-  }
-  .intro__meta {
-    margin: 6px 0 0;
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    line-height: 1.3;
-    text-transform: uppercase;
-  }
-
-  @media (max-width: 560px) {
-    .intro {
-      grid-template-columns: 1fr;
-      justify-items: start;
-      gap: 12px;
-      padding: 16px;
-    }
-    .intro__portrait { width: 64px; height: 64px; }
+  /* Cart-Bubble nur sichtbar, wenn Cart-Drawer offen ist */
+  body:has(.case-drawer[aria-hidden="false"]) .cart-bubble,
+  body:has(#cart[aria-hidden="true"]) .cart-bubble {
+    display: none !important;
   }
 
   /* ============================================================
      EXPERIENCE · CV-Style-Liste der Anstellungen
      ============================================================ */
   .experience {
-    margin: clamp(48px, 6vw, 80px) 0 clamp(36px, 4vw, 56px);
+    margin: clamp(56px, 7vw, 96px) 0 clamp(36px, 4vw, 56px);
   }
   .experience .section-head {
     margin-bottom: 24px;
