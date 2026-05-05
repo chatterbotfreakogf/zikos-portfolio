@@ -1,0 +1,534 @@
+/* ============================================================
+   macro.css — Macro Intelligence Live-Demo · Drawer-Internals
+   layered ABOVE case.css; nutzt dieselben Drawer-Tokens
+   ============================================================ */
+
+@layer macro {
+
+  /* Drawer-Variant für Macro-Tool · breiter als Decathlon */
+  #case-athenum.case-drawer .case-drawer__panel {
+    width: min(1080px, 96vw);
+    background: #0F1015;
+    color: #EAEFF5;
+    border-left: 1px solid rgba(255,255,255,0.08);
+  }
+  #case-athenum .case-drawer__head {
+    border-bottom-color: rgba(255,255,255,0.08);
+  }
+  #case-athenum .case-drawer__title { color: #EAEFF5; }
+  #case-athenum .case-drawer__eyebrow { color: rgba(234,239,245,0.55); }
+  #case-athenum .case-drawer__meta { color: rgba(234,239,245,0.45); }
+  #case-athenum .case-drawer__close {
+    border-color: rgba(255,255,255,0.18);
+    color: #EAEFF5;
+  }
+  #case-athenum .case-drawer__close:hover {
+    background: #EAEFF5;
+    color: #0F1015;
+    border-color: #EAEFF5;
+  }
+  #case-athenum .case-drawer__body { color: rgba(234,239,245,0.78); }
+  #case-athenum .case-drawer__body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.20); }
+
+  /* Section-Overrides für Dark-Mode innerhalb dieses Drawers */
+  #case-athenum .case-section__head { border-top-color: rgba(255,255,255,0.10); }
+  #case-athenum .case-section__eyebrow { color: #EAEFF5; }
+  #case-athenum .case-section__eyebrow::after { background: #EAEFF5; }
+  #case-athenum .case-section__body { color: rgba(234,239,245,0.78); }
+
+  #case-athenum .case-hebel__item {
+    border-color: rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.02);
+  }
+  #case-athenum .case-hebel__item:hover {
+    border-color: rgba(255,255,255,0.28);
+    background: rgba(255,255,255,0.04);
+  }
+  #case-athenum .case-hebel__index { color: rgba(234,239,245,0.45); }
+  #case-athenum .case-hebel__title { color: #EAEFF5; }
+  #case-athenum .case-hebel__text { color: rgba(234,239,245,0.70); }
+
+  #case-athenum .case-outcome__item { border-top-color: #EAEFF5; }
+  #case-athenum .case-outcome__num { color: #EAEFF5; }
+  #case-athenum .case-outcome__label { color: rgba(234,239,245,0.55); }
+
+  #case-athenum .case-transfer {
+    border-left-color: #EAEFF5;
+    color: #EAEFF5;
+  }
+
+  #case-athenum .case-foot { border-top-color: rgba(255,255,255,0.10); }
+  #case-athenum .case-back {
+    border-color: #EAEFF5; color: #EAEFF5;
+  }
+  #case-athenum .case-back:hover { background: #EAEFF5; color: #0F1015; }
+  #case-athenum .case-foot__hint { color: rgba(234,239,245,0.45); }
+
+  .macro-external {
+    color: rgba(234,239,245,0.55);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: color 240ms var(--ease-out);
+  }
+  .macro-external:hover { color: #34D9A0; }
+
+  /* ============================================================
+     STAGE — die Map-Bühne
+     ============================================================ */
+  .macro-stage {
+    margin: 0 0 36px;
+    background: #0A0B10;
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 24px 80px -32px rgba(0,0,0,0.6);
+  }
+
+  .macro-stage__head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 16px 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(52,217,160,0.10), transparent 50%),
+      #0A0B10;
+  }
+  .macro-stage__head-left { display: grid; gap: 4px; }
+  .macro-stage__title {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: #EAEFF5;
+    line-height: 1;
+    font-weight: 600;
+  }
+  .macro-stage__sub {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.20em;
+    color: rgba(234,239,245,0.48);
+    line-height: 1;
+  }
+  .macro-stage__head-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .macro-stage__demo {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: rgba(234,239,245,0.85);
+    font-weight: 600;
+    line-height: 1;
+    padding: 6px 10px;
+    border: 1px solid rgba(234,239,245,0.30);
+    background: rgba(234,239,245,0.04);
+  }
+
+  /* ============================================================
+     VIEWER · klick-only · Hotspot-Zoom
+     ============================================================ */
+  .macro-viewer {
+    position: relative;
+    aspect-ratio: 2576 / 1438;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(52,217,160,0.06), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(168,108,216,0.04), transparent 50%),
+      #0A0B10;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .macro-viewer[data-zoomed="1"] { cursor: zoom-out; }
+
+  .macro-viewer__stage {
+    position: absolute;
+    inset: 0;
+    transform-origin: 50% 50%;
+    will-change: transform;
+  }
+  .macro-viewer__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+
+  /* ============================================================
+     PINS auf dem Bild
+     ============================================================ */
+  .macro-pins {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .macro-pin {
+    position: absolute;
+    left: var(--pin-x);
+    top: var(--pin-y);
+    transform: translate(-50%, -50%);
+    width: 28px; height: 28px;
+    border-radius: 999px;
+    border: 1.5px solid var(--pin-c, #34D9A0);
+    background: rgba(10,11,16,0.85);
+    color: var(--pin-c, #34D9A0);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: transform 220ms var(--ease-out), background 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.5), 0 0 0 0 var(--pin-c);
+    z-index: 3;
+  }
+  .macro-pin::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 999px;
+    border: 1.5px solid var(--pin-c, #34D9A0);
+    opacity: 0.55;
+    animation: macro-pin-ring 2.4s ease-out infinite;
+  }
+  @keyframes macro-pin-ring {
+    0%   { transform: scale(0.85); opacity: 0.85; }
+    80%  { transform: scale(2.0);  opacity: 0; }
+    100% { transform: scale(2.0);  opacity: 0; }
+  }
+  .macro-pin:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    background: var(--pin-c, #34D9A0);
+    color: #0A0B10;
+  }
+  .macro-pin.is-selected {
+    background: var(--pin-c, #34D9A0);
+    color: #0A0B10;
+    transform: translate(-50%, -50%) scale(1.25);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.55), 0 0 0 4px rgba(255,255,255,0.08);
+  }
+  .macro-pin__num { line-height: 1; }
+
+  /* Wenn gezoomt: Pins auf konstanter Bildschirmgröße halten */
+  .macro-viewer[data-zoomed="1"] .macro-pin {
+    /* Pins skalieren mit dem Bild — bewusst, damit sie am Anker bleiben */
+  }
+
+  /* ============================================================
+     ZURÜCK-BUTTON · erscheint nur im Zoom-State, oben links
+     ============================================================ */
+  .macro-back {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(10,11,16,0.88);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #EAEFF5;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 7;
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+    transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), background 180ms var(--ease-out);
+  }
+  .macro-viewer[data-zoomed="1"] .macro-back {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .macro-back:hover {
+    background: #EAEFF5;
+    color: #0A0B10;
+    border-color: #EAEFF5;
+  }
+
+  /* Hint-Streifen unten · verschwindet, sobald gezoomt wird */
+  .macro-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    color: rgba(234,239,245,0.65);
+    background: rgba(10,11,16,0.72);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    pointer-events: none;
+    z-index: 5;
+    white-space: nowrap;
+    transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out);
+  }
+  .macro-viewer[data-zoomed="1"] .macro-hint {
+    opacity: 0;
+    transform: translate(-50%, 6px);
+  }
+
+  /* Tutorial-Highlight */
+  [data-tutorial-spot="1"] {
+    animation: macro-spot 1.4s var(--ease-in-out) infinite;
+  }
+  @keyframes macro-spot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(52,217,160,0.6), 0 0 0 0 rgba(52,217,160,0.3); }
+    50%      { box-shadow: 0 0 0 6px rgba(52,217,160,0.50), 0 0 0 14px rgba(52,217,160,0.18); }
+  }
+  .macro-pin[data-tutorial-spot="1"] {
+    animation: macro-pin-spot 1.4s var(--ease-in-out) infinite;
+  }
+  @keyframes macro-pin-spot {
+    0%, 100% { transform: translate(-50%, -50%) scale(1.0); box-shadow: 0 0 0 0 rgba(52,217,160,0); }
+    50%      { transform: translate(-50%, -50%) scale(1.18); box-shadow: 0 0 0 8px rgba(52,217,160,0.30); }
+  }
+
+  .macro-link {
+    color: #34D9A0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(52,217,160,0.4);
+    transition: border-color 180ms var(--ease-out);
+  }
+  .macro-link:hover { border-color: #34D9A0; }
+
+  /* ============================================================
+     TOOLTIP / Intel-Card · oben rechts im Viewer fixiert
+     ============================================================ */
+  .macro-tooltip {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: min(320px, 60%);
+    background: rgba(10,11,16,0.95);
+    border: 1px solid rgba(255,255,255,0.16);
+    padding: 16px 18px 16px 18px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 6;
+  }
+  .macro-tooltip[aria-hidden="false"] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .macro-tooltip__close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: rgba(234,239,245,0.55);
+    width: 26px; height: 26px;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 0;
+    transition: color 160ms var(--ease-out), background 160ms var(--ease-out);
+  }
+  .macro-tooltip__close:hover {
+    color: #EAEFF5;
+    background: rgba(255,255,255,0.06);
+  }
+  .macro-tooltip__layer {
+    display: block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .macro-tooltip__name {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #EAEFF5;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+  }
+  .macro-tooltip__meta {
+    margin: 0 0 8px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(234,239,245,0.58);
+    line-height: 1.3;
+  }
+  .macro-tooltip__intel {
+    margin: 0;
+    font-size: 12.5px;
+    color: rgba(234,239,245,0.78);
+    line-height: 1.45;
+  }
+
+  /* ============================================================
+     CONTROLS · Layer-Pills
+     ============================================================ */
+  .macro-controls {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 22px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.02);
+  }
+  .macro-controls__label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: rgba(234,239,245,0.42);
+    line-height: 1;
+    text-transform: uppercase;
+    flex: 0 0 auto;
+  }
+  .macro-controls__pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .macro-pill {
+    appearance: none;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.02);
+    color: rgba(234,239,245,0.78);
+    padding: 8px 12px 8px 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 0;
+    transition: all 220ms var(--ease-out);
+  }
+  .macro-pill:hover {
+    border-color: rgba(255,255,255,0.36);
+    background: rgba(255,255,255,0.06);
+    color: #EAEFF5;
+  }
+  .macro-pill__dot {
+    width: 8px; height: 8px;
+    border-radius: 999px;
+    background: var(--c, #EAEFF5);
+    flex: 0 0 auto;
+  }
+  .macro-pill__label {
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .macro-pill__count {
+    font-size: 10px;
+    color: rgba(234,239,245,0.45);
+    letter-spacing: 0.08em;
+  }
+  .macro-pill[data-active="1"] {
+    background: var(--c);
+    color: #0F1015;
+    border-color: var(--c);
+  }
+  .macro-pill[data-active="1"] .macro-pill__dot { background: #0F1015; }
+  .macro-pill[data-active="1"] .macro-pill__count { color: rgba(15,16,21,0.55); }
+
+  /* ============================================================
+     TUTORIAL · Sprechblase
+     ============================================================ */
+  .macro-bubble {
+    margin: 0 0 36px;
+    background: rgba(52,217,160,0.06);
+    border: 1px solid rgba(52,217,160,0.40);
+    padding: 18px 22px 16px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 280ms var(--ease-out), transform 280ms var(--ease-out);
+  }
+  .macro-bubble[data-show="1"] { opacity: 1; transform: translateY(0); }
+  .macro-bubble__step {
+    display: inline-block;
+    background: #34D9A0;
+    color: #0A1A1F;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    padding: 4px 8px;
+    line-height: 1;
+    margin: 0 0 10px;
+    font-weight: 600;
+  }
+  .macro-bubble__title {
+    margin: 0 0 6px;
+    font-size: 18px;
+    color: #EAEFF5;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .macro-bubble__text {
+    margin: 0;
+    font-size: 13.5px;
+    color: rgba(234,239,245,0.78);
+    line-height: 1.5;
+  }
+  .macro-bubble__text em {
+    font-style: normal;
+    color: #34D9A0;
+    font-weight: 500;
+  }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width: 880px) {
+    .macro-controls {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+    .macro-controls__pills { gap: 6px; }
+    .macro-pill__count { display: none; }
+  }
+
+  @media (max-width: 760px) {
+    #case-athenum.case-drawer .case-drawer__panel { width: 100vw; }
+    .macro-tooltip { width: calc(100% - 28px); right: 14px; left: 14px; }
+    .macro-stage__head { padding: 12px 16px; }
+    .macro-pin { width: 24px; height: 24px; font-size: 10px; }
+    .macro-hint { font-size: 8.5px; padding: 4px 8px; letter-spacing: 0.14em; }
+    .macro-back { padding: 6px 10px; font-size: 10px; letter-spacing: 0.14em; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .macro-pin::before,
+    [data-tutorial-spot="1"],
+    .macro-pin[data-tutorial-spot="1"] {
+      animation: none !important;
+    }
+  }
+}

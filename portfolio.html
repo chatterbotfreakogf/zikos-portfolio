@@ -9,8 +9,10 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="assets/style.css" />
-  <link rel="stylesheet" href="assets/shop.css" />
+  <link rel="stylesheet" href="assets/style.css?v=2026-05-05-c" />
+  <link rel="stylesheet" href="assets/shop.css?v=2026-05-05-c" />
+  <link rel="stylesheet" href="assets/case.css?v=2026-05-05-c" />
+  <link rel="stylesheet" href="assets/macro.css?v=2026-05-05-c" />
 
   <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23A0A5B1'/><circle cx='16' cy='16' r='6' fill='none' stroke='%23fff' stroke-width='1.2' opacity='0.85'/></svg>" />
 </head>
@@ -32,13 +34,13 @@
       </a>
 
       <nav class="nav" aria-label="Hauptnavigation">
-        <a href="#collection" class="nav__link" data-active="true">Werke</a>
-        <a href="#" class="nav__link">Prototypen</a>
+        <a href="#collection" class="nav__link" data-active="true">Arbeitsproben</a>
+        <a href="#experience" class="nav__link">Berufserfahrung</a>
         <a href="#" class="nav__link">&Uuml;ber mich</a>
         <a href="#contact" class="nav__link">Kontakt</a>
       </nav>
 
-      <div class="utils" role="group" aria-label="Werkzeuge">
+      <div class="utils" role="group" aria-label="Aktionen">
         <button class="util" type="button" aria-label="Suche">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </button>
@@ -54,6 +56,28 @@
   <main id="main" class="shop">
 
     <!-- ============================================================
+         INTRO · Über mich · ganz oben, persönlich, ehrlich
+         ============================================================ -->
+    <section class="intro" aria-labelledby="intro-title">
+      <figure class="intro__portrait" aria-hidden="true">
+        <img src="assets/portrait.png" alt="Porträt von Zikos Zissis" width="96" height="96" loading="eager" decoding="async" />
+      </figure>
+      <div class="intro__copy">
+        <p class="eyebrow mono">
+          <span class="dot" aria-hidden="true"></span>
+          Über mich
+        </p>
+        <h1 class="intro__title" id="intro-title">Zikos Zissis</h1>
+        <p class="intro__lede">
+          E-Commerce-Generalist mit Hands-on-Schwerpunkt: Sortimentssteuerung, Conversion-Optimierung und eigene Tools. 2,5&nbsp;Jahre Decathlon Fitness DE/AT (bis 10/2025), zuletzt Freelance-Aufbau des Macro-Intelligence-Tools für athenum.xyz (12/2025 – 04/2026). Offen für die nächste Station.
+        </p>
+        <p class="intro__meta mono mono--dim">
+          Plochingen, DE &middot; BWL-Bachelor &middot; Master Digital Business (lfd.) &middot; remote
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
          MICRO-HERO · ein-Zeiler, direkt vor den Produkten
          ============================================================ -->
     <section class="micro-hero" aria-labelledby="hero-title">
@@ -61,137 +85,160 @@
         <span class="dot" aria-hidden="true"></span>
         Portfolio &middot; 2026
       </p>
-      <h1 class="micro-hero__title" id="hero-title">
-        Eine Werkschau, die wie ein Shop funktioniert.
-      </h1>
+      <h2 class="micro-hero__title" id="hero-title">
+        Ein Portfolio, aufgebaut wie ein Shop.
+      </h2>
       <p class="micro-hero__hint mono mono--dim">
-        Tipp: Live-Prototypen lassen sich direkt anklicken &mdash; sie reagieren auf der Stelle.
+        Hinweis: Die markierten Live-Arbeitsproben sind direkt im Browser bedienbar.
       </p>
     </section>
 
     <!-- ============================================================
-         WERKE · sofort sichtbares Grid
+         ARBEITSPROBEN · klickbar, demonstrativ — alles, was direkt
+         im Browser bedienbar ist (Eigenentwicklungen, Cases, Service)
          ============================================================ -->
     <section class="collection" id="collection" aria-labelledby="col-title">
-      <header class="section-head section-head--inline">
-        <h2 class="section-head__title" id="col-title">Ausgew&auml;hlte Arbeiten</h2>
-        <span class="section-head__meta mono mono--dim">06 St&uuml;ck</span>
+      <header class="section-head">
+        <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Arbeitsproben</p>
+        <h2 class="section-head__title" id="col-title">Direkt erlebbar</h2>
+        <span class="section-head__meta mono mono--dim">03 Stück &middot; klickbar</span>
       </header>
 
       <ol class="grid" role="list">
 
-        <!-- 01 · Case Study · Decathlon Fitness -->
-        <li class="card" data-stagger="1">
-          <a href="#" class="card__link" aria-label="Case Study: Decathlon Fitness">
-            <figure class="card__media" aria-hidden="true">
-              <div class="card__skeleton"></div>
-              <span class="badge">Case Study</span>
-            </figure>
-            <div class="card__body">
-              <h3 class="card__title">Decathlon &middot; Fitness DE/AT</h3>
-              <p class="card__meta mono mono--dim">2,5&nbsp;Jahre &middot; 14.000+ SKUs &middot; 100&nbsp;% Remote</p>
-              <p class="card__excerpt">Operative Verantwortung f&uuml;r das Fitness-Sortiment in Deutschland und &Ouml;sterreich.</p>
-              <div class="card__foot">
-                <span class="mono mono--dim">Werk &middot; Anstellung</span>
-                <span class="card__cta">Ansehen <span aria-hidden="true">&rarr;</span></span>
-              </div>
-            </div>
-          </a>
-        </li>
-
-        <!-- 02 · Live-Prototyp · Smart-Cart -->
-        <li class="card card--live" data-stagger="2">
+        <!-- 01 · Live-Arbeitsprobe · Smart-Cart -->
+        <li class="card card--live" data-stagger="1">
           <a href="#" class="card__link" data-action="cart-demo" aria-label="Live-Demo: Smart-Cart-Drawer öffnen">
-            <figure class="card__media card__media--cart" aria-hidden="true">
-              <img src="assets/cover-cart.svg" alt="" class="card__cover" loading="lazy" decoding="async"/>
+            <figure class="card__media" aria-hidden="true" data-cover='{"brand":"Smart Cart","subtitle":"Drawer · Eigenentwicklung","stats":"CROSS-SELL · BUNDLE-LOGIK · SHOPIFY-READY"}'>
               <span class="badge badge--live">Live &middot; klickbar</span>
             </figure>
             <div class="card__body">
               <h3 class="card__title">Smart-Cart-Drawer</h3>
-              <p class="card__meta mono mono--dim">Cart &middot; Cross-Sell &middot; Bundle-Logik</p>
-              <p class="card__excerpt">Klick &mdash; und der eigene Warenkorb-Prototyp f&auml;hrt von rechts ein.</p>
+              <p class="card__meta mono mono--dim">Eigenentwicklung &middot; Cross-Sell &middot; Shopify-ready</p>
+              <p class="card__excerpt">Eigener Cart-Drawer mit Cross-Sell, Bundle-Logik und Shipping-Bar. Im Browser klickbar, als Shopify-Embed nutzbar.</p>
               <div class="card__foot">
-                <span class="mono mono--dim">Prototyp &middot; live</span>
-                <span class="card__cta">Demo starten <span aria-hidden="true">&rarr;</span></span>
+                <span class="mono mono--dim">Arbeitsprobe &middot; live</span>
+                <span class="card__cta">Öffnen <span aria-hidden="true">&rarr;</span></span>
               </div>
             </div>
           </a>
         </li>
 
-        <!-- 03 · Case Study · Sportnahrungs-Relaunch -->
-        <li class="card" data-stagger="3">
-          <a href="#" class="card__link" aria-label="Case Study: Sportnahrungs-Relaunch">
-            <figure class="card__media" aria-hidden="true">
-              <div class="card__skeleton"></div>
-              <span class="badge">Case Study</span>
+        <!-- 02 · Live-Arbeitsprobe · Athenum Macro Intelligence -->
+        <li class="card card--live" data-stagger="2">
+          <a href="#" class="card__link" data-action="case-athenum" aria-label="Live-Demo: Macro Intelligence öffnen">
+            <figure class="card__media" aria-hidden="true" data-cover='{"brand":"Athenum","subtitle":"Macro Intelligence · Eigenentwicklung","stats":"75 LAYER · 100K+ DATAPOINTS · 12 QUELLEN"}'>
+              <span class="badge badge--live">Demo &middot; klickbar</span>
             </figure>
             <div class="card__body">
-              <h3 class="card__title">Sportnahrungs-Relaunch</h3>
-              <p class="card__meta mono mono--dim">UX-Redesign &middot; Mobile-First &middot; Kategorie-Architektur</p>
-              <p class="card__excerpt">Strategischer Relaunch des Nutrition-Portfolios bei Decathlon.</p>
+              <h3 class="card__title">Athenum &middot; Macro Intelligence</h3>
+              <p class="card__meta mono mono--dim">Eigenentwicklung &middot; 75 Layer &middot; 100K+ Datapoints</p>
+              <p class="card__excerpt">Macro-Intelligence-Tool für Athenum: 75 Geo-Layer aus 12 offenen Quellen auf einer GPU-nativen Welt-Karte. Konzept, Daten-Pipeline und Frontend von mir entwickelt.</p>
               <div class="card__foot">
-                <span class="mono mono--dim">Werk &middot; Anstellung</span>
-                <span class="card__cta">Ansehen <span aria-hidden="true">&rarr;</span></span>
+                <span class="mono mono--dim">Arbeitsprobe &middot; live</span>
+                <span class="card__cta">Öffnen <span aria-hidden="true">&rarr;</span></span>
               </div>
             </div>
           </a>
         </li>
 
-        <!-- 04 · Live-Prototyp · KI-Berater -->
-        <li class="card card--live" data-stagger="4">
+        <!-- 03 · Live-Arbeitsprobe · KI-Berater -->
+        <li class="card card--live" data-stagger="3">
           <a href="#" class="card__link" data-action="advisor-demo" aria-label="Live-Demo: KI-Berater starten">
-            <figure class="card__media" aria-hidden="true">
-              <div class="card__skeleton"></div>
+            <figure class="card__media" aria-hidden="true" data-cover='{"brand":"KI Berater","subtitle":"RAG · Anthropic API","stats":"EIGENER KORPUS · ECHTZEIT-ANTWORTEN"}'>
               <span class="badge badge--live">Live &middot; klickbar</span>
             </figure>
             <div class="card__body">
               <h3 class="card__title">KI-Berater</h3>
               <p class="card__meta mono mono--dim">RAG &middot; Anthropic API &middot; eigener Korpus</p>
-              <p class="card__excerpt">Beantwortet Fragen zu meinem Werk, Profil und CV in Echtzeit.</p>
+              <p class="card__excerpt">Beantwortet Fragen zu meinen Projekten, meinem Profil und CV in Echtzeit.</p>
               <div class="card__foot">
-                <span class="mono mono--dim">Prototyp &middot; live</span>
-                <span class="card__cta">Frage stellen <span aria-hidden="true">&rarr;</span></span>
+                <span class="mono mono--dim">Arbeitsprobe &middot; live</span>
+                <span class="card__cta">Öffnen <span aria-hidden="true">&rarr;</span></span>
               </div>
             </div>
           </a>
         </li>
 
-        <!-- 05 · Case Study · Nailmondo -->
-        <li class="card" data-stagger="5">
-          <a href="#" class="card__link" aria-label="Case Study: Nailmondo Live-Chatbot">
-            <figure class="card__media" aria-hidden="true">
-              <div class="card__skeleton"></div>
-              <span class="badge">Case Study</span>
-            </figure>
-            <div class="card__body">
-              <h3 class="card__title">Nailmondo &middot; Live-Chatbot</h3>
-              <p class="card__meta mono mono--dim">Shopify-Embed &middot; Script-Tag &middot; produktiv</p>
-              <p class="card__excerpt">Eigener Beratungs-Bot, ausgeliefert &uuml;ber den Live-Shop.</p>
-              <div class="card__foot">
-                <span class="mono mono--dim">Werk &middot; Auftrag</span>
-                <span class="card__cta">Ansehen <span aria-hidden="true">&rarr;</span></span>
-              </div>
-            </div>
-          </a>
+      </ol>
+    </section>
+
+    <!-- ============================================================
+         BERUFSERFAHRUNG · Anstellungen chronologisch absteigend
+         CV-Stil-Liste — sachlich, lesbar, scanbar
+         ============================================================ -->
+    <section class="experience" id="experience" aria-labelledby="exp-title">
+      <header class="section-head">
+        <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Berufserfahrung</p>
+        <h2 class="section-head__title" id="exp-title">Stationen</h2>
+        <span class="section-head__meta mono mono--dim">04 Anstellungen</span>
+      </header>
+
+      <ol class="exp-list" role="list">
+
+        <!-- athenum.xyz · Freelance / Projektanstellung -->
+        <li class="exp-item">
+          <header class="exp-head">
+            <time class="exp-time mono" datetime="2025-12-11/2026-04-30">12/25 &mdash; 04/26</time>
+            <span class="exp-mode mono mono--dim">Projektanstellung &middot; Freelance &middot; Remote</span>
+          </header>
+          <div class="exp-body">
+            <span class="exp-brand mono">athenum.xyz &middot; VenturePoint LLC (Sheridan, WY &middot; USA)</span>
+            <h3 class="exp-role">Macro Intelligence &middot; Eigenentwicklung (Freelance)</h3>
+            <p class="exp-summary">Konzept, Daten-Pipeline und Frontend des Macro-Intelligence-Moduls &mdash; 75 Geo-Layer aus 12 offenen Quellen, gerendert auf einer GPU-nativen Welt-Karte. Demo-Stand siehe Arbeitsprobe oben (11.12.2025&nbsp;&ndash;&nbsp;30.04.2026).</p>
+            <ul class="exp-tags mono mono--dim">
+              <li>75 Layer</li><li>100K+ Datapoints</li><li>GPU-Map</li><li>Geo-Pipeline</li><li>UCDP/IAEA/USGS</li>
+            </ul>
+          </div>
+          <span class="exp-cta mono mono--dim">&mdash;</span>
         </li>
 
-        <!-- 06 · Service · Conversion-Audit -->
-        <li class="card" data-stagger="6">
-          <a href="#" class="card__link" aria-label="Service: Conversion-Audit anfragen">
-            <figure class="card__media" aria-hidden="true">
-              <div class="card__skeleton"></div>
-              <span class="badge badge--service">Service</span>
-            </figure>
-            <div class="card__body">
-              <h3 class="card__title">Conversion-Audit</h3>
-              <p class="card__meta mono mono--dim">2 Wochen &middot; remote &middot; konkrete Hebel</p>
-              <p class="card__excerpt">Datenbasiertes Audit eures Shops mit drei priorisierten Hebeln.</p>
-              <div class="card__foot">
-                <span class="mono mono--dim">Service &middot; Anfrage</span>
-                <span class="card__cta">Anfragen <span aria-hidden="true">&rarr;</span></span>
-              </div>
-            </div>
-          </a>
+        <!-- Decathlon · Junior Online Category Manager -->
+        <li class="exp-item exp-item--clickable" data-action="case-decathlon" tabindex="0" role="button" aria-label="Details zur Decathlon-Anstellung öffnen">
+          <header class="exp-head">
+            <time class="exp-time mono">04/23 &mdash; 10/25</time>
+            <span class="exp-mode mono mono--dim">Festanstellung &middot; 30&nbsp;h &middot; Remote</span>
+          </header>
+          <div class="exp-body">
+            <span class="exp-brand mono">Decathlon Deutschland SE &amp; Co. KG</span>
+            <h3 class="exp-role">Junior Online Category Manager &middot; Fitness DE/AT &amp; Nutrition</h3>
+            <p class="exp-summary">Operative Steuerung der Fitness-Range und Begleitung des Nutrition-Relaunchs &mdash; Sortiment (14.000+&nbsp;SKUs), A/B-Tests an PDP &amp; Checkout, KPI-Monitoring via GA4, SEO sowie Hands-on im CMS, PIM und Shop-Backend (HTML/CSS auf decathlon.at).</p>
+            <ul class="exp-tags mono mono--dim">
+              <li>14.000+ SKUs</li><li>GA4</li><li>HTML/CSS</li><li>CMS</li><li>PIM</li><li>SEO</li><li>A/B-Tests</li>
+            </ul>
+          </div>
+          <span class="exp-cta mono">Öffnen <span aria-hidden="true">&rarr;</span></span>
+        </li>
+
+        <!-- Decathlon · Praktikum -->
+        <li class="exp-item">
+          <header class="exp-head">
+            <time class="exp-time mono">10/22 &mdash; 02/23</time>
+            <span class="exp-mode mono mono--dim">Praktikum &middot; 5&nbsp;Mon. &middot; Plochingen</span>
+          </header>
+          <div class="exp-body">
+            <span class="exp-brand mono">Decathlon Deutschland SE &amp; Co. KG</span>
+            <h3 class="exp-role">Praktikum &middot; Online Category Management</h3>
+            <p class="exp-summary">Einstieg ins Online Category Management: Pflege von Produktdaten und Listings, erste eigene KPI-Reports, Vorbereitung des Sportnahrungs-Relaunchs.</p>
+          </div>
+          <span class="exp-cta mono mono--dim">&mdash;</span>
+        </li>
+
+        <!-- Fischer Möbel -->
+        <li class="exp-item">
+          <header class="exp-head">
+            <time class="exp-time mono">02/18 &mdash; 09/22</time>
+            <span class="exp-mode mono mono--dim">Werkstudent &middot; 4,5&nbsp;J. &middot; Schlierbach</span>
+          </header>
+          <div class="exp-body">
+            <span class="exp-brand mono">Fischer Möbel GmbH</span>
+            <h3 class="exp-role">Digital Content Assistant &middot; E-Commerce</h3>
+            <p class="exp-summary">Pflege und QA der Produktdaten im Web-Backend einer D2C-Premium-Marke, SEO-Keyword-Recherche, technische Produktdokumentationen und Aufbau strukturierter Daten-Workflows. Arbeitszeugnis &laquo;sehr&nbsp;gut&raquo;.</p>
+            <ul class="exp-tags mono mono--dim">
+              <li>D2C Premium</li><li>SEO</li><li>Web-Backend</li><li>Produktdaten</li><li>Daten-QA</li>
+            </ul>
+          </div>
+          <span class="exp-cta mono mono--dim">&mdash;</span>
         </li>
 
       </ol>
@@ -224,13 +271,13 @@
          ============================================================ -->
     <section class="feature" aria-labelledby="feat-title">
       <div class="feature__copy">
-        <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Prototypen</p>
-        <h2 class="feature__title" id="feat-title">Prototyp im Fokus</h2>
+        <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span> Arbeitsproben</p>
+        <h2 class="feature__title" id="feat-title">Arbeitsprobe im Fokus</h2>
         <p class="feature__lede">
-          Hier wird ein einzelner Prototyp ausf&uuml;hrlich vorgestellt &mdash;
+          Hier wird eine einzelne Arbeitsprobe ausf&uuml;hrlich vorgestellt &mdash;
           erlebbar, dokumentiert, mit Hypothese und Ergebnis.
         </p>
-        <a href="#" class="btn btn--ghost">Prototyp &ouml;ffnen <span aria-hidden="true">&rarr;</span></a>
+        <a href="#" class="btn btn--ghost">Arbeitsprobe &ouml;ffnen <span aria-hidden="true">&rarr;</span></a>
       </div>
       <div class="feature__media" aria-hidden="true">
         <div class="feature__skeleton"></div>
@@ -284,6 +331,34 @@
     <div class="drawer__scrim" data-cart-close aria-hidden="true"></div>
   </aside>
 
+  <!-- Case-Drawer · Decathlon -->
+  <aside id="case-decathlon" class="case-drawer" aria-hidden="true" aria-labelledby="case-title" tabindex="-1">
+    <div class="case-drawer__panel" role="dialog" aria-modal="true">
+      <header class="case-drawer__head">
+        <span class="case-drawer__eyebrow">CASE STUDY &middot; 03</span>
+        <h2 class="case-drawer__title" id="case-title">Decathlon &middot; Fitness DE/AT</h2>
+        <span class="case-drawer__meta">10/2022 &rarr; 10/2025 &middot; 14.247 SKUs &middot; 100&nbsp;% Remote</span>
+        <button class="case-drawer__close" type="button" data-case-close aria-label="Case schließen">&times;</button>
+      </header>
+      <div class="case-drawer__body" id="case-decathlon-body" aria-live="polite"></div>
+    </div>
+    <div class="case-drawer__scrim" data-case-close aria-hidden="true"></div>
+  </aside>
+
+  <!-- Case-Drawer · Athenum Macro Intelligence -->
+  <aside id="case-athenum" class="case-drawer" aria-hidden="true" aria-labelledby="athenum-title" tabindex="-1">
+    <div class="case-drawer__panel" role="dialog" aria-modal="true">
+      <header class="case-drawer__head">
+        <span class="case-drawer__eyebrow">CASE STUDY &middot; 03</span>
+        <h2 class="case-drawer__title" id="athenum-title">Athenum &middot; Macro Intelligence</h2>
+        <span class="case-drawer__meta">PROJEKTVERTRAG &middot; 75 LAYER &middot; DEMO</span>
+        <button class="case-drawer__close" type="button" data-case-close aria-label="Case schließen">&times;</button>
+      </header>
+      <div class="case-drawer__body" id="case-athenum-body" aria-live="polite"></div>
+    </div>
+    <div class="case-drawer__scrim" data-case-close aria-hidden="true"></div>
+  </aside>
+
   <!-- Tutorial-Sprechblase, links neben dem Drawer -->
   <aside class="cart-bubble" id="cart-bubble" role="status" aria-live="polite" hidden>
     <span class="cart-bubble__step"></span>
@@ -310,7 +385,7 @@
       </header>
       <div class="advisor__body">
         <p class="advisor__hint mono mono--dim">Skelett &middot; Modell folgt</p>
-        <p>Hier antwortet sp&auml;ter ein RAG-Modell auf Fragen zu meinem Werk und Profil.</p>
+        <p>Hier antwortet sp&auml;ter ein RAG-Modell auf Fragen zu meinen Projekten und meinem Profil.</p>
       </div>
       <form class="advisor__form" autocomplete="off" novalidate>
         <input type="text" placeholder="Frage stellen &hellip;" disabled />
@@ -320,8 +395,11 @@
   </div>
 
   <script src="assets/scene.js" defer></script>
+  <script src="assets/cover-builder.js" defer></script>
   <script src="assets/cart-data.js" defer></script>
   <script src="assets/cart.js" defer></script>
   <script src="assets/shop.js" defer></script>
+  <script src="assets/case.js" defer></script>
+  <script src="assets/macro.js" defer></script>
 </body>
 </html>

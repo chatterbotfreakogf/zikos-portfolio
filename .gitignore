@@ -8,6 +8,12 @@ inhalte/_privat/
 .playwright-mcp/
 *.log
 
+# Playwright-Verifikations-Screenshots im Root
+# (Asset-Bilder unter assets/ werden ausdrücklich getrackt)
+/*.png
+/*.jpg
+/*.jpeg
+
 # Editor
 .vscode/
 .idea/

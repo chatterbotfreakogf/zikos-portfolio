@@ -270,7 +270,7 @@
         <span class="continue__arrow" aria-hidden="true">←</span>
         <span class="continue__text">
           <span class="continue__title">Weiter shoppen</span>
-          <span class="continue__sub mono">Zurück zu den Werken</span>
+          <span class="continue__sub mono">Zurück zum Portfolio</span>
         </span>
       </button>`;
   }
