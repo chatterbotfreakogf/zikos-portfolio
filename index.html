@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de" data-theme="cool">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="Privates Portfolio von Zikos Zissis — E-Commerce-Engineering, Conversion-Handwerk und angewandte KI. Zugang nach Einladung." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <title>Zikos Zissis — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="assets/style.css" />
+
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23A0A5B1'/><circle cx='16' cy='16' r='6' fill='none' stroke='%23fff' stroke-width='1.2' opacity='0.85'/></svg>" />
+
+  <meta property="og:title" content="Zikos Zissis — Portfolio" />
+  <meta property="og:description" content="Privates Portfolio. Zugang nach Einladung." />
+  <meta property="og:type" content="website" />
+</head>
+<body>
+
+  <a class="skip" href="#gate">Zum Eingang springen</a>
+
+  <canvas id="scene" aria-hidden="true"></canvas>
+
+  <header class="frame frame--top">
+    <span class="mono">Zikos Zissis</span>
+    <span class="mono mono--dim">Portfolio · 2026</span>
+  </header>
+
+  <main class="stage">
+    <section class="gate" id="gate" aria-labelledby="gate-title">
+
+      <p class="eyebrow mono">
+        <span class="dot" aria-hidden="true"></span>
+        Privater Zugang
+      </p>
+
+      <h1 class="display" id="gate-title">
+        <span class="display__line">Willkommen.</span>
+      </h1>
+
+      <p class="lede">
+        Hinter diesem Zugang liegt mein Portfolio &mdash;
+        <span class="lede__hl">E-Commerce, Conversion-Optimierung und angewandte KI</span>.
+      </p>
+
+      <form class="form" id="auth" autocomplete="off" novalidate>
+        <label for="pw" class="vh">Passwort</label>
+        <div class="field">
+          <input
+            id="pw"
+            name="pw"
+            type="password"
+            inputmode="text"
+            autocapitalize="off"
+            autocomplete="current-password"
+            spellcheck="false"
+            placeholder="Passwort"
+            required
+            aria-describedby="hint err"
+          />
+          <button type="submit" class="enter" aria-label="Eintreten">
+            <span class="enter__label">Eintreten</span>
+            <span class="enter__arrow" aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+        <p class="err" id="err" role="status" aria-live="polite"></p>
+        <p class="hint mono mono--dim" id="hint">Passwort wurde per Einladung mitgeteilt.</p>
+      </form>
+
+    </section>
+  </main>
+
+  <footer class="frame frame--bottom">
+    <span class="mono mono--dim">Plochingen, Deutschland</span>
+    <span class="mono mono--dim">Nach Einladung</span>
+  </footer>
+
+  <script src="assets/scene.js" defer></script>
+  <script src="assets/auth.js" defer></script>
+</body>
+</html>

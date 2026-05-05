@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Sensitive Daten — niemals committen
+inhalte/_privat/
+
+# Test-Artefakte / lokale Tools
+.playwright-mcp/
+*.log
+
+# Editor
+.vscode/
+.idea/
