@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Smart-Cart-Drawer · Shopify-Ready Showcase">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#F2EEE3"/>
+      <stop offset="100%" stop-color="#E2DCC8"/>
+    </linearGradient>
+    <linearGradient id="drawer" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#FBFBF7"/>
+      <stop offset="100%" stop-color="#F4F2EC"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="22%" cy="28%" r="58%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0%"   stop-color="#0F1015" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#0F1015" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="mintHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#34D9A0" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#34D9A0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="thumbSphere" cx="35%" cy="30%">
+      <stop offset="0%"   stop-color="#E6E9EF"/>
+      <stop offset="100%" stop-color="#5C6271"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ====== HINTERGRUND ====== -->
+  <rect x="0" y="0" width="800" height="600" fill="url(#paper)"/>
+  <rect x="0" y="0" width="800" height="600" fill="url(#spot)"/>
+
+  <!-- Drawer-Panel rechts -->
+  <rect x="420" y="0" width="380" height="600" fill="url(#drawer)"/>
+  <rect x="384" y="0" width="36" height="600" fill="url(#edge)"/>
+  <line x1="420" y1="0" x2="420" y2="600" stroke="rgba(15,16,21,0.28)" stroke-width="1"/>
+
+  <!-- ====== EDITORIAL LINKE SEITE ====== -->
+
+  <!-- SMART-CART Eyebrow -->
+  <text x="56" y="194"
+        font-family="JetBrains Mono, ui-monospace, monospace"
+        font-size="16" letter-spacing="3.6" font-weight="500"
+        fill="#0F1015">SMART—CART</text>
+  <line x1="56" y1="208" x2="148" y2="208" stroke="#0F1015" stroke-width="2"/>
+
+  <!-- HEADLINE STACK · groß, klar -->
+  <text x="56" y="316"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="118" font-weight="300"
+        letter-spacing="-4.5" fill="#0F1015">Smart</text>
+  <text x="56" y="416"
+        font-family="Inter, system-ui, sans-serif"
+        font-size="118" font-weight="300"
+        letter-spacing="-4.5" fill="#0F1015">Cart</text>
+  <circle cx="278" cy="408" r="12" fill="#34D9A0"/>
+
+  <!-- Caption -->
+  <line x1="56" y1="450" x2="320" y2="450" stroke="rgba(15,16,21,0.32)" stroke-width="1"/>
+  <text x="56" y="478"
+        font-family="JetBrains Mono, ui-monospace, monospace"
+        font-size="15" letter-spacing="3" font-weight="500"
+        fill="#0F1015">CROSS-SELL · BUNDLE</text>
+
+  <!-- SHOPIFY-READY Stamp · groß und mittig -->
+  <g transform="translate(56,514)">
+    <g stroke="#0F1015" stroke-width="1.4" fill="none" stroke-linecap="square">
+      <path d="M0 0 L0 9 M0 0 L9 0"/>
+      <path d="M260 0 L260 9 M260 0 L251 0"/>
+      <path d="M0 44 L0 35 M0 44 L9 44"/>
+      <path d="M260 44 L260 35 M260 44 L251 44"/>
+    </g>
+
+    <!-- Shopify-Bag, größer -->
+    <g transform="translate(20,8)">
+      <path d="M4 8 H26 L24.5 30 H5.5 Z" fill="#0F1015"/>
+      <path d="M8 8 V6 C8 3 11 1.2 15 1.2 C19 1.2 22 3 22 6 V8"
+            fill="none" stroke="#0F1015" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M19 14 C17 13 13 13.4 13 15.6 C13 18 18 17.4 18 19.8 C18 21.6 15.6 22 13.4 21"
+            fill="none" stroke="#FBFBF7" stroke-width="2.2" stroke-linecap="round"/>
+    </g>
+
+    <text x="64" y="29"
+          font-family="JetBrains Mono, ui-monospace, monospace"
+          font-size="15" letter-spacing="3" font-weight="500"
+          fill="#0F1015">SHOPIFY-READY</text>
+  </g>
+
+  <!-- ====== DRAWER MINI · RECHTE SEITE ====== -->
+  <g transform="translate(444,0)">
+    <!-- HEADER -->
+    <text x="0" y="76"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="36" font-weight="500" letter-spacing="-0.8"
+          fill="#0F1015">Warenkorb</text>
+    <text x="0" y="104"
+          font-family="JetBrains Mono, ui-monospace, monospace"
+          font-size="13" letter-spacing="2.6"
+          fill="#353945">DEMO · TUTORIAL</text>
+
+    <!-- LIVE-Indikator -->
+    <g transform="translate(312,42)">
+      <circle cx="0" cy="0" r="18" fill="url(#mintHalo)"/>
+      <circle cx="0" cy="0" r="6" fill="#34D9A0"/>
+    </g>
+
+    <line x1="0" y1="124" x2="328" y2="124" stroke="rgba(15,16,21,0.18)"/>
+
+    <!-- THRESHOLD · partial fill, erzählt "noch 33 € bis frei" -->
+    <g transform="translate(0,156)">
+      <text x="0" y="0"
+            font-family="JetBrains Mono, ui-monospace, monospace"
+            font-size="13.5" letter-spacing="2.6" font-weight="500"
+            fill="#0F1015">VERSAND</text>
+      <text x="328" y="0" text-anchor="end"
+            font-family="JetBrains Mono, ui-monospace, monospace"
+            font-size="13.5" letter-spacing="2.6"
+            fill="#353945">NOCH 33,00 €</text>
+      <rect x="0" y="12" width="328" height="3" fill="rgba(15,16,21,0.18)"/>
+      <rect x="0" y="12" width="192" height="3" fill="#0F1015"/>
+    </g>
+
+    <!-- LINE 01 — Item · Basis -->
+    <g transform="translate(0,196)">
+      <text x="0" y="34"
+            font-family="JetBrains Mono, ui-monospace, monospace"
+            font-size="13" letter-spacing="1" fill="#353945">01</text>
+      <rect x="26" y="0" width="56" height="56" fill="#F4F2EC" stroke="rgba(15,16,21,0.20)"/>
+      <circle cx="54" cy="28" r="17" fill="url(#thumbSphere)"/>
+
+      <text x="98" y="36"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="19" font-weight="500" letter-spacing="-0.3"
+            fill="#0F1015">Item · Basis</text>
+      <text x="328" y="36" text-anchor="end"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="19" font-weight="500" letter-spacing="-0.3"
+            fill="#0F1015">35,00 €</text>
+    </g>
+    <line x1="0" y1="272" x2="328" y2="272" stroke="rgba(15,16,21,0.18)"/>
+
+    <!-- LINE 02 — Item · Zubehör (kein Bundle, sauberes zweites Item) -->
+    <g transform="translate(0,288)">
+      <text x="0" y="34"
+            font-family="JetBrains Mono, ui-monospace, monospace"
+            font-size="13" letter-spacing="1" fill="#353945">02</text>
+      <rect x="26" y="0" width="56" height="56" fill="#F4F2EC" stroke="rgba(15,16,21,0.20)"/>
+      <!-- Disc-Glyph -->
+      <ellipse cx="54" cy="28" rx="20" ry="6" fill="#888E99"/>
+      <ellipse cx="54" cy="24" rx="20" ry="6" fill="#A8AEB8"/>
+
+      <text x="98" y="36"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="19" font-weight="500" letter-spacing="-0.3"
+            fill="#0F1015">Item · Zubehör</text>
+      <text x="328" y="36" text-anchor="end"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="19" font-weight="500" letter-spacing="-0.3"
+            fill="#0F1015">12,00 €</text>
+    </g>
+    <line x1="0" y1="364" x2="328" y2="364" stroke="rgba(15,16,21,0.18)"/>
+
+    <!-- BUNDLE-VORSCHLAG -->
+    <g transform="translate(0,394)">
+      <rect x="0" y="0" width="328" height="98" fill="none" stroke="#0F1015" stroke-width="1.4"/>
+      <rect x="16" y="-9" width="170" height="18" fill="#FBFBF7"/>
+      <text x="22" y="4"
+            font-family="JetBrains Mono, ui-monospace, monospace"
+            font-size="12" letter-spacing="2.4" font-weight="600" fill="#0F1015">BUNDLE-VORSCHLAG</text>
+
+      <text x="22" y="44"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="22" font-weight="500" letter-spacing="-0.4"
+            fill="#0F1015">Starter-Set</text>
+      <text x="22" y="64"
+            font-family="JetBrains Mono, ui-monospace, monospace"
+            font-size="12" letter-spacing="1.8"
+            fill="#353945">+ ITEM · PREMIUM</text>
+
+      <text x="304" y="58" text-anchor="end"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="42" font-weight="400" letter-spacing="-1.6" fill="#C8252A">−15</text>
+      <text x="308" y="58"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="20" fill="#C8252A">%</text>
+
+      <line x1="22" y1="76" x2="304" y2="76" stroke="rgba(15,16,21,0.18)"/>
+      <text x="22" y="92"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="13" font-weight="500" letter-spacing="2.4" fill="#0F1015">BUNDLE AKTIVIEREN</text>
+      <text x="304" y="92" text-anchor="end"
+            font-family="Inter, system-ui, sans-serif"
+            font-size="16" fill="#0F1015">→</text>
+    </g>
+
+    <!-- TOTAL + CTA -->
+    <line x1="0" y1="510" x2="328" y2="510" stroke="rgba(15,16,21,0.22)"/>
+    <text x="0" y="534"
+          font-family="JetBrains Mono, ui-monospace, monospace"
+          font-size="13.5" letter-spacing="2.8" fill="#353945">GESAMT</text>
+    <text x="328" y="542" text-anchor="end"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="34" font-weight="400" letter-spacing="-0.7" fill="#0F1015">47,00 €</text>
+
+    <rect x="0" y="556" width="328" height="42" fill="#0F1015"/>
+    <text x="164" y="583" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="14" font-weight="500" letter-spacing="3" fill="#FBFBF7">ZUR KASSE</text>
+    <text x="290" y="583"
+          font-family="Inter, system-ui, sans-serif"
+          font-size="16" fill="#FBFBF7">→</text>
+  </g>
+
+  <!-- Cursor-Pulse über BUNDLE AKTIVIEREN -->
+  <g transform="translate(720,484)" opacity="1">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#34D9A0" stroke-width="1.6" opacity="0.7"/>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#34D9A0" stroke-width="1.2" opacity="0.34"/>
+    <path d="M0 0 L0 22 L6 16 L11 27 L14.5 25.6 L9.6 14.6 L18 14.6 Z"
+          fill="#0F1015" stroke="#FBFBF7" stroke-width="1.4" stroke-linejoin="round"/>
+  </g>
+</svg>

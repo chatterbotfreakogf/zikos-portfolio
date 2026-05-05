@@ -26,7 +26,6 @@
   /* Cart-Drawer ---------------------------------------------------- */
   const cart       = document.getElementById("cart");
   const cartOpen   = document.getElementById("cart-open");
-  const cartCloses = document.querySelectorAll("[data-cart-close]");
   let lastFocus = null;
 
   function openCart() {
@@ -50,7 +49,12 @@
   }
 
   cartOpen?.addEventListener("click", openCart);
-  cartCloses.forEach(el => el.addEventListener("click", closeCart));
+  // Delegation: schliesst auch dynamisch gerenderte Buttons (z. B. "Weiter shoppen")
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest("[data-cart-close]")) closeCart();
+  });
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {

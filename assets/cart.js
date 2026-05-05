@@ -95,11 +95,21 @@
     render();
   }
 
+  // Bundle-Anwendung: pro Klick genau 1 Einheit jedes Required-Items konsumieren.
+  // Mehrfachauswahl bleibt damit erhalten (Basis ×3 → Bundle ×1 + Basis ×2).
+  // Bundle-Line ist stapelbar: existierte sie schon, wird qty inkrementiert.
   function applyBundle(bundleId) {
     const bundle = getBundle(bundleId);
     if (!bundle) return;
-    bundle.requires.forEach(rid => state.lines.delete(rid));
-    state.lines.set(bundle.id, { id: bundle.id, qty: 1, kind: "bundle" });
+    for (const rid of bundle.requires) {
+      const line = state.lines.get(rid);
+      if (!line) continue;
+      if (line.qty > 1) line.qty -= 1;
+      else state.lines.delete(rid);
+    }
+    const existing = state.lines.get(bundle.id);
+    if (existing) existing.qty += 1;
+    else state.lines.set(bundle.id, { id: bundle.id, qty: 1, kind: "bundle" });
     render();
   }
 
@@ -148,9 +158,10 @@
     return null;
   }
 
+  // Bundle-Vorschlag: feuert, sobald 2 von 3 Required-Items als Standalone-Lines
+  // im Korb liegen — auch wenn schon ein Bundle vorhanden ist (rekursiv stapelbar).
   function bundleSuggestion() {
     for (const bundle of data.bundles) {
-      if (state.lines.has(bundle.id)) continue;
       const present = bundle.requires.filter(id => state.lines.has(id));
       const missing = bundle.requires.filter(id => !state.lines.has(id));
       if (present.length >= 2 && missing.length >= 1) {
@@ -160,22 +171,25 @@
     return null;
   }
 
-  function itemLineHtml(line) {
+  function pad2(n) { return String(n).padStart(2, "0"); }
+
+  function itemLineHtml(line, idx) {
     const item = data.items[line.id];
     const lineTotal = item.price * line.qty;
     return `
       <li class="line" data-line="${item.id}" data-kind="item">
+        <span class="line__index mono">${pad2(idx)}</span>
         <span class="line__thumb" aria-hidden="true">${glyphSvg(item.glyph)}</span>
         <div class="line__main">
           <div class="line__row">
             <span class="line__title">${item.name}</span>
-            <span class="line__price mono">${eur(lineTotal)}</span>
+            <span class="line__price">${eur(lineTotal)}</span>
           </div>
           <div class="line__row line__row--meta">
-            <span class="line__meta mono mono--dim">${item.meta}</span>
+            <span class="line__meta mono">${item.meta}</span>
             <span class="line__qty" role="group" aria-label="Menge">
               <button type="button" class="qty__btn" data-qty="dec" aria-label="Menge verringern">−</button>
-              <span class="qty__val mono">${line.qty}</span>
+              <span class="qty__val">${line.qty}</span>
               <button type="button" class="qty__btn" data-qty="inc" aria-label="Menge erhöhen">+</button>
             </span>
             <button type="button" class="line__remove" data-remove aria-label="Entfernen">✕</button>
@@ -184,29 +198,33 @@
       </li>`;
   }
 
-  function bundleLineHtml(line) {
+  function bundleLineHtml(line, idx) {
     const bundle = getBundle(line.id);
-    const orig = bundleOriginalPrice(bundle);
-    const cur = bundlePrice(bundle);
-    const saved = bundleSavings(bundle);
+    const qty = line.qty;
+    const orig = bundleOriginalPrice(bundle) * qty;
+    const cur = bundlePrice(bundle) * qty;
+    const saved = bundleSavings(bundle) * qty;
+    const setLabel = qty > 1 ? `${qty} Sets · ${bundle.requires.length * qty} Artikel` : `${bundle.requires.length} Artikel`;
     return `
       <li class="line line--bundle" data-line="${bundle.id}" data-kind="bundle">
+        <span class="line__index mono">${pad2(idx)}</span>
         <span class="line__thumb line__thumb--bundle" aria-hidden="true">${glyphSvg(bundle.glyph)}</span>
         <div class="line__main">
           <div class="line__row">
             <span class="line__title">
-              <span class="line__tag mono">Bundle</span>
-              ${bundle.name}
+              <span class="line__tag">Bundle</span>
+              <span class="line__title-text">${bundle.name}</span>
+              ${qty > 1 ? `<span class="line__qty-pill mono">×${qty}</span>` : ""}
             </span>
             <span class="line__price-stack">
-              <span class="line__price mono">${eur(cur)}</span>
-              <span class="line__price-strike mono">${eur(orig)}</span>
+              <span class="line__price">${eur(cur)}</span>
+              <span class="line__price-strike">${eur(orig)}</span>
             </span>
           </div>
           <div class="line__row line__row--meta">
             <span class="line__meta mono">
-              <span class="mono--dim">${bundle.requires.length} Artikel</span>
-              <span class="line__sep mono--dim"> · </span>
+              <span>${setLabel}</span>
+              <span class="line__sep"> · </span>
               <span class="line__discount">${eur(saved)} gespart</span>
             </span>
             <button type="button" class="line__remove" data-remove aria-label="Bundle entfernen">✕</button>
@@ -215,8 +233,8 @@
       </li>`;
   }
 
-  function lineHtml(line) {
-    return line.kind === "bundle" ? bundleLineHtml(line) : itemLineHtml(line);
+  function lineHtml(line, idx) {
+    return line.kind === "bundle" ? bundleLineHtml(line, idx) : itemLineHtml(line, idx);
   }
 
   function bundleCardHtml() {
@@ -226,16 +244,17 @@
     const pct = Math.round(sug.bundle.discount * 100);
     return `
       <div class="bundle bundle--offer" data-bundle-offer>
-        <div class="bundle__text">
-          <span class="bundle__title">Im Bundle &laquo;${sug.bundle.name}&raquo; verfügbar</span>
-          <span class="bundle__sub mono">
-            <span class="mono--dim">Mit ${missing.name}</span>
-            <span class="mono--dim"> · </span>
-            <span class="bundle__discount">−${pct} % auf das Set</span>
-          </span>
+        <span class="bundle__eyebrow mono">Bundle-Vorschlag</span>
+        <div class="bundle__main">
+          <div class="bundle__text">
+            <span class="bundle__title">${sug.bundle.name}</span>
+            <span class="bundle__sub mono">+ ${missing.name}</span>
+          </div>
+          <span class="bundle__stamp" aria-hidden="true">−${pct}<span class="bundle__stamp-pct">%</span></span>
         </div>
         <button type="button" class="bundle__cta" data-bundle-add="${sug.bundle.id}">
-          Bundle hinzufügen
+          <span>Bundle aktivieren</span>
+          <span class="bundle__cta-arrow" aria-hidden="true">→</span>
         </button>
       </div>`;
   }
@@ -248,12 +267,10 @@
   function continueShoppingHtml() {
     return `
       <button type="button" class="continue" data-cart-close aria-label="Weiter shoppen">
-        <span class="continue__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="16" height="16"><path d="M14 7l-5 5 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <span class="continue__arrow" aria-hidden="true">←</span>
         <span class="continue__text">
           <span class="continue__title">Weiter shoppen</span>
-          <span class="continue__sub mono mono--dim">Zurück zu den Werken</span>
+          <span class="continue__sub mono">Zurück zu den Werken</span>
         </span>
       </button>`;
   }
@@ -264,12 +281,12 @@
     const item = data.items[rec.recId];
     return `
       <section class="xsell" aria-label="Empfehlung">
-        <h3 class="xsell__title mono">Häufig dazu gekauft</h3>
+        <h3 class="xsell__title mono">Passt dazu</h3>
         <div class="xsell__row">
           <span class="xsell__thumb" aria-hidden="true">${glyphSvg(item.glyph)}</span>
           <div class="xsell__text">
             <span class="xsell__name">${item.name}</span>
-            <span class="xsell__meta mono mono--dim">Ergänzt ${rec.sourceName} &middot; ${eur(item.price)}</span>
+            <span class="xsell__meta mono">Ergänzt ${rec.sourceName} · ${eur(item.price)}</span>
           </div>
           <button type="button" class="xsell__add" data-xsell-add="${item.id}" aria-label="${item.name} in den Warenkorb">
             <span class="xsell__add-icon" aria-hidden="true">+</span>
@@ -286,21 +303,26 @@
   function emptyHtml() {
     return `
       <div class="cart-empty">
-        <p class="cart-empty__title">Korb ist leer</p>
-        <p class="cart-empty__hint mono mono--dim">Klick auf <em>Smart-Cart-Drawer</em> startet die Demo.</p>
+        <span class="cart-empty__eyebrow mono">Leer</span>
+        <p class="cart-empty__title">Noch nichts im Korb.</p>
+        <p class="cart-empty__hint mono">Tile <em>Smart-Cart-Drawer</em> startet die Demo.</p>
       </div>`;
   }
 
   function thresholdHtml() {
     const sp = shippingProgress();
     const remaining = Math.max(0, sp.goal - sp.value);
-    const label = sp.reached ? "Versand frei" : `Noch ${eur(remaining)} bis Versand frei`;
+    const left = sp.reached ? "Versand frei" : "Versand";
+    const right = sp.reached ? `${eur(sp.goal)}` : `Noch ${eur(remaining)}`;
     return `
       <div class="thresh ${sp.reached ? "is-reached" : ""}" data-thresh>
+        <div class="thresh__label mono">
+          <span class="thresh__label-key">${left}</span>
+          <span class="thresh__label-val">${right}</span>
+        </div>
         <div class="thresh__track" aria-hidden="true">
           <div class="thresh__fill" style="width:${sp.pct}%"></div>
         </div>
-        <span class="thresh__label mono">${label}</span>
       </div>`;
   }
 
@@ -308,7 +330,7 @@
     const el = root();
     if (!el) return;
     if (state.lines.size === 0) { el.innerHTML = emptyHtml(); return; }
-    const lines = Array.from(state.lines.values()).map(lineHtml).join("");
+    const lines = Array.from(state.lines.values()).map((line, i) => lineHtml(line, i + 1)).join("");
     el.innerHTML = `
       ${thresholdHtml()}
       <ul class="lines" role="list">${lines}</ul>
@@ -325,15 +347,20 @@
     el.innerHTML = `
       <div class="totals" ${hasItems ? "" : "hidden"}>
         <div class="totals__row totals__row--total">
-          <span>Gesamt</span>
-          <span class="mono" data-total>${eur(tot)}</span>
+          <span class="totals__key mono">Gesamt</span>
+          <span class="totals__val" data-total>${eur(tot)}</span>
         </div>
       </div>
       <div class="cart-actions">
-        <button class="btn btn--ghost btn--block" type="button" ${hasItems ? "" : "disabled"}>Express-Kauf</button>
-        <button class="btn btn--primary btn--block" type="button" ${hasItems ? "" : "disabled"}>Zur Kasse</button>
+        <button class="cta cta--primary" type="button" ${hasItems ? "" : "disabled"}>
+          <span>Zur Kasse</span>
+          <span class="cta__arrow" aria-hidden="true">→</span>
+        </button>
+        <button class="cta cta--ghost" type="button" ${hasItems ? "" : "disabled"}>
+          <span>Express-Kauf</span>
+        </button>
       </div>
-      <button class="cart-replay mono mono--dim" type="button" data-cart-replay>↻ Sequenz wiederholen</button>
+      <button class="cart-replay mono" type="button" data-cart-replay>↻ Sequenz wiederholen</button>
     `;
     countAnimateTotal(tot);
   }
@@ -528,9 +555,9 @@
     if (hasBundle) {
       tutorial.state = 2;
       setBubble({
-        step: "03 · Aktiv",
-        title: "Bundle eingelöst · Versand frei",
-        text: "Drei Items zu einer SKU verschmolzen, 15 % Rabatt automatisch verrechnet, Versandgrenze überschritten. Bühne gehört dir."
+        step: "03 — Aktiv",
+        title: "Bundle drin.",
+        text: "−15 % verrechnet. Versand frei."
       });
       setTarget(null);
       return;
@@ -538,9 +565,9 @@
     if (hasBasis && hasZubehoer) {
       tutorial.state = 1;
       setBubble({
-        step: "02 · Bundle-Trigger",
-        title: "Zwei von drei erkannt",
-        text: "Die Bundle-Logik scannt den Korb laufend. Klick aktiviert das Set: Einzel-Lines werden durch eine Bundle-SKU ersetzt, Rabatt fließt mit.",
+        step: "02 — Bundle bereit",
+        title: "3 Items, ein Set.",
+        text: "Klick spart 15 %.",
         targetSel: "[data-bundle-add='starter']"
       });
       setTarget("[data-bundle-add='starter']");
@@ -549,9 +576,9 @@
     if (hasBasis) {
       tutorial.state = 0;
       setBubble({
-        step: "01 · Cross-Sell",
-        title: "Komplementäres Item",
-        text: "Die Empfehlung wird auf Basis des Korbinhalts dynamisch gefiltert. Klick fügt Item · Zubehör hinzu — wie bei Schuh + Putzmittel.",
+        step: "01 — Cross-Sell",
+        title: "Passt zum Korb.",
+        text: "Klick legt es dazu.",
         targetSel: "[data-xsell-add='zubehoer']"
       });
       setTarget("[data-xsell-add='zubehoer']");
