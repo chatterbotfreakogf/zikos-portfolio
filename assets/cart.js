@@ -11,10 +11,22 @@
   /* ----------------------------------------------------------------
      STATE
      lines: Map<id, { id, qty, kind: 'item' | 'bundle' }>
+     view : 'customer' | 'admin'
      ---------------------------------------------------------------- */
   const state = {
     lines: new Map(),
-    lastDisplayedTotal: 0
+    lastDisplayedTotal: 0,
+    view: "customer"
+  };
+
+  const ADMIN_STORAGE_KEY = "zz-portfolio-recs-v1";
+  const ADMIN_PRODUCT_IDS = ["basis", "zubehoer", "premium"];
+
+  const adminState = {
+    recommendations: [],
+    initial: "",
+    pickerForRecIdx: null,
+    dirty: false
   };
 
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -365,10 +377,24 @@
     countAnimateTotal(tot);
   }
 
+  // Garantiert: in Customer-View ist der Cart nie leer. Wäre er leer
+  // (Erstöffnung, letztes Item entfernt, Admin-Sync, Demo-Replay), wird er
+  // auf den Anfangszustand zurückgesetzt: 1× Basis + Tutorial-Bubble „01".
+  function ensureNonEmpty() {
+    if (state.view !== "customer") return;
+    if (state.lines.size > 0) return;
+    state.lines.set("basis", { id: "basis", qty: 1, kind: "item" });
+    tutorial.active = true;
+    tutorial.state = 0;
+    setSeqHint("Demo · klick zum Fortfahren");
+  }
+
   function render() {
+    ensureNonEmpty();
+    updateCount();
+    if (state.view === "admin") return;
     renderBody();
     renderFooter();
-    updateCount();
     reapplyTutorial();
   }
 
@@ -414,11 +440,77 @@
       const target = e.target;
       if (!(target instanceof Element)) return;
 
+      /* ---- View toggle (Kunde / Admin) ---- */
+      const viewBtn = target.closest("[data-view-switch]");
+      if (viewBtn) { setView(viewBtn.getAttribute("data-view-switch")); return; }
+
+      /* ---- Admin: Modal/Picker ---- */
+      const pickCancel = target.closest("[data-pick-cancel]");
+      if (pickCancel) { closePicker(); return; }
+
+      const pickAdd = target.closest("[data-pick-add]");
+      if (pickAdd) { pickProduct(pickAdd.getAttribute("data-pick-add")); return; }
+
+      const pickOpen = target.closest("[data-pick-open]");
+      if (pickOpen) {
+        const recEl = pickOpen.closest("[data-rec]");
+        if (recEl) openPicker(Number(recEl.getAttribute("data-rec")));
+        return;
+      }
+
+      /* ---- Admin: Mutationen (alle Auto-Save) ---- */
+      const remProd = target.closest("[data-rem-product]");
+      if (remProd) {
+        const [iStr, handle] = remProd.getAttribute("data-rem-product").split("|");
+        const i = Number(iStr);
+        const rec = adminState.recommendations[i];
+        if (rec) {
+          rec.products = rec.products.filter(h => h !== handle);
+          adminCommit();
+          renderAdmin();
+        }
+        return;
+      }
+
+      const recDel = target.closest("[data-rec-del]");
+      if (recDel) {
+        const recEl = recDel.closest("[data-rec]");
+        if (!recEl) return;
+        const i = Number(recEl.getAttribute("data-rec"));
+        const rec = adminState.recommendations[i];
+        if (!rec) return;
+        if (confirm(`Empfehlung "${rec.name || "ohne Namen"}" löschen?`)) {
+          adminState.recommendations.splice(i, 1);
+          adminCommit();
+          renderAdmin();
+        }
+        return;
+      }
+
+      const recNew = target.closest("[data-rec-new]");
+      if (recNew) {
+        adminState.recommendations.push({
+          id: newRecId(),
+          name: "Neue Empfehlung",
+          products: [],
+          is_bundle: false,
+          discount: 10
+        });
+        adminCommit();
+        renderAdmin();
+        const list = document.querySelector(".adm-list");
+        const last = list?.lastElementChild?.querySelector("[data-rec-name]");
+        last?.focus();
+        last?.select?.();
+        return;
+      }
+
+      /* ---- Customer: bestehende Logik ---- */
       const replay = target.closest("[data-cart-replay]");
       if (replay) { e.preventDefault(); startTutorial(); return; }
 
       const closeEl = target.closest("[data-cart-close]");
-      if (closeEl) { endTutorial(); return; /* shop.js handles close */ }
+      if (closeEl) { endTutorial(); closePicker(); return; /* shop.js handles close */ }
 
       const lineEl = target.closest("[data-line]");
       const id = lineEl?.getAttribute("data-line");
@@ -444,6 +536,62 @@
         const thresh = document.querySelector("[data-thresh]");
         if (thresh && shippingProgress().reached) pulse(thresh);
         return;
+      }
+    });
+
+    /* Admin input — Auto-Save: state + persist + Footer-Flash, ohne Re-Render (Cursor bleibt) */
+    document.addEventListener("input", (e) => {
+      const t = e.target;
+      if (!(t instanceof Element)) return;
+      const recEl = t.closest("[data-rec]");
+      if (!recEl) return;
+      const idx = Number(recEl.getAttribute("data-rec"));
+      const rec = adminState.recommendations[idx];
+      if (!rec) return;
+      if (t.matches("[data-rec-name]")) {
+        rec.name = t.value;
+        adminCommit();
+      } else if (t.matches("[data-rec-discount]")) {
+        const v = parseInt(t.value, 10);
+        if (Number.isFinite(v)) rec.discount = clamp(v, 1, 50, rec.discount);
+        adminCommit();
+        const info = recEl.querySelector(".adm-rec__info");
+        if (info && rec.is_bundle && rec.products.length >= 2) {
+          const partsTotal = rec.products.reduce((s, h) => s + (data.items[h]?.price || 0), 0);
+          const saving = partsTotal * (rec.discount / 100);
+          info.innerHTML = `Bei <em>allen ${rec.products.length} Produkten</em> im Cart: <em class="adm-rec__info--save">&minus;${rec.discount}&thinsp;% (&asymp; ${eur(saving)})</em> auf jedes Produkt.`;
+        }
+      }
+    });
+
+    /* Admin change — Auto-Save + full re-render (blur/checkbox) */
+    document.addEventListener("change", (e) => {
+      const t = e.target;
+      if (!(t instanceof Element)) return;
+      const recEl = t.closest("[data-rec]");
+      if (!recEl) return;
+      const idx = Number(recEl.getAttribute("data-rec"));
+      const rec = adminState.recommendations[idx];
+      if (!rec) return;
+      if (t.matches("[data-rec-bundle]")) {
+        rec.is_bundle = t.checked;
+        adminCommit();
+        renderAdmin();
+      } else if (t.matches("[data-rec-name]")) {
+        rec.name = (t.value || "").trim() || "Empfehlung";
+        adminCommit();
+        renderAdmin();
+      } else if (t.matches("[data-rec-discount]")) {
+        rec.discount = clamp(parseInt(t.value, 10), 1, 50, 10);
+        adminCommit();
+        renderAdmin();
+      }
+    });
+
+    /* ESC schließt Picker */
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && adminState.pickerForRecIdx !== null) {
+        closePicker();
       }
     });
   }
@@ -530,13 +678,14 @@
   }
 
   function startTutorial() {
-    reset();
-    addItem("basis");
-    openDrawer();
+    if (state.view !== "customer") setView("customer");
     tutorial.active = true;
     tutorial.state = 0;
+    state.lines.clear();
+    state.lastDisplayedTotal = 0;
+    openDrawer();
     setSeqHint("Demo · klick zum Fortfahren");
-    reapplyTutorial();
+    render(); // ensureNonEmpty füllt 1× Basis + reapplyTutorial zeigt Bubble
   }
 
   function endTutorial() {
@@ -554,23 +703,29 @@
 
     if (hasBundle) {
       tutorial.state = 2;
+      const bLine = Array.from(state.lines.values()).find(l => l.kind === "bundle");
+      const b = bLine ? getBundle(bLine.id) : null;
+      const pct = b ? Math.round(b.discount * 100) : 15;
       setBubble({
         step: "03 — Aktiv",
         title: "Bundle drin.",
-        text: "−15 % verrechnet. Versand frei."
+        text: `−${pct} % verrechnet. Versand frei.`
       });
       setTarget(null);
       return;
     }
     if (hasBasis && hasZubehoer) {
       tutorial.state = 1;
+      const sug = bundleSuggestion();
+      const pct = sug ? Math.round(sug.bundle.discount * 100) : 15;
+      const sel = sug ? `[data-bundle-add='${sug.bundle.id}']` : null;
       setBubble({
         step: "02 — Bundle bereit",
         title: "3 Items, ein Set.",
-        text: "Klick spart 15 %.",
-        targetSel: "[data-bundle-add='starter']"
+        text: `Klick spart ${pct} %.`,
+        targetSel: sel
       });
-      setTarget("[data-bundle-add='starter']");
+      setTarget(sel);
       return;
     }
     if (hasBasis) {
@@ -600,12 +755,394 @@
   }
 
   /* ----------------------------------------------------------------
-     PUBLIC API
+     ADMIN PANE — Empfehlungs-Konfigurator
+     Mirrors the live Shopify-Backend (NEOLYMP) im Paper-Drawer-Stil.
      ---------------------------------------------------------------- */
+  function defaultRecommendations() {
+    return [{
+      id: "r-starter",
+      name: "Starter-Set",
+      products: ["basis", "zubehoer", "premium"],
+      is_bundle: true,
+      discount: 15
+    }];
+  }
+
+  function adminEsc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, c =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]
+    );
+  }
+  function clamp(n, min, max, fb) {
+    const v = Number(n);
+    return Number.isFinite(v) && v >= min && v <= max ? v : fb;
+  }
+  function newRecId() {
+    return "r-" + Math.random().toString(36).slice(2, 9);
+  }
+
+  function adminLoad() {
+    let recs = null;
+    try {
+      const raw = localStorage.getItem(ADMIN_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          recs = parsed.map(r => ({
+            id: r.id || newRecId(),
+            name: typeof r.name === "string" ? r.name : "Empfehlung",
+            products: Array.isArray(r.products)
+              ? r.products.filter(h => ADMIN_PRODUCT_IDS.includes(h))
+              : [],
+            is_bundle: !!r.is_bundle,
+            discount: clamp(r.discount, 1, 50, 10)
+          }));
+        }
+      }
+    } catch { /* swallow */ }
+    adminState.recommendations = recs && recs.length ? recs : defaultRecommendations();
+    adminState.initial = JSON.stringify(adminState.recommendations);
+  }
+
+  function adminPersist() {
+    try {
+      localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(adminState.recommendations));
+      adminState.initial = JSON.stringify(adminState.recommendations);
+      return true;
+    } catch { return false; }
+  }
+
+  /* Sync admin recommendations -> customer cart-data (bundles + crossSell).
+     So beeinflusst die Admin-Konfiguration den Kunden-Drawer 1:1 wie im echten
+     Shopify-Backend. */
+  function syncCartFromAdmin() {
+    // Bundles aus is_bundle-Empfehlungen mit ≥2 Produkten
+    data.bundles = adminState.recommendations
+      .filter(r => r.is_bundle && r.products.length >= 2)
+      .map(r => ({
+        id: r.id,
+        name: r.name || "Bundle",
+        requires: r.products.slice(),
+        discount: clamp(r.discount, 1, 50, 10) / 100,
+        glyph: "stack"
+      }));
+
+    // Cross-Sell: pro Empfehlung jedes Produkt → die anderen Produkte derselben Gruppe
+    const cs = {};
+    Object.keys(data.items).forEach(h => { cs[h] = []; });
+    adminState.recommendations.forEach(r => {
+      if (r.products.length < 2) return;
+      r.products.forEach(h => {
+        r.products.forEach(o => {
+          if (o !== h && !cs[h].includes(o)) cs[h].push(o);
+        });
+      });
+    });
+    data.crossSell = cs;
+
+    // Bundle-Cross-Sell auf bekannte Bundle-IDs reduzieren
+    const newBcs = {};
+    data.bundles.forEach(b => { newBcs[b.id] = []; });
+    data.bundleCrossSell = newBcs;
+
+    // Verwaiste Bundle-Lines aus dem Customer-Cart entfernen
+    const validBundleIds = new Set(data.bundles.map(b => b.id));
+    for (const [id, line] of Array.from(state.lines.entries())) {
+      if (line.kind === "bundle" && !validBundleIds.has(id)) {
+        state.lines.delete(id);
+      }
+    }
+  }
+
+  function adminHandleCounts() {
+    const map = {};
+    adminState.recommendations.forEach(r => r.products.forEach(h => {
+      map[h] = (map[h] || 0) + 1;
+    }));
+    return map;
+  }
+  function adminHasConflict() {
+    const counts = adminHandleCounts();
+    return Object.values(counts).some(n => n > 1);
+  }
+  function adminUsedElsewhere(currentIdx) {
+    const used = {};
+    adminState.recommendations.forEach((r, i) => {
+      if (i === currentIdx) return;
+      r.products.forEach(h => {
+        if (!used[h]) used[h] = r.name || "Empfehlung";
+      });
+    });
+    return used;
+  }
+
+  function adminEmptyHtml() {
+    return `
+      <div class="cart-empty">
+        <span class="cart-empty__eyebrow mono">Leer</span>
+        <p class="cart-empty__title">Noch keine Empfehlung.</p>
+        <p class="cart-empty__hint mono">Klick <em>+ Neue Empfehlung</em> zum Anlegen.</p>
+      </div>`;
+  }
+
+  function adminChipHtml(handle, recIdx, isDup) {
+    const p = data.items[handle];
+    if (!p) return "";
+    return `
+      <span class="adm-chip${isDup ? " adm-chip--dup" : ""}">
+        <span class="adm-chip__glyph">${glyphSvg(p.glyph)}</span>
+        <span class="adm-chip__name">${adminEsc(p.name)}</span>
+        <span class="adm-chip__price">${eur(p.price)}</span>
+        <button type="button" class="adm-chip__x" data-rem-product="${recIdx}|${handle}" aria-label="${adminEsc(p.name)} entfernen">&times;</button>
+      </span>`;
+  }
+
+  function adminRecHtml(rec, idx, counts) {
+    const dupHandles = rec.products.filter(h => counts[h] > 1);
+    const partsTotal = rec.products.reduce((s, h) => s + (data.items[h]?.price || 0), 0);
+    const saving = rec.is_bundle && rec.products.length >= 2 ? partsTotal * (rec.discount / 100) : 0;
+    const chips = rec.products.map(h => adminChipHtml(h, idx, counts[h] > 1)).join("");
+    const conflictBanner = dupHandles.length
+      ? `<div class="adm-conflict">${dupHandles.length} Produkt${dupHandles.length === 1 ? "" : "e"} mehrfach belegt &mdash; bitte aufl&ouml;sen.</div>`
+      : "";
+
+    let infoHtml;
+    if (rec.products.length < 2) {
+      infoHtml = `Mindestens 2 Produkte hinzuf&uuml;gen.`;
+    } else if (rec.is_bundle) {
+      infoHtml = `Bei <em>allen ${rec.products.length} Produkten</em> im Cart: <em class="adm-rec__info--save">&minus;${rec.discount}&thinsp;% (&asymp; ${eur(saving)})</em> auf jedes Produkt.`;
+    } else {
+      infoHtml = `${rec.products.length} Produkte als &bdquo;Passt dazu&ldquo;-Empfehlung.`;
+    }
+
+    return `
+      <article class="adm-rec${dupHandles.length ? " adm-rec--conflict" : ""}" data-rec="${idx}">
+        ${conflictBanner}
+        <header class="adm-rec__head">
+          ${rec.is_bundle ? '<span class="adm-rec__tag">Bundle</span>' : ""}
+          <input class="adm-rec__name" type="text" value="${adminEsc(rec.name)}" placeholder="Empfehlungs-Name" data-rec-name aria-label="Empfehlungs-Name">
+          <button type="button" class="adm-rec__del" data-rec-del aria-label="Empfehlung l&ouml;schen">&times;</button>
+        </header>
+        <div class="adm-rec__chips">
+          ${chips}
+          <button type="button" class="adm-rec__add-chip" data-pick-open>+ Produkt</button>
+        </div>
+        <div class="adm-rec__bundle">
+          <label class="adm-rec__check">
+            <input type="checkbox" ${rec.is_bundle ? "checked" : ""} data-rec-bundle>
+            <span>Als Bundle mit Rabatt</span>
+          </label>
+          <span class="adm-rec__discount">
+            <span>Rabatt</span>
+            <input type="number" min="1" max="50" step="1" value="${rec.discount}"
+                   ${rec.is_bundle ? "" : "disabled"}
+                   data-rec-discount aria-label="Rabatt in Prozent">
+            <span>%</span>
+          </span>
+        </div>
+        <p class="adm-rec__info">${infoHtml}</p>
+      </article>`;
+  }
+
+  function renderAdminPane() {
+    const el = document.getElementById("admin-render");
+    if (!el) return;
+    const counts = adminHandleCounts();
+    const recCount = adminState.recommendations.length;
+
+    if (recCount === 0) {
+      el.innerHTML = `
+        ${adminEmptyHtml()}
+        <button type="button" class="adm-add" data-rec-new>+ Neue Empfehlung</button>`;
+      return;
+    }
+
+    const used = new Set();
+    adminState.recommendations.forEach(r => r.products.forEach(h => used.add(h)));
+
+    el.innerHTML = `
+      <div class="adm-meta mono">
+        <span class="adm-meta__key">${recCount === 1 ? "1 Empfehlung" : recCount + " Empfehlungen"}</span>
+        <span class="adm-meta__sep">&middot;</span>
+        <span>${used.size}/${ADMIN_PRODUCT_IDS.length} Produkte belegt</span>
+      </div>
+      <div class="adm-list">
+        ${adminState.recommendations.map((r, i) => adminRecHtml(r, i, counts)).join("")}
+      </div>
+      <button type="button" class="adm-add" data-rec-new>+ Neue Empfehlung</button>`;
+  }
+
+  function renderAdminFooter() {
+    const el = footer();
+    if (!el) return;
+    const conflict = adminHasConflict();
+
+    let label, statusCls;
+    if (conflict) {
+      label = "Konflikt aktiv &middot; Produkt mehrfach belegt";
+      statusCls = "adm-savebar__status--conflict";
+    } else {
+      label = "Live-Backend &middot; &Auml;nderungen greifen sofort";
+      statusCls = "";
+    }
+
+    el.innerHTML = `
+      <div class="adm-savebar">
+        <span class="adm-savebar__status mono ${statusCls}">
+          <span class="adm-savebar__dot" aria-hidden="true"></span>
+          <span class="adm-savebar__label">${label}</span>
+        </span>
+        <span class="adm-savebar__flash mono" data-saved-flash aria-live="polite"></span>
+      </div>`;
+  }
+
+  let savedFlashTimer = null;
+  function flashSaved() {
+    const el = document.querySelector("[data-saved-flash]");
+    if (!el) return;
+    el.textContent = "✓ gespeichert";
+    el.setAttribute("data-show", "1");
+    clearTimeout(savedFlashTimer);
+    savedFlashTimer = setTimeout(() => {
+      el.removeAttribute("data-show");
+    }, 1200);
+  }
+
+  function adminCommit() {
+    syncCartFromAdmin();
+    if (adminPersist()) flashSaved();
+    else adminToast("Speichern fehlgeschlagen.", true);
+    adminState.dirty = true;
+  }
+
+  function renderAdmin() {
+    renderAdminPane();
+    renderAdminFooter();
+  }
+
+  function adminPickerHtml() {
+    const idx = adminState.pickerForRecIdx;
+    if (idx === null) return "";
+    const rec = adminState.recommendations[idx];
+    if (!rec) return "";
+    const used = adminUsedElsewhere(idx);
+
+    return ADMIN_PRODUCT_IDS.map(h => {
+      const p = data.items[h];
+      if (!p) return "";
+      const taken = rec.products.includes(h);
+      const lockedIn = used[h];
+      const disabled = taken || !!lockedIn;
+      let cta = "w&auml;hlen &rarr;";
+      if (taken) cta = "enthalten &check;";
+      else if (lockedIn) cta = `belegt: ${adminEsc(lockedIn)}`;
+      return `
+        <button type="button" class="adm-pick__row" ${disabled ? "disabled" : `data-pick-add="${h}"`}>
+          <span class="adm-pick__glyph">${glyphSvg(p.glyph)}</span>
+          <span class="adm-pick__text">
+            <span class="adm-pick__name">${adminEsc(p.name)}</span>
+            <span class="adm-pick__meta mono">${adminEsc(p.meta)} &middot; ${eur(p.price)}</span>
+          </span>
+          <span class="adm-pick__cta mono">${cta}</span>
+        </button>`;
+    }).join("");
+  }
+
+  function openPicker(idx) {
+    adminState.pickerForRecIdx = idx;
+    const rec = adminState.recommendations[idx];
+    const sub = document.getElementById("adm-modal-sub");
+    const list = document.getElementById("adm-modal-list");
+    const modal = document.getElementById("adm-modal");
+    if (!modal || !list) return;
+    if (sub) sub.textContent = `Zu "${rec?.name || "Empfehlung"}" hinzufügen`;
+    list.innerHTML = adminPickerHtml();
+    modal.hidden = false;
+  }
+  function closePicker() {
+    adminState.pickerForRecIdx = null;
+    const modal = document.getElementById("adm-modal");
+    if (modal) modal.hidden = true;
+  }
+  function pickProduct(handle) {
+    const idx = adminState.pickerForRecIdx;
+    if (idx === null) return;
+    const rec = adminState.recommendations[idx];
+    if (!rec) return;
+    if (!rec.products.includes(handle)) {
+      rec.products.push(handle);
+      adminCommit();
+    }
+    closePicker();
+    renderAdmin();
+  }
+
+  let toastTimer = null;
+  function adminToast(msg, isError) {
+    const el = document.getElementById("adm-toast");
+    if (!el) return;
+    el.innerHTML = msg;
+    el.classList.toggle("is-error", !!isError);
+    el.hidden = false;
+    el.removeAttribute("data-show");
+    requestAnimationFrame(() => el.setAttribute("data-show", "1"));
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      el.removeAttribute("data-show");
+      setTimeout(() => { if (!el.hasAttribute("data-show")) el.hidden = true; }, 320);
+    }, 2400);
+  }
+
+  /* ----------------------------------------------------------------
+     VIEW SWITCH
+     ---------------------------------------------------------------- */
+  function setView(view) {
+    if (view !== "customer" && view !== "admin") return;
+    if (state.view === view) return;
+    state.view = view;
+
+    const cart = document.getElementById("cart");
+    cart?.setAttribute("data-view", view);
+
+    document.querySelectorAll(".drawer__pane").forEach(p => {
+      p.hidden = p.getAttribute("data-pane") !== view;
+    });
+    document.querySelectorAll("[data-view-switch]").forEach(b => {
+      b.setAttribute("aria-selected", b.getAttribute("data-view-switch") === view ? "true" : "false");
+    });
+
+    const titleEl = document.getElementById("cart-title");
+    if (titleEl) titleEl.textContent = view === "admin" ? "Empfehlungen" : "Warenkorb";
+
+    if (view === "admin") {
+      // Tutorial-Visuals ausblenden, aber Flag halten — beim Rückwechsel
+      // soll die Sprechblase wieder erscheinen (reapplyTutorial prüft active).
+      setBubble(null);
+      setTarget(null);
+      setSeqHint("");
+      closePicker();
+      renderAdmin();
+    } else {
+      closePicker();
+      // Wenn der User in Admin etwas geändert hat, Warenkorb auf den
+      // Demo-Anfangszustand zurücksetzen, damit die neue Konfiguration
+      // sichtbar wird wie beim ersten Öffnen.
+      if (adminState.dirty) {
+        adminState.dirty = false;
+        startTutorial();
+        return;
+      }
+      renderBody();
+      renderFooter();
+      if (tutorial.active) setSeqHint("Demo · klick zum Fortfahren");
+      reapplyTutorial();
+    }
+  }
   window.zzCart = {
     addItem, removeItem, setQty, applyBundle, reset,
     runSequence: startTutorial,
     startTutorial,
+    setView,
     set(n) {
       const badge = countBadge();
       if (badge) badge.textContent = String(n);
@@ -616,8 +1153,11 @@
      INIT
      ---------------------------------------------------------------- */
   function init() {
+    adminLoad();
+    syncCartFromAdmin();
     bind();
     render();
+    renderAdminPane();
     window.addEventListener("resize", () => { if (tutorial.active) reapplyTutorial(); });
   }
   if (document.readyState === "loading") {

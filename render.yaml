@@ -1,0 +1,19 @@
+# Render Blueprint — statisches Portfolio
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: zikos-portfolio
+    runtime: static
+    buildCommand: ":"
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff

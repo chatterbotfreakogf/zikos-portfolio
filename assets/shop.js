@@ -103,6 +103,88 @@
     });
   });
 
+  /* Kontakt-Dialog (Mail-Composer, zentral schwebend) -------------- */
+  const contactDialog = document.getElementById("contact-dialog");
+  const contactForm   = contactDialog?.querySelector("[data-contact-form]");
+  const CONTACT_TO    = "zikos.zissis@outlook.com";
+
+  function openContact() {
+    if (!contactDialog) return;
+    if (typeof contactDialog.showModal === "function") contactDialog.showModal();
+    else contactDialog.setAttribute("open", "");
+    requestAnimationFrame(() => {
+      contactForm?.querySelector("input[name='name']")?.focus();
+    });
+  }
+  function closeContact() {
+    if (!contactDialog) return;
+    if (typeof contactDialog.close === "function" && contactDialog.open) contactDialog.close();
+    else contactDialog.removeAttribute("open");
+  }
+
+  document.querySelectorAll("[data-contact-open]").forEach(el => {
+    el.addEventListener("click", (e) => { e.preventDefault(); openContact(); });
+  });
+  contactDialog?.addEventListener("click", (e) => {
+    // Klick auf Backdrop (außerhalb der Form) schließt
+    if (e.target === contactDialog) closeContact();
+  });
+  contactDialog?.querySelectorAll("[data-contact-close]").forEach(el => {
+    el.addEventListener("click", (e) => { e.preventDefault(); closeContact(); });
+  });
+  const contactStatus = contactDialog?.querySelector("[data-contact-status]");
+  const contactHint   = contactDialog?.querySelector("[data-contact-hint]");
+  const contactSubmit = contactDialog?.querySelector("[data-contact-submit]");
+
+  function setContactStatus(kind, text) {
+    if (!contactStatus) return;
+    if (!kind) {
+      contactStatus.hidden = true;
+      contactStatus.textContent = "";
+      contactStatus.removeAttribute("data-kind");
+      if (contactHint) contactHint.hidden = false;
+      return;
+    }
+    contactStatus.hidden = false;
+    contactStatus.setAttribute("data-kind", kind);
+    contactStatus.textContent = text;
+    if (contactHint) contactHint.hidden = true;
+  }
+
+  contactForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; }
+    if (contactSubmit) contactSubmit.disabled = true;
+    setContactStatus("pending", "Sende …");
+    const fd = new FormData(contactForm);
+    // Aussagekräftiger Subject-Prefix mit Absender-Namen
+    const name = (fd.get("name") || "").toString().trim();
+    const subj = (fd.get("subject") || "Portfolio-Anfrage").toString().trim();
+    fd.set("_subject", `[Portfolio] ${subj}${name ? " — " + name : ""}`);
+    try {
+      const res = await fetch(contactForm.action, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: fd
+      });
+      const ok = res.ok;
+      let data = null;
+      try { data = await res.json(); } catch (_) {}
+      if (ok && (!data || data.success === "true" || data.success === true)) {
+        setContactStatus("ok", "Danke — angekommen. Antwort folgt.");
+        contactForm.reset();
+        setTimeout(() => { closeContact(); setContactStatus(null); }, 1800);
+      } else {
+        const msg = (data && (data.message || data.error)) || "Senden fehlgeschlagen. Versuch's per WhatsApp.";
+        setContactStatus("err", msg);
+      }
+    } catch (_) {
+      setContactStatus("err", "Netzwerkfehler. Versuch's per WhatsApp.");
+    } finally {
+      if (contactSubmit) contactSubmit.disabled = false;
+    }
+  });
+
   /* Subtle reveal on scroll for sections ---------------------------- */
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
