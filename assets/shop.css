@@ -45,15 +45,12 @@
     font-weight: 500;
   }
   .brand__mark {
-    display: inline-grid;
-    place-items: center;
-    width: 28px; height: 28px;
-    border-radius: 7px;
+    display: inline-block;
+    width: 35px; height: 35px;
+    border-radius: 999px;
+    object-fit: cover;
     background: var(--ink);
-    color: var(--snow);
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 600;
+    box-shadow: 0 0 0 1px var(--line-soft), 0 1px 2px rgba(15,16,21,0.08);
     transition: transform 280ms var(--ease-out);
   }
   .brand:hover .brand__mark { transform: rotate(-6deg); }
@@ -314,16 +311,27 @@
   }
   .card__media--cart { background: linear-gradient(135deg, #B0B5BF, #7E8390); }
 
-  .badge {
+  /* Mehrere Badges nebeneinander — Container übernimmt Top-Left-Position.
+     Pattern für ALLE Tiles: figure>div.badges>span.badge[.badge--*]
+     Beliebig viele Badges möglich, brechen bei Bedarf in 2. Reihe um. */
+  .badges {
     position: absolute;
-    top: 12px; left: 12px;
+    top: 10px; left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: calc(100% - 20px);
+    z-index: 2;
+  }
+
+  .badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 5px 11px 5px 10px;
+    padding: 6px 9px 6px 8px;
     border-radius: 999px;
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 9px;
     font-weight: 500;
     letter-spacing: 0.04em;
     line-height: 1;
@@ -339,11 +347,12 @@
     width: 6px; height: 6px;
     border-radius: 999px;
     background: #5EE6B5;
-    box-shadow: 0 0 0 3px rgba(94, 230, 181, 0.18);
+    box-shadow: 0 0 0 2px rgba(94, 230, 181, 0.18);
   }
   /* Modus-Akzent über Dot-Farbe — Layout/Box bleibt identisch */
-  .badge--live::before    { background: #5EE6B5; box-shadow: 0 0 0 3px rgba(94, 230, 181, 0.18); }
-  .badge--service::before { background: #E8B23A; box-shadow: 0 0 0 3px rgba(232, 178, 58, 0.20); }
+  .badge--live::before    { background: #5EE6B5; box-shadow: 0 0 0 2px rgba(94, 230, 181, 0.18); }
+  .badge--service::before { background: #E8B23A; box-shadow: 0 0 0 2px rgba(232, 178, 58, 0.20); }
+  .badge--shopify::before { background: #95BF47; box-shadow: 0 0 0 2px rgba(149, 191, 71, 0.22); }
 
   .card__body {
     padding: 16px 18px 18px;

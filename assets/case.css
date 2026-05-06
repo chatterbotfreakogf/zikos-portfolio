@@ -312,6 +312,7 @@
     overflow: hidden;
     transition: transform 700ms var(--ease-out);
   }
+  .card__cover--zz svg.cover-text,
   .card__cover--zz svg.zz-cover {
     width: 100%;
     height: 100%;

@@ -30,7 +30,7 @@
   <header class="topbar" role="banner">
     <div class="topbar__row">
       <a href="portfolio.html" class="brand" aria-label="Zur Startseite">
-        <span class="brand__mark" aria-hidden="true">Z</span>
+        <img class="brand__mark" src="assets/portrait.png" alt="" width="35" height="35" decoding="async" />
         <span class="brand__name">Zikos Zissis</span>
       </a>
 
@@ -63,7 +63,10 @@
         <li class="card card--live" data-stagger="1">
           <a href="#" class="card__link" data-action="cart-demo" aria-label="Live-Arbeitsprobe: Smart-Cart Drawer und Admin &ouml;ffnen">
             <figure class="card__media" aria-hidden="true" data-cover='{"brand":"Smart Cart","subtitle":"Drawer + Admin · Eigenentwicklung","stats":"DRAWER + ADMIN · BUNDLES · SHOPIFY-READY"}'>
-              <span class="badge badge--live">Live</span>
+              <div class="badges">
+                <span class="badge badge--live">Live</span>
+                <span class="badge badge--shopify">Shopify-Ready</span>
+              </div>
             </figure>
             <div class="card__body">
               <h2 class="card__title">Smart-Cart &middot; Drawer &amp; Admin</h2>
@@ -79,7 +82,9 @@
         <li class="card card--live" data-stagger="2">
           <a href="#" class="card__link" data-action="case-athenum" aria-label="Demo: Macro Intelligence öffnen">
             <figure class="card__media" aria-hidden="true" data-cover='{"brand":"Athenum","subtitle":"Macro Intelligence · Eigenentwicklung","stats":"75 LAYER · 100K+ DATAPOINTS · 12 QUELLEN"}'>
-              <span class="badge badge--live">Demo</span>
+              <div class="badges">
+                <span class="badge badge--live">Demo</span>
+              </div>
             </figure>
             <div class="card__body">
               <h2 class="card__title">Athenum &middot; Macro Intelligence</h2>
@@ -95,7 +100,9 @@
         <li class="card card--live" data-stagger="3">
           <a href="#" class="card__link" data-action="advisor-demo" aria-label="Live-Demo: KI-Berater starten">
             <figure class="card__media" aria-hidden="true" data-cover='{"brand":"KI Berater","subtitle":"RAG · Anthropic API","stats":"EIGENER KORPUS · ECHTZEIT-ANTWORTEN"}'>
-              <span class="badge badge--live">Live</span>
+              <div class="badges">
+                <span class="badge badge--live">Live</span>
+              </div>
             </figure>
             <div class="card__body">
               <h2 class="card__title">KI-Berater</h2>
@@ -369,7 +376,7 @@
   </div>
 
   <script src="assets/scene.js?v=2026-05-06-d" defer></script>
-  <script src="assets/cover-builder.js?v=2026-05-06-d" defer></script>
+  <script src="assets/cover-builder.js?v=2026-05-06-f" defer></script>
   <script src="assets/cart-data.js?v=2026-05-06-d" defer></script>
   <script src="assets/cart.js?v=2026-05-06-d" defer></script>
   <script src="assets/shop.js?v=2026-05-06-d" defer></script>

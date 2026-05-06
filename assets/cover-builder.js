@@ -1,14 +1,12 @@
 /* ============================================================
    cover-builder.js — Einheitliches Cover-System für alle Tiles
-   Eine Funktion, ein Layout, alle Tiles sehen wie eine Kollektion aus.
-   Verwendung im HTML: <figure data-cover='{"brand":"...","subtitle":"...","stats":"..."}'>
+   <figure data-cover='{"brand":"…","subtitle":"…","stats":"…"}'>
    ============================================================ */
 
 (() => {
   "use strict";
 
   function spacedWordmark(brand) {
-    // Sicherer Wordmark ohne Sonderzeichen-Spread
     return String(brand || "").toUpperCase().trim();
   }
 
@@ -32,7 +30,6 @@
     const paperId = `zz-paper-${id}`;
     const spotId  = `zz-spot-${id}`;
 
-    // Letter-spacing skaliert mit Wortlänge, damit lange Wörter nicht überlaufen.
     const len = (brand || "").length;
     const fs = len > 10 ? 44 : len > 8 ? 50 : 54;
     const ls = len > 10 ? 8  : len > 8 ? 10 : 12;
@@ -52,16 +49,6 @@
 
   <rect x="0" y="0" width="800" height="500" fill="url(#${paperId})"/>
   <rect x="0" y="0" width="800" height="500" fill="url(#${spotId})"/>
-
-  <g transform="translate(580,72)">
-    <line x1="0" y1="0" x2="160" y2="0" stroke="rgba(15,16,21,0.18)" stroke-width="1"/>
-    <circle cx="0"   cy="0" r="2.4" fill="#0F1015"/>
-    <circle cx="32"  cy="0" r="2.4" fill="#0F1015"/>
-    <circle cx="64"  cy="0" r="2.4" fill="#0F1015"/>
-    <circle cx="96"  cy="0" r="2.4" fill="#34D9A0"/>
-    <circle cx="128" cy="0" r="2.4" fill="#0F1015"/>
-    <circle cx="160" cy="0" r="2.4" fill="#0F1015"/>
-  </g>
 
   <text x="400" y="252" text-anchor="middle"
         font-family="Inter, system-ui, sans-serif"
@@ -104,7 +91,4 @@
   } else {
     mountAll();
   }
-
-  // Debug-Hook
-  window.__zzBuildCover = buildCover;
 })();
