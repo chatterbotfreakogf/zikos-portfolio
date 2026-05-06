@@ -43,6 +43,19 @@ Quellen-Katalog. Wörtliche Aussagen aus den Originaldokumenten plus Pfade. Kein
   - Analytics & Research
   - Verschiedene CMS-Tools
 
+### B1a · Praktikantenzeugnis Decathlon Deutschland SE & Co. KG
+- **Datei:** `~/Desktop/Zeugnisse /Praktikantenzeugnis_Decathlon.pdf`
+- **Position laut Zeugnis:** „Online Category Manager:in", Bereich Plochingen *(separates Praktikum, nicht zu verwechseln mit B1 — Junior-Festanstellung ab 04/2023)*
+- **Beschäftigungszeitraum:** 01.10.2022 – 31.03.2023
+- **Standort:** Filsallee 19, 73207 Plochingen
+- **Im Zeugnis dokumentierte Aufgaben:**
+  - Aufbau und Pflege von Kategorien und Produktseiten
+  - Erstellung von Kaufberatern
+  - Bearbeitung von Kundenanfragen und Kundenfeedbacks
+  - Bearbeitung der internen Suche und generelle Suchmaschinenoptimierung
+  - Planung und Mitwirkung von Sportkampagnen
+- **Hinweis:** Bewertung (Leistung/Verhalten/Beendigung) auf den Folgeseiten — bei Bedarf vollständig nachpflegen.
+
 ### B2 · Arbeitszeugnis Fischer Möbel GmbH
 - **Datei:** `~/Desktop/Zeugnisse /Fischer Arbeitszeugnis.pdf`
 - **Position laut Zeugnis:** „Aushilfe im E-Commerce" *(Lebenslauf führt diese Rolle als „Digital Content Assistant")*
@@ -90,6 +103,5 @@ Quellen-Katalog. Wörtliche Aussagen aus den Originaldokumenten plus Pfade. Kein
 ## Lücken im Zertifikate-Bestand (zu prüfen / nachzureichen)
 
 - **Zeugnis Fachhochschulreife / Staatlich geprüfter Assistent IKT (Max-Eyth-Schule, 10/2017–02/2020)** — kein PDF auf Schreibtisch gefunden.
-- **Praktikumszeugnis Decathlon (10/2022–02/2023)** — kein separates Zeugnis gefunden; Praktikum ist nicht vom Hauptzeugnis B1 umfasst (das beginnt 04/2023).
 - **Decathlon-interne Schulungsbescheinigungen (Analytics & Research; CMS-Tools)** — im Arbeitszeugnis erwähnt, separate Zertifikate nicht auf Schreibtisch vorhanden.
 - **Master-Hochschulzertifikat (HS Sigmaringen)** — Studiengang läuft noch (02/2025–02/2027), kein Abschlusszeugnis vorhanden.

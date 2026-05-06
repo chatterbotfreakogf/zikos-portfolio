@@ -80,9 +80,15 @@ Jeder Bullet ist mit den Quell-CVs markiert: **A**=AstorMüller · **N**=Neolymp
 ---
 
 ## 2. Decathlon Deutschland SE & Co. KG — Praktikum Online Category Management
-- **Zeitraum:** 10/2022 – 02/2023 *(alle CV-Varianten)*
-- **Ort:** Plochingen
-- **Aufgaben:** keine separate Bullet-Liste in irgendeiner CV-Variante geführt.
+- **Zeitraum:** 10/2022 – 03/2023 *(alle CV-Varianten)*; Praktikantenzeugnis bestätigt 01.10.2022 – 31.03.2023
+- **Ort:** Filsallee 19, 73207 Plochingen
+- **Position laut Praktikantenzeugnis:** „Online Category Manager:in", Bereich Plochingen
+- **Im Praktikantenzeugnis dokumentierte Aufgaben:**
+  - Aufbau und Pflege von Kategorien und Produktseiten
+  - Erstellung von Kaufberatern
+  - Bearbeitung von Kundenanfragen und Kundenfeedbacks
+  - Bearbeitung der internen Suche und generelle Suchmaschinenoptimierung
+  - Planung und Mitwirkung von Sportkampagnen
 
 ---
 
