@@ -1,5 +1,44 @@
 # Changelog
 
+## 2026-05-06 · Athenum-Map · Mobile-Tooltip-Fix
+
+### Bug
+
+Auf Mobile-Breite (≤ 760 px) verdeckte das Intel-Panel der Macro-Map nach Pin-Klick
+**83 % der Viewer-Höhe** — der angeklickte Pin selbst und der Map-Kontext waren
+nicht mehr sichtbar; zusätzlich kollidierte das Panel oben links mit dem
+„← Übersicht"-Button. Verifiziert per Playwright bei 390 × 844 px:
+Viewer 337 × 188 px, Tooltip 309 × 156 px, beide an `top:14, left:14`.
+
+Ursache: Mobile-Override in `assets/macro.css` setzte die Tooltip auf
+`width: calc(100% - 28px)`, ließ aber `top: 14` aus der Desktop-Regel stehen.
+
+### Fix
+
+Tooltip wandert auf Mobile per JS aus dem Viewer in den Stage (Sibling nach
+`.macro-viewer`); Resize-Listener flippt das DOM beim Crossing zurück. Im neuen
+State greift `.macro-stage > .macro-tooltip { position: static; … }` mit
+`display:none` solange `aria-hidden="true"`.
+
+| | Vorher | Nachher |
+|---|---:|---:|
+| Tooltip-Coverage am Viewer | 83 % | 0 % (Sibling, gap 0) |
+| Map oben sichtbar nach Pin-Klick | 0 px | 188 px (100 %) |
+| Overlap Tooltip ↔ Back-Button | kollidiert | 0 px |
+| Intel-Paragraph komplett sichtbar | nein | ja (54 px) |
+
+Desktop (≥ 761 px) unverändert: Tooltip bleibt im Viewer als 320 px Card oben rechts.
+
+### Files
+
+- `assets/macro.js` — neue `placeTooltip()` mit `matchMedia`-Anker + Resize-Listener.
+- `assets/macro.css` — Mobile-Block: Tooltip-Styles für umgehängten State unter `.macro-stage > .macro-tooltip`.
+- `portfolio.html` — Cache-Bust `macro.css` und `macro.js` auf `?v=2026-05-06-f`.
+
+Commits: `0d3bafc` (erster Bottom-Sheet-Versuch, zu eng) → `518ffa0` (DOM-Move, final).
+
+---
+
 ## 2026-05-05 · Design-Audit & Subtraktion
 
 Audit der Portfolio-Seite (Desktop 1440 px, Mobile 375 px, headless Chromium)
