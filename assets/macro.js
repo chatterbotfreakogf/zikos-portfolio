@@ -220,10 +220,35 @@
     // Wire up viewer (zoom / pan / pin clicks)
     initViewer(body);
 
+    // Tooltip-Placement an Viewport koppeln (Mobile: unter dem Viewer
+    // als Block, Desktop: oben rechts im Viewer als Card)
+    placeTooltip();
+    if (!placeTooltip._wired) {
+      window.addEventListener("resize", placeTooltip, { passive: true });
+      placeTooltip._wired = true;
+    }
+
     // Outcome count-ups
     body.querySelectorAll("[data-countup]").forEach(el => countUp(el));
 
     state.rendered = true;
+  }
+
+  // Mobile (≤760px): Tooltip wandert aus dem Viewer in den Stage
+  // (als Sibling nach .macro-viewer). Map bleibt voll sichtbar,
+  // Intel-Text hat eigenen Platz. Desktop: Tooltip bleibt im Viewer.
+  function placeTooltip() {
+    const tooltip = drawer.querySelector(".macro-tooltip");
+    const viewer  = drawer.querySelector(".macro-viewer");
+    const stage   = drawer.querySelector(".macro-stage");
+    if (!tooltip || !viewer || !stage) return;
+    const isMobile = window.matchMedia("(max-width: 760px)").matches;
+    const inStage = tooltip.parentNode === stage;
+    if (isMobile && !inStage) {
+      stage.insertBefore(tooltip, viewer.nextSibling);
+    } else if (!isMobile && tooltip.parentNode !== viewer) {
+      viewer.appendChild(tooltip);
+    }
   }
 
   // ============================================================
