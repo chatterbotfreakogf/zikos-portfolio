@@ -1,22 +1,38 @@
 # Hält den Karriere-Chatbot auf Render Free wach.
-# Cron: alle 10 Minuten ein /health-Ping.
+# Strategie: alle 5 Minuten ein /health-Ping, OFF-HOUR-Offset (GitHub Actions sind
+# zur :00-Marke chronisch verspätet, daher 2,7,12,17,…).
 # Backup-Layer zum internen Self-Ping in chatbot/backend/app.py.
 name: keep-warm
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    # Alle 5 Min, off-hour offset (2,7,12,17,22,27,32,37,42,47,52,57)
+    - cron: "2-57/5 * * * *"
   workflow_dispatch:
 
 jobs:
   ping:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     steps:
-      - name: Health-Ping
+      - name: Health-Ping mit Cold-Start-Retry
         run: |
-          for i in 1 2 3; do
-            echo "Ping $i …"
-            curl -fsS --max-time 30 https://zikos-karriere-chatbot.onrender.com/health \
-              && echo " ✓ alive" && break \
-              || (echo " ✗ retry in 5s" && sleep 5)
+          set -e
+          URL="https://zikos-karriere-chatbot.onrender.com/health"
+          for i in 1 2 3 4; do
+            echo "::group::Ping #$i"
+            START=$(date +%s)
+            if curl -fsS --max-time 60 "$URL"; then
+              ELAPSED=$((`date +%s` - START))
+              echo ""
+              echo "✓ alive in ${ELAPSED}s"
+              echo "::endgroup::"
+              exit 0
+            fi
+            echo ""
+            echo "✗ ping failed (attempt $i), waiting 10s…"
+            echo "::endgroup::"
+            sleep 10
           done
+          echo "::error::Bot reagiert nach 4 Versuchen nicht — Render-Maintenance?"
+          exit 1

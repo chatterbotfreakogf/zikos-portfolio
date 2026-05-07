@@ -23,8 +23,9 @@ from session_store import list_sessions, get_session_stats
 
 
 async def keep_alive():
-    """Self-Ping alle 10 Min, damit Render Free-Tier nicht einschläft.
-    URL wird automatisch aus RENDER_EXTERNAL_HOSTNAME (Render-injected) hergeleitet."""
+    """Self-Ping alle 5 Min, damit Render Free-Tier nicht einschläft.
+    URL wird automatisch aus RENDER_EXTERNAL_HOSTNAME (Render-injected) hergeleitet.
+    5 Min sind ein Drittel der 15-Min-Idle-Schwelle — sicherer Puffer."""
     url = os.getenv("RENDER_EXTERNAL_URL", "")
     if not url:
         host = os.getenv("RENDER_EXTERNAL_HOSTNAME", "")
@@ -32,12 +33,13 @@ async def keep_alive():
             url = f"https://{host}"
     if not url:
         return
+    print(f"[keep-warm] active, target {url}/health, interval 5 min")
     while True:
-        await asyncio.sleep(600)  # 10 Min — sicher unter Render-15-Min-Idle
+        await asyncio.sleep(300)  # 5 Min
         try:
             async with httpx.AsyncClient() as client:
-                await client.get(f"{url}/health", timeout=15)
-                print(f"[keep-warm] self-ping OK ({url})")
+                r = await client.get(f"{url}/health", timeout=15)
+                print(f"[keep-warm] self-ping {r.status_code}")
         except Exception as e:
             print(f"[keep-warm] self-ping failed: {e}")
 
