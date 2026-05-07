@@ -1,6 +1,8 @@
-# Render Blueprint — statisches Portfolio
+# Render Blueprint — Portfolio (static) + Karriere-Chatbot (web service)
 # https://render.com/docs/blueprint-spec
 services:
+
+  # 1. Statisches Portfolio (zikos-portfolio.onrender.com)
   - type: web
     name: zikos-portfolio
     runtime: static
@@ -17,3 +19,20 @@ services:
       - path: /*
         name: X-Content-Type-Options
         value: nosniff
+
+  # 2. Karriere-Chatbot (FastAPI + Gemini), eigenes Web-Service
+  # URL wird: https://zikos-karriere-chatbot.onrender.com
+  - type: web
+    name: zikos-karriere-chatbot
+    runtime: python
+    region: frankfurt
+    plan: free
+    rootDir: chatbot
+    buildCommand: pip install -r requirements.txt
+    startCommand: cd backend && python3 app.py
+    healthCheckPath: /health
+    envVars:
+      - key: GOOGLE_API_KEY
+        sync: false  # Im Render-Dashboard manuell setzen
+      - key: PORT
+        value: 10000

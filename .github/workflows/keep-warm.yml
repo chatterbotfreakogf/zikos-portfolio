@@ -1,0 +1,22 @@
+# Hält den Karriere-Chatbot auf Render Free wach.
+# Cron: alle 10 Minuten ein /health-Ping.
+# Backup-Layer zum internen Self-Ping in chatbot/backend/app.py.
+name: keep-warm
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Health-Ping
+        run: |
+          for i in 1 2 3; do
+            echo "Ping $i …"
+            curl -fsS --max-time 30 https://zikos-karriere-chatbot.onrender.com/health \
+              && echo " ✓ alive" && break \
+              || (echo " ✗ retry in 5s" && sleep 5)
+          done

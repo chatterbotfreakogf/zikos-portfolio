@@ -353,7 +353,12 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       if (!window.ZikosBot) return;
-      var backend = (window.ZZ_BOT_BACKEND_URL || "http://localhost:8091");
+      // Production (Render): zikos-karriere-chatbot.onrender.com
+      // Lokal (file:// oder localhost): http://localhost:8091
+      var backend = window.ZZ_BOT_BACKEND_URL
+        || (location.hostname.endsWith(".onrender.com")
+              ? "https://zikos-karriere-chatbot.onrender.com"
+              : "http://localhost:8091");
       window.ZikosBot.init({
         backendUrl: backend,
         title: "Zikos Zissis",
