@@ -121,7 +121,6 @@
     "buttons": [
       {"label": "Athenum Macro Intelligence", "action": "projekt_athenum"},
       {"label": "Smart-Cart Drawer & Admin", "action": "projekt_smartcart"},
-      {"label": "Lynis Nailshop Chatbot", "action": "projekt_lynis"},
       {"label": "X Content Generator", "action": "projekt_xgen"},
       {"label": "Derivescope Affiliate-Site", "action": "projekt_derivescope"}
     ]
@@ -134,11 +133,6 @@
 
   "projekt_smartcart": {
     "message": "**Smart-Cart Drawer & Admin** — Shopify-fertiger Cart-Drawer mit Bundle-Logik, Cross-Sell, Admin-Konfigurator und Tutorial-Modus.\n\nKundensicht ↔ Admin per Toggle umschaltbar. Bundle-Suggestion mit oversized Rabatt-Stempel, Threshold-Bar, Mono-Caps-Eyebrow, editorial Paper-Off-White Drawer-Panel. Kein Framework, Vanilla HTML/CSS/JS.",
-    "buttons": [{"label": "Andere Arbeitsprobe", "action": "projekte"}]
-  },
-
-  "projekt_lynis": {
-    "message": "**Lynis Nailshop Chatbot** — Live-Beratungs-Bot für alpurial-test.myshopify.com (Nailmondo-Bewerbungs-Showcase).\n\n29 Produkte aus dem Shopify-Shop, Hybrid Button-Flows + KI-Freitext (Featherless / Qwen 2.5-72B), Cart-Add über Storefront-Ajax mit Section-Replace. Einbindung via Shopify Script-Tag-API auf jedem Theme. Stack: FastAPI, Render, GitHub-Actions Keep-Warm.\n\nDieser Bot hier ist auf der gleichen Architektur gebaut.",
     "buttons": [{"label": "Andere Arbeitsprobe", "action": "projekte"}]
   },
 

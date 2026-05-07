@@ -144,11 +144,6 @@
       "stack": "HTML/CSS/JS, Shopify-Ready"
     },
     {
-      "name": "Lynis Nailshop Chatbot",
-      "kurz": "Live-Beratungs-Bot für alpurial-test.myshopify.com — FastAPI + Featherless KI, 29 Produkte, Cart-Add über Storefront-Ajax.",
-      "stack": "FastAPI, Qwen 2.5-72B, Shopify Script-Tag-API, Render"
-    },
-    {
       "name": "Athenum X Content Generator",
       "kurz": "Lokales macOS-System: screenshottet Charts → generiert Persona-Tweets via Claude → Posting-Workflow auf X.",
       "stack": "Python 3.11, FastAPI, Playwright, Anthropic SDK, Tweepy, React+Vite"
