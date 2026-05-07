@@ -1,13 +1,14 @@
 # Hält den Karriere-Chatbot auf Render Free wach.
-# Strategie: alle 5 Minuten ein /health-Ping, OFF-HOUR-Offset (GitHub Actions sind
-# zur :00-Marke chronisch verspätet, daher 2,7,12,17,…).
-# Backup-Layer zum internen Self-Ping in chatbot/backend/app.py.
+# Strategie: alle 10 Min ein /health-Ping, OFF-HOUR-Offset (GitHub Actions sind
+# zur :00-Marke chronisch verspätet, daher 3,13,23,33,43,53).
+# Render-Idle-Schwelle: 15 Min — 10 Min Intervall = 5 Min Puffer für Cron-Delays.
+# Zweiter Layer: interner Self-Ping in chatbot/backend/app.py (ebenfalls 10 Min).
 name: keep-warm
 
 on:
   schedule:
-    # Alle 5 Min, off-hour offset (2,7,12,17,22,27,32,37,42,47,52,57)
-    - cron: "2-57/5 * * * *"
+    # Alle 10 Min, off-hour offset (3,13,23,33,43,53)
+    - cron: "3-53/10 * * * *"
   workflow_dispatch:
 
 jobs:

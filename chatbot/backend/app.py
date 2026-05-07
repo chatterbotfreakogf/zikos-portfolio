@@ -23,9 +23,9 @@ from session_store import list_sessions, get_session_stats
 
 
 async def keep_alive():
-    """Self-Ping alle 5 Min, damit Render Free-Tier nicht einschläft.
-    URL wird automatisch aus RENDER_EXTERNAL_HOSTNAME (Render-injected) hergeleitet.
-    5 Min sind ein Drittel der 15-Min-Idle-Schwelle — sicherer Puffer."""
+    """Self-Ping alle 10 Min, damit Render Free-Tier nicht einschläft.
+    Render-Idle-Schwelle 15 Min, 10 Min Intervall = 5 Min Puffer.
+    URL aus RENDER_EXTERNAL_HOSTNAME (von Render automatisch injiziert)."""
     url = os.getenv("RENDER_EXTERNAL_URL", "")
     if not url:
         host = os.getenv("RENDER_EXTERNAL_HOSTNAME", "")
@@ -33,9 +33,9 @@ async def keep_alive():
             url = f"https://{host}"
     if not url:
         return
-    print(f"[keep-warm] active, target {url}/health, interval 5 min")
+    print(f"[keep-warm] active, target {url}/health, interval 10 min")
     while True:
-        await asyncio.sleep(300)  # 5 Min
+        await asyncio.sleep(600)  # 10 Min
         try:
             async with httpx.AsyncClient() as client:
                 r = await client.get(f"{url}/health", timeout=15)
