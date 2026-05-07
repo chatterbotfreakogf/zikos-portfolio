@@ -107,7 +107,7 @@
   },
 
   "skills_programmierung": {
-    "message": "**Programmierung & Daten:**\n- **Python** (Backend für eigene Tools, FastAPI, Playwright)\n- **API-Integrationen / Webhooks**\n- **SQL** und **PowerShell**\n- **Excel** (Sverweise, Pivot, komplexe Massendatenverarbeitung für 14.000+ SKUs)\n- Technisches Verständnis für API-Schnittstellen, Web-Architekturen und Daten-Pipelines",
+    "message": "Ehrliche Einordnung: ich bin **Architekt**, kein klassischer Engineer. Ich programmiere **KI-assistiert** mit Claude Code und Cursor IDE — Konzept, Daten-Architektur, Pipelines und Edge-Cases denke ich selbst durch, den eigentlichen Code schreibt zu großen Teilen die KI unter meiner Anleitung.\n\nDurch meine **IT-Ausbildung** (Staatlich geprüfter Assistent IKT) kann ich Code lesen, verstehen, debuggen und technisch sauber strukturieren — ich denke architektonisch, nicht zeilenweise.\n\n**Beleg:** Smart-Cart Drawer, Athenum Macro Intelligence, X Content Generator und Derivescope habe ich von Konzept bis Deploy eigenhändig gebaut.\n\n**Tools im Repertoire:** Python (FastAPI, Playwright), SQL, PowerShell, API-Integrationen / Webhooks, Excel (Sverweise, Pivot, 14.000+ SKUs).",
     "buttons": [{"label": "Andere Skill-Kategorie", "action": "skills"}]
   },
 
