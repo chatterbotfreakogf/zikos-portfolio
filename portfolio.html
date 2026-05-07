@@ -99,16 +99,16 @@
 
         <li class="card card--live" data-stagger="3">
           <a href="#" class="card__link" data-action="advisor-demo" aria-label="Live-Demo: KI-Berater starten">
-            <figure class="card__media" aria-hidden="true" data-cover='{"brand":"KI Berater","subtitle":"RAG · Anthropic API","stats":"EIGENER KORPUS · ECHTZEIT-ANTWORTEN"}'>
+            <figure class="card__media" aria-hidden="true" data-cover='{"brand":"KI Berater","subtitle":"Beratungs-Bot · Eigenentwicklung","stats":"SHOPIFY-READY · LIVE-DEMO MIT CV"}'>
               <div class="badges">
                 <span class="badge badge--live">Live</span>
               </div>
             </figure>
             <div class="card__body">
               <h2 class="card__title">KI-Berater</h2>
-              <p class="card__excerpt">Beantwortet Fragen zu meinen Projekten, meinem Profil und CV in Echtzeit.</p>
+              <p class="card__excerpt">Shopify-ready Beratungs-Bot &mdash; l&auml;sst sich mit Produkt- und Unternehmensdaten f&uuml;ttern. Hier antwortet er live auf Fragen zu meinem Profil.</p>
               <div class="card__foot">
-                <span class="mono mono--dim">RAG &middot; Anthropic API</span>
+                <span class="mono mono--dim">Eigenentwicklung</span>
                 <span class="card__cta">Öffnen <span aria-hidden="true">&rarr;</span></span>
               </div>
             </div>
@@ -348,8 +348,8 @@
   </dialog>
 
   <!-- KI-Berater · Karriere-Chatbot (eigener Backend-Service unter chatbot/) -->
-  <link rel="stylesheet" href="chatbot/frontend/chatbot-widget.css?v=1" />
-  <script src="chatbot/frontend/chatbot-widget.js?v=1" defer></script>
+  <link rel="stylesheet" href="chatbot/frontend/chatbot-widget.css?v=3" />
+  <script src="chatbot/frontend/chatbot-widget.js?v=3" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       if (!window.ZikosBot) return;
@@ -362,7 +362,7 @@
       window.ZikosBot.init({
         backendUrl: backend,
         title: "Zikos Zissis",
-        cssUrl: "chatbot/frontend/chatbot-widget.css?v=2",
+        cssUrl: "chatbot/frontend/chatbot-widget.css?v=3",
         avatarUrl: "assets/portrait.png"
       });
     });

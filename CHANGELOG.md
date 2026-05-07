@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-05-08 · Karriere-Bot · Du-Form + KI-Berater-Tile-Repositionierung
+
+### Was
+
+- KI-Berater-Tile (Tile 03) neu beschrieben: Cover-Subtitle „Beratungs-Bot ·
+  Eigenentwicklung", Stats „SHOPIFY-READY · LIVE-DEMO MIT CV", Body-Excerpt mit
+  Shopify-ready-Pitch („lässt sich mit Produkt- und Unternehmensdaten füttern").
+  Anthropic-API/RAG-Mention entfernt.
+- Bot-Widget Disclaimer-Bar (oben unter Header) entfernt; stattdessen läuft
+  „Alle Antworten ohne Gewähr" jetzt im Footer mit.
+- Bot duzt durchgängig (system_prompt + flows + Fallback). Tile-Vorschlagsfrage
+  in `assets/shop.js` auf „Was hast du bei Decathlon gemacht?" umgestellt.
+- Cache-Buster Widget auf `?v=3` gehoben.
+
+### Warum
+
+KI-Berater wird im Portfolio-Kontext als generischer Bewerber-Beweis vermarktet,
+nicht als Stack-Ankündigung. Recruiter-Sprache informeller — passt zum locker-
+direkten Ton der Portfolio-Stationen.
+
+### Live
+
+- Backend: <https://zikos-karriere-chatbot.onrender.com> (Render Free, Frankfurt)
+- Portfolio: <https://zikos-portfolio.onrender.com/portfolio.html>
+- Always-On via 10-Min-Self-Ping + GitHub-Actions-Cron (off-hour offset)
+
 ## 2026-05-06 · Athenum-Map · Mobile-Tooltip-Fix
 
 ### Bug

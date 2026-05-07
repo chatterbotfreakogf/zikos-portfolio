@@ -79,14 +79,13 @@
             +   '</div>'
             +   '<button class="zz-bot-close" aria-label="Schließen">&times;</button>'
             + '</div>'
-            + '<div class="zz-bot-disclaimer">Antworten auf Basis meines CVs · ohne Gewähr</div>'
             + '<div class="zz-bot-messages" id="zz-bot-messages"></div>'
             + '<div class="zz-bot-buttons" id="zz-bot-buttons"></div>'
             + '<div class="zz-bot-input">'
             +   '<input type="text" id="zz-bot-input" placeholder="Frage zu Profil, Stationen, Skills…" autocomplete="off">'
             +   '<button id="zz-bot-send" aria-label="Senden">' + iconSend() + '</button>'
             + '</div>'
-            + '<div class="zz-bot-footer">Antwortet auf Basis von CV, Zeugnissen und eigenen Projekten</div>';
+            + '<div class="zz-bot-footer">Antworten auf Basis meines CVs · Alle Antworten ohne Gewähr</div>';
         document.body.appendChild(win);
 
         win.querySelector(".zz-bot-close").onclick = toggleChat;

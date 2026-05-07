@@ -156,22 +156,6 @@
     border-color: var(--zz-ink);
 }
 
-/* ===== Disclaimer (tiny mono caption unter Header) ===== */
-.zz-bot-disclaimer {
-    padding: 6px 20px 7px;
-    background: var(--zz-snow);
-    border-bottom: 1px solid var(--zz-rule-soft);
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 9.5px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--zz-ink-dim);
-    text-align: center;
-    line-height: 1.4;
-    flex-shrink: 0;
-}
-
 /* ===== Messages ===== */
 .zz-bot-messages {
     flex: 1;
