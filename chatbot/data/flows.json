@@ -1,6 +1,6 @@
 {
   "welcome": {
-    "message": "Hallo, ich bin Zikos. Fragen Sie mich gerne zu Profil, Stationen, Skills oder Verfügbarkeit.",
+    "message": "Hallo, ich bin Zikos. Frag mich gerne zu Profil, Stationen, Skills oder Verfügbarkeit.",
     "buttons": [
       {"label": "Profil & Kurzfassung", "action": "profil"},
       {"label": "Berufserfahrung", "action": "berufserfahrung"},
@@ -24,7 +24,7 @@
   },
 
   "berufserfahrung": {
-    "message": "Welche Station interessiert Sie?",
+    "message": "Welche Station interessiert dich?",
     "buttons": [
       {"label": "Athenum (12/25–04/26)", "action": "station_athenum"},
       {"label": "Decathlon (04/23–10/25)", "action": "station_decathlon"},
@@ -63,7 +63,7 @@
   },
 
   "skills": {
-    "message": "Mein Stack im Überblick — wählen Sie eine Kategorie:",
+    "message": "Mein Stack im Überblick — wähl eine Kategorie:",
     "buttons": [
       {"label": "Analytics & KPI", "action": "skills_analytics"},
       {"label": "Conversion & UX", "action": "skills_conversion"},

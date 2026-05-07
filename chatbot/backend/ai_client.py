@@ -231,7 +231,7 @@ def _ask_gemini(system_prompt: str, history: list[dict]) -> str:
 def _fallback_response(history: list[dict]) -> str:
     """Offline-Fallback: einfache Keyword-Treffer auf cv.json. Antworten in Ich-Form."""
     if not CV_PATH.exists():
-        return "Hallo, ich bin Zikos. Fragen Sie mich gerne zu Profil, Stationen, Skills oder Verfügbarkeit."
+        return "Hallo, ich bin Zikos. Frag mich gerne zu Profil, Stationen, Skills oder Verfügbarkeit."
 
     with open(CV_PATH, "r", encoding="utf-8") as f:
         cv = json.load(f)
@@ -281,7 +281,7 @@ def _fallback_response(history: list[dict]) -> str:
         parts = []
         for cat, items in list(skills.items())[:4]:
             parts.append(f"**{cat}**: {', '.join(items[:6])}")
-        return "Mein Kern-Stack:\n\n" + "\n".join(parts) + "\n\nFür Details klicken Sie auf „Skills & Stack“ im Hauptmenü."
+        return "Mein Kern-Stack:\n\n" + "\n".join(parts) + "\n\nFür Details klick auf „Skills & Stack“ im Hauptmenü."
 
     if any(w in last_msg for w in ["studium", "bachelor", "master", "ausbildung", "bildung"]):
         return (
@@ -303,6 +303,6 @@ def _fallback_response(history: list[dict]) -> str:
 
     return (
         "Ich beantworte gern Fragen zu meinen Stationen (Decathlon, Fischer, Athenum), zu Skills & Stack, "
-        "zu eigenen Projekten oder zur Verfügbarkeit. Klicken Sie einen Button im Hauptmenü oder schreiben "
-        "Sie direkt, was Sie wissen möchten."
+        "zu eigenen Projekten oder zur Verfügbarkeit. Klick einen Button im Hauptmenü oder schreib direkt, "
+        "was du wissen willst."
     )

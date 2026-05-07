@@ -90,7 +90,7 @@
       if (action === "advisor-demo") {
         e.preventDefault();
         if (window.ZikosBot) {
-          window.ZikosBot.ask("Was hat Zikos bei Decathlon gemacht?");
+          window.ZikosBot.ask("Was hast du bei Decathlon gemacht?");
         } else {
           toggleAdvisor(true);
         }
