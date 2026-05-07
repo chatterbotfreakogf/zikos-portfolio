@@ -63,13 +63,15 @@
     function renderWindow() {
         if (rendered) return;
         loadCss();
+        var base = config.backendUrl.replace(/\/$/, "");
+        var avatarUrl = config.avatarUrl || (base + "/widget/portrait.png");
         var win = document.createElement("div");
         win.className = "zz-bot-window";
         win.id = "zz-bot-window";
         win.innerHTML = ''
             + '<div class="zz-bot-header">'
             +   '<div class="zz-bot-header-info">'
-            +     '<div class="zz-bot-avatar">' + iconUser() + '</div>'
+            +     '<div class="zz-bot-avatar"><img src="' + escapeHtml(avatarUrl) + '" alt="Zikos"></div>'
             +     '<div class="zz-bot-header-text">'
             +       '<span class="zz-bot-eyebrow">KI-Berater</span>'
             +       '<span class="zz-bot-title">' + escapeHtml(config.title) + '</span>'
@@ -77,6 +79,7 @@
             +   '</div>'
             +   '<button class="zz-bot-close" aria-label="Schließen">&times;</button>'
             + '</div>'
+            + '<div class="zz-bot-disclaimer">Antworten auf Basis meines CVs · ohne Gewähr</div>'
             + '<div class="zz-bot-messages" id="zz-bot-messages"></div>'
             + '<div class="zz-bot-buttons" id="zz-bot-buttons"></div>'
             + '<div class="zz-bot-input">'

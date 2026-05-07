@@ -1,6 +1,6 @@
 {
   "welcome": {
-    "message": "Hallo, ich bin Zikos' Karriere-Bot. Was möchten Sie über sein Profil wissen?",
+    "message": "Hallo, ich bin Zikos. Fragen Sie mich gerne zu Profil, Stationen, Skills oder Verfügbarkeit.",
     "buttons": [
       {"label": "Profil & Kurzfassung", "action": "profil"},
       {"label": "Berufserfahrung", "action": "berufserfahrung"},
@@ -15,7 +15,7 @@
   },
 
   "profil": {
-    "message": "**Zikos Zissis** — E-Commerce-Generalist mit Hands-on-Schwerpunkt: Sortimentssteuerung, Conversion-Optimierung und eigene Tools.\n\n**Identitäts-Anker:**\n- 2,5 Jahre operative Verantwortung für decathlon.de Fitness DE/AT + Nutrition\n- 14.000+ SKUs unter Steuerung\n- Hands-on Code (Liquid/HTML/CSS/JS) am Live-Shop\n- IT-Ausbildung + BWL-Bachelor + laufender Master Digital Business\n- 100 % Remote-erprobt seit über 5 Jahren\n\nStandort: Plochingen, BW. Verfügbar ab sofort, 40 h garantiert.",
+    "message": "Kurz zu mir: ich bin **E-Commerce-Generalist** mit Hands-on-Schwerpunkt — Sortimentssteuerung, Conversion-Optimierung und eigene Tools.\n\n**Meine Anker:**\n- 2,5 Jahre operative Verantwortung für decathlon.de Fitness DE/AT + Nutrition\n- 14.000+ SKUs unter Steuerung\n- Hands-on Code (Liquid/HTML/CSS/JS) am Live-Shop\n- IT-Ausbildung + BWL-Bachelor + laufender Master Digital Business\n- 100 % Remote-erprobt seit über 5 Jahren\n\nStandort: Plochingen, BW. Verfügbar ab sofort, 40 h garantiert.",
     "buttons": [
       {"label": "Mehr zu Decathlon", "action": "station_decathlon"},
       {"label": "Skills im Detail", "action": "skills"},
@@ -34,14 +34,14 @@
   },
 
   "station_athenum": {
-    "message": "**athenum.xyz · VenturePoint LLC** — Solution Architect, Macro Intelligence (12/2025 – 04/2026, Freelance, unentgeltlich, Remote).\n\nKonzept, Daten-Pipeline und Frontend für die Macro-Intelligence-Karte:\n- 75 Geo-Layer aus 12 offenen Quellen\n- 100K+ Datapoints\n- GPU-native Welt-Karte\n- Daten-Pipeline und Frontend selbst gebaut\n\nProjektvertrag, eigenständige Verantwortung von Konzept bis Auslieferung.",
+    "message": "**athenum.xyz · VenturePoint LLC** — Solution Architect, Macro Intelligence (12/2025 – 04/2026, Freelance, unentgeltlich, Remote).\n\nKonzept, Daten-Pipeline und Frontend für die Macro-Intelligence-Karte habe ich eigenständig gebaut:\n- 75 Geo-Layer aus 12 offenen Quellen\n- 100K+ Datapoints\n- GPU-native Welt-Karte\n- Daten-Pipeline und Frontend selbst implementiert\n\nProjektvertrag, eigenständige Verantwortung von Konzept bis Auslieferung.",
     "buttons": [
       {"label": "Andere Station", "action": "berufserfahrung"}
     ]
   },
 
   "station_decathlon": {
-    "message": "**Decathlon Deutschland SE & Co. KG** — Junior Online Category Manager · Fitness DE/AT & Nutrition (04/2023 – 10/2025, 30 h, 100 % Remote).\n\n**Verantwortung:**\n- Operative Steuerung der Fitness-Range DE/AT in enger Abstimmung mit dem Sportleader\n- Strategische Steuerung von >14.000 SKUs (Millionen-Umsatz)\n- Sportnahrungs-Relaunch: neue Kategorie-Architektur, Mobile-First, UX-Redesign\n- Hypothesengetriebene A/B-Tests an PDP, Funnel und Checkout\n- KPI-Monitoring (CR, AtC, AOV, NPS, ROAS) via GA4, Hotjar, Looker Studio\n- Hands-on HTML/CSS auf decathlon.at\n- Briefing/Begleitung digitaler Kampagnen mit Marketing\n\n**Arbeitszeugnis:** Leistungsbewertung „erfüllt seine Aufgaben stets zu unserer vollen Zufriedenheit“ (Note **gut**), Verhalten „stets einwandfrei“. Beendigung im besten beiderseitigen Einvernehmen per Aufhebungsvertrag.",
+    "message": "**Decathlon Deutschland SE & Co. KG** — Junior Online Category Manager · Fitness DE/AT & Nutrition (04/2023 – 10/2025, 30 h, 100 % Remote).\n\n**Meine Verantwortung:**\n- Operative Steuerung der Fitness-Range DE/AT in enger Abstimmung mit dem Sportleader\n- Strategische Steuerung von >14.000 SKUs (Millionen-Umsatz)\n- Sportnahrungs-Relaunch: neue Kategorie-Architektur, Mobile-First, UX-Redesign\n- Hypothesengetriebene A/B-Tests an PDP, Funnel und Checkout\n- KPI-Monitoring (CR, AtC, AOV, NPS, ROAS) via GA4, Hotjar, Looker Studio\n- Hands-on HTML/CSS auf decathlon.at\n- Briefing/Begleitung digitaler Kampagnen mit Marketing\n\n**Mein Arbeitszeugnis:** Leistungsbewertung „erfüllt seine Aufgaben stets zu unserer vollen Zufriedenheit“ (Note **gut**), Verhalten „stets einwandfrei“. Beendigung im besten beiderseitigen Einvernehmen per Aufhebungsvertrag.",
     "buttons": [
       {"label": "Skills aus dieser Rolle", "action": "skills"},
       {"label": "Andere Station", "action": "berufserfahrung"}
@@ -49,21 +49,21 @@
   },
 
   "station_decathlon_prakt": {
-    "message": "**Decathlon Deutschland SE & Co. KG** — Praktikum Online Category Management (10/2022 – 03/2023, 6 Monate, Plochingen).\n\nLaut Praktikantenzeugnis:\n- Aufbau und Pflege von Kategorien und Produktseiten\n- Erstellung von Kaufberatern\n- Bearbeitung von Kundenanfragen und -feedback\n- Bearbeitung der internen Suche und SEO\n- Vorbereitung des Sportnahrungs-Relaunchs\n\n**Übergang:** Direkter, nahtloser Wechsel in die Festanstellung als Junior Online Category Manager.",
+    "message": "**Decathlon Deutschland SE & Co. KG** — Praktikum Online Category Management (10/2022 – 03/2023, 6 Monate, Plochingen).\n\nLaut Praktikantenzeugnis war ich verantwortlich für:\n- Aufbau und Pflege von Kategorien und Produktseiten\n- Erstellung von Kaufberatern\n- Bearbeitung von Kundenanfragen und -feedback\n- Bearbeitung der internen Suche und SEO\n- Vorbereitung des Sportnahrungs-Relaunchs\n\n**Übergang:** Direkter, nahtloser Wechsel in die Festanstellung als Junior Online Category Manager.",
     "buttons": [
       {"label": "Andere Station", "action": "berufserfahrung"}
     ]
   },
 
   "station_fischer": {
-    "message": "**Fischer Möbel GmbH (D2C-Premium)** — Digital Content Assistant · E-Commerce (02/2018 – 09/2022, Aushilfe, 4,5 Jahre, Schlierbach).\n\n**Aufgaben:**\n- Eigenverantwortliche Pflege und QA von Produktdaten im Web-Backend\n- SEO-Keyword-Recherche\n- Erstellung detaillierter technischer Produktdokumentationen und Anleitungen\n- Aufbau strukturierter Daten-Workflows\n- Technische Wartung und Aktualisierung des Web-Auftritts\n\n**Arbeitszeugnis:** Leistung „erfüllt seine Aufgaben stets und in jeder Hinsicht zu unserer vollsten Zufriedenheit“ (Note **sehr gut**), Verhalten „jederzeit einwandfrei“. Beendigung auf eigenen Wunsch (Studienstart).",
+    "message": "**Fischer Möbel GmbH (D2C-Premium)** — Digital Content Assistant · E-Commerce (02/2018 – 09/2022, Aushilfe, 4,5 Jahre, Schlierbach).\n\n**Meine Aufgaben:**\n- Eigenverantwortliche Pflege und QA von Produktdaten im Web-Backend\n- SEO-Keyword-Recherche\n- Erstellung detaillierter technischer Produktdokumentationen und Anleitungen\n- Aufbau strukturierter Daten-Workflows\n- Technische Wartung und Aktualisierung des Web-Auftritts\n\n**Mein Arbeitszeugnis:** Leistung „erfüllt seine Aufgaben stets und in jeder Hinsicht zu unserer vollsten Zufriedenheit“ (Note **sehr gut**), Verhalten „jederzeit einwandfrei“. Beendigung auf eigenen Wunsch (Studienstart).",
     "buttons": [
       {"label": "Andere Station", "action": "berufserfahrung"}
     ]
   },
 
   "skills": {
-    "message": "Stack im Überblick — wählen Sie eine Kategorie:",
+    "message": "Mein Stack im Überblick — wählen Sie eine Kategorie:",
     "buttons": [
       {"label": "Analytics & KPI", "action": "skills_analytics"},
       {"label": "Conversion & UX", "action": "skills_conversion"},
@@ -77,7 +77,7 @@
   },
 
   "skills_analytics": {
-    "message": "**Analytics & KPI:**\n- **GA4** und **Google Tag Manager** (Setup + Event-Tracking)\n- **Hotjar** und **Microsoft Clarity** (Heatmaps, Session-Recording)\n- **Looker Studio** (Dashboards, wöchentliches Reporting)\n- KPI-Set: CR, AtC, AOV, NPS, ROAS, CPC, CTR\n\nAngewandt bei Decathlon zur Steuerung von 14.000+ SKUs und zur Funnel-Diagnose.",
+    "message": "**Analytics & KPI:**\n- **GA4** und **Google Tag Manager** (Setup + Event-Tracking)\n- **Hotjar** und **Microsoft Clarity** (Heatmaps, Session-Recording)\n- **Looker Studio** (Dashboards, wöchentliches Reporting)\n- KPI-Set: CR, AtC, AOV, NPS, ROAS, CPC, CTR\n\nIch habe das bei Decathlon zur Steuerung von 14.000+ SKUs und zur Funnel-Diagnose täglich angewendet.",
     "buttons": [{"label": "Andere Skill-Kategorie", "action": "skills"}]
   },
 
@@ -87,12 +87,12 @@
   },
 
   "skills_shopify": {
-    "message": "**Shopify & Theme-Code:**\n- Shopify Plus (Storefront + Admin + Markets)\n- Liquid (Theme-Sections, Custom Apps)\n- HTML/CSS/JavaScript (Hands-on am Live-Shop)\n- PageSpeed-Optimierung\n- Custom Apps und Theme-Erweiterungen\n\nIn eigenen Projekten zusätzlich: Shopify Script-Tag-API, Storefront-Ajax (`/cart/add.js`), Section-Replace, Cart-Events.",
+    "message": "**Shopify & Theme-Code:**\n- Shopify Plus (Storefront + Admin + Markets)\n- Liquid (Theme-Sections, Custom Apps)\n- HTML/CSS/JavaScript (Hands-on am Live-Shop)\n- PageSpeed-Optimierung\n- Custom Apps und Theme-Erweiterungen\n\nIn meinen eigenen Projekten zusätzlich: Shopify Script-Tag-API, Storefront-Ajax (`/cart/add.js`), Section-Replace, Cart-Events.",
     "buttons": [{"label": "Andere Skill-Kategorie", "action": "skills"}]
   },
 
   "skills_ki": {
-    "message": "**KI & Automatisierung:**\n- **Claude Code** (CLI / VS Code / Cursor IDE) — Tagesgeschäft\n- **Anthropic API** mit Prompt-Caching\n- **n8n** (Workflow-Automation, mehrere Produktiv-Pipelines)\n- **Make** und **Zapier**\n- **ChatGPT** für Recherche und Drafting\n- Konkrete Anwendung: KI-Beratungs-Bots (siehe eigene Projekte) und SEO-/Content-Pipelines",
+    "message": "**KI & Automatisierung:**\n- **Claude Code** (CLI / VS Code / Cursor IDE) — Tagesgeschäft\n- **Anthropic API** mit Prompt-Caching\n- **n8n** (Workflow-Automation, mehrere Produktiv-Pipelines)\n- **Make** und **Zapier**\n- **ChatGPT** für Recherche und Drafting\n- Konkrete Anwendung: KI-Beratungs-Bots (siehe meine Projekte) und SEO-/Content-Pipelines",
     "buttons": [{"label": "Andere Skill-Kategorie", "action": "skills"}]
   },
 
@@ -112,7 +112,7 @@
   },
 
   "skills_levels": {
-    "message": "**Selbsteinschätzung (aus aktuellen CV-Varianten):**\n- E-Commerce & Conversion-Optimierung — **Experte**\n- Shopify Shop-Management — Fortgeschritten\n- Datenanalyse & A/B-Testing — Fortgeschritten\n- KI-Workflow-Entwicklung (Claude / GPT) — Fortgeschritten\n- Systemintegration (Shopify · JTL · Klaviyo) — Fortgeschritten\n- Prozessautomatisierung (Make · n8n · APIs) — Fortgeschritten\n- Projektmanagement & Stakeholder-Koordination — Fortgeschritten",
+    "message": "**Meine Selbsteinschätzung (aus aktuellen CV-Varianten):**\n- E-Commerce & Conversion-Optimierung — **Experte**\n- Shopify Shop-Management — Fortgeschritten\n- Datenanalyse & A/B-Testing — Fortgeschritten\n- KI-Workflow-Entwicklung (Claude / GPT) — Fortgeschritten\n- Systemintegration (Shopify · JTL · Klaviyo) — Fortgeschritten\n- Prozessautomatisierung (Make · n8n · APIs) — Fortgeschritten\n- Projektmanagement & Stakeholder-Koordination — Fortgeschritten",
     "buttons": [{"label": "Andere Skill-Kategorie", "action": "skills"}]
   },
 
@@ -128,7 +128,7 @@
   },
 
   "projekt_athenum": {
-    "message": "**Athenum · Macro Intelligence** — 75-Layer Geo-Karte für athenum.xyz, GPU-nativ, 12 Datenquellen.\n\nKonzept, Daten-Pipeline und Frontend selbst gebaut. Stack: Next.js 15, Cloudflare Workers, Hetzner CAX11, Caddy, Supabase, Anthropic API mit Prompt-Caching.\n\nGleichzeitig die aktuelle Freelance-Station (12/2025–04/2026, unentgeltlich).",
+    "message": "**Athenum · Macro Intelligence** — 75-Layer Geo-Karte für athenum.xyz, GPU-nativ, 12 Datenquellen.\n\nKonzept, Daten-Pipeline und Frontend habe ich selbst gebaut. Stack: Next.js 15, Cloudflare Workers, Hetzner CAX11, Caddy, Supabase, Anthropic API mit Prompt-Caching.\n\nGleichzeitig meine aktuelle Freelance-Station (12/2025–04/2026, unentgeltlich).",
     "buttons": [{"label": "Andere Arbeitsprobe", "action": "projekte"}]
   },
 
@@ -153,35 +153,35 @@
   },
 
   "bildung": {
-    "message": "**Bildungsweg:**\n\n**Master of Science · Digital Business & Management** — HS Sigmaringen, 02/2025 – 02/2027 (laufend). Remote, individuelle Teilzeit, Abende/Wochenenden.\n\n**Bachelor of Science · Betriebswirtschaft** — HfWU Nürtingen-Geislingen, 02/2020 – 10/2024. Schwerpunkt Digital Business & Management. 210 ECTS, 7 Semester Regelstudiendauer. Abschluss am 27.09.2024.\n\n**Staatlich geprüfter Assistent für Informations- und Kommunikationstechnik** (inkl. Fachhochschulreife) — Max-Eyth-Schule, Kirchheim unter Teck, 10/2017 – 02/2020.",
+    "message": "**Mein Bildungsweg:**\n\n**Master of Science · Digital Business & Management** — HS Sigmaringen, 02/2025 – 02/2027 (laufend). Remote, individuelle Teilzeit, Abende/Wochenenden.\n\n**Bachelor of Science · Betriebswirtschaft** — HfWU Nürtingen-Geislingen, 02/2020 – 10/2024. Schwerpunkt Digital Business & Management. 210 ECTS, 7 Semester Regelstudiendauer. Abschluss am 27.09.2024.\n\n**Staatlich geprüfter Assistent für Informations- und Kommunikationstechnik** (inkl. Fachhochschulreife) — Max-Eyth-Schule, Kirchheim unter Teck, 10/2017 – 02/2020.",
     "buttons": [
       {"label": "Skills aus dem Studium", "action": "skills"}
     ]
   },
 
   "verfuegbarkeit": {
-    "message": "**Verfügbarkeit:** Ab sofort.\n\n**Stundenumfang:** Volle 40-Stunden-Verfügbarkeit für den Job ist garantiert. Der Master Digital Business läuft komplett remote und zeitflexibel außerhalb der Kernarbeitszeiten (Abende/Wochenenden) — kein Konflikt mit einem Vollzeitjob.\n\n**Modus:** 100 % Remote-erprobt seit über 5 Jahren (Decathlon war 100 % Remote).\n\n**Standort:** Plochingen, Baden-Württemberg. Reise-/Onsite-Anteile nach Absprache möglich.",
+    "message": "**Meine Verfügbarkeit:** Ab sofort.\n\n**Stundenumfang:** Volle 40-Stunden-Verfügbarkeit für den Job ist garantiert. Mein Master Digital Business läuft komplett remote und zeitflexibel außerhalb der Kernarbeitszeiten (Abende/Wochenenden) — kein Konflikt mit einem Vollzeitjob.\n\n**Modus:** 100 % Remote-erprobt seit über 5 Jahren (Decathlon war 100 % Remote).\n\n**Standort:** Plochingen, Baden-Württemberg. Reise-/Onsite-Anteile nach Absprache möglich.",
     "buttons": [
       {"label": "Direkter Kontakt", "action": "kontakt"}
     ]
   },
 
   "sprachen": {
-    "message": "**Sprachen:**\n- **Deutsch** — Muttersprachlich (5/5)\n- **Griechisch** — Muttersprachlich (5/5)\n- **Englisch** — Verhandlungssicher (4/5)\n\nPraktische Anwendung: Validierung internationaler Produktdaten (EN/DE) für globale Markt-Standards bei Decathlon.",
+    "message": "**Meine Sprachen:**\n- **Deutsch** — Muttersprachlich (5/5)\n- **Griechisch** — Muttersprachlich (5/5)\n- **Englisch** — Verhandlungssicher (4/5)\n\nPraktische Anwendung: Bei Decathlon habe ich internationale Produktdaten (EN/DE) für globale Markt-Standards validiert.",
     "buttons": [
       {"label": "Andere Frage", "action": "main_menu"}
     ]
   },
 
   "zeugnisse": {
-    "message": "**Aus dem Decathlon-Arbeitszeugnis (31.10.2025):**\n- Leistung: „erfüllt seine Aufgaben **stets zu unserer vollen Zufriedenheit**“ (Note **gut**)\n- Verhalten: „**stets einwandfrei**“\n- „**sehr stark ausgebildete Kreativität und Problemlösungsfähigkeit**“\n- „**umsichtig, gewissenhaft und präzise**“\n- „wusste alle Beteiligten mit **Teamgeist und Begeisterungsfähigkeit** zu vollem Einsatz und guten Leistungen zu motivieren“\n\n**Aus dem Fischer-Möbel-Arbeitszeugnis (28.09.2022):**\n- Leistung: „erfüllt seine Aufgaben **stets und in jeder Hinsicht zu unserer vollsten Zufriedenheit**“ (Note **sehr gut**)\n- Verhalten: „**jederzeit einwandfrei**“\n- „**äußerst tüchtiger Mitarbeiter**, seine Arbeitsbefähigung war stets in jeder Hinsicht sehr gut“\n- „**unter hohem Zeit- und Erfolgsdruck den Überblick und einen kühlen Kopf**“",
+    "message": "**Aus meinem Decathlon-Arbeitszeugnis (31.10.2025):**\n- Leistung: „erfüllt seine Aufgaben **stets zu unserer vollen Zufriedenheit**“ (Note **gut**)\n- Verhalten: „**stets einwandfrei**“\n- „**sehr stark ausgebildete Kreativität und Problemlösungsfähigkeit**“\n- „**umsichtig, gewissenhaft und präzise**“\n- „wusste alle Beteiligten mit **Teamgeist und Begeisterungsfähigkeit** zu vollem Einsatz und guten Leistungen zu motivieren“\n\n**Aus meinem Fischer-Möbel-Arbeitszeugnis (28.09.2022):**\n- Leistung: „erfüllt seine Aufgaben **stets und in jeder Hinsicht zu unserer vollsten Zufriedenheit**“ (Note **sehr gut**)\n- Verhalten: „**jederzeit einwandfrei**“\n- „**äußerst tüchtiger Mitarbeiter**, seine Arbeitsbefähigung war stets in jeder Hinsicht sehr gut“\n- „**unter hohem Zeit- und Erfolgsdruck den Überblick und einen kühlen Kopf**“",
     "buttons": [
       {"label": "Andere Frage", "action": "main_menu"}
     ]
   },
 
   "kontakt": {
-    "message": "**Direkter Draht zu Zikos:**\n- **E-Mail:** zikos.zissis@outlook.com\n- **Telefon:** +49 174 9247044\n- **WhatsApp:** +49 174 9247044\n\nAntwort meist binnen 24 Stunden. Für ein Erstgespräch reicht eine kurze WhatsApp-Nachricht oder E-Mail mit Rolle und Eckdaten.",
+    "message": "**Direkter Draht zu mir:**\n- **E-Mail:** zikos.zissis@outlook.com\n- **Telefon:** +49 174 9247044\n- **WhatsApp:** +49 174 9247044\n\nAntwort meist binnen 24 Stunden. Für ein Erstgespräch reicht eine kurze WhatsApp-Nachricht oder E-Mail mit Rolle und Eckdaten.",
     "buttons": [
       {"label": "Verfügbarkeit", "action": "verfuegbarkeit"},
       {"label": "Andere Frage", "action": "main_menu"}

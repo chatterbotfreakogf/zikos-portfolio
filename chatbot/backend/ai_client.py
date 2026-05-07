@@ -229,9 +229,9 @@ def _ask_gemini(system_prompt: str, history: list[dict]) -> str:
 
 
 def _fallback_response(history: list[dict]) -> str:
-    """Offline-Fallback: einfache Keyword-Treffer auf cv.json."""
+    """Offline-Fallback: einfache Keyword-Treffer auf cv.json. Antworten in Ich-Form."""
     if not CV_PATH.exists():
-        return "Hi, ich bin Zikos' Karriere-Bot. Schreib mir gern, was dich zu meinem Profil interessiert."
+        return "Hallo, ich bin Zikos. Fragen Sie mich gerne zu Profil, Stationen, Skills oder Verfügbarkeit."
 
     with open(CV_PATH, "r", encoding="utf-8") as f:
         cv = json.load(f)
@@ -241,21 +241,21 @@ def _fallback_response(history: list[dict]) -> str:
     if any(w in last_msg for w in ["verfügbar", "verfuegbar", "ab wann", "start", "kündigung", "kuendigung"]):
         p = cv.get("profil", {})
         return (
-            "Zikos ist ab sofort verfügbar. Sein Master Digital Business läuft komplett remote und "
-            "zeitflexibel (Abende/Wochenenden) — volle 40-Stunden-Verfügbarkeit für den Job ist garantiert.\n\n"
-            f"Standort: {p.get('standort','Plochingen, DE')}. 100% Remote-erprobt seit über 5 Jahren."
+            "Ich bin ab sofort verfügbar. Mein Master Digital Business läuft komplett remote und "
+            "zeitflexibel (Abende/Wochenenden) — volle 40 Stunden für den Job sind garantiert.\n\n"
+            f"Standort: {p.get('standort','Plochingen, DE')}. 100 % Remote-erprobt seit über 5 Jahren."
         )
 
     if any(w in last_msg for w in ["gehalt", "lohn", "salary", "vergütung", "verguetung"]):
         return (
-            "Zur konkreten Gehaltsvorstellung sprechen Sie Zikos bitte direkt an — das klärt er rollen- "
-            "und scope-spezifisch. Kontakt: zikos.zissis@outlook.com oder WhatsApp +49 174 9247044."
+            "Zur Gehaltsvorstellung klären wir das gern direkt — rollen- und scope-spezifisch. "
+            "Kontakt: zikos.zissis@outlook.com oder WhatsApp +49 174 9247044."
         )
 
     if any(w in last_msg for w in ["decathlon", "fitness", "category", "ocm"]):
         return (
-            "Bei Decathlon Deutschland war Zikos von 04/2023 bis 10/2025 Junior Online Category Manager "
-            "für Fitness DE/AT und Nutrition (30h, 100% Remote). Operative Steuerung von 14.000+ SKUs, "
+            "Bei Decathlon Deutschland war ich von 04/2023 bis 10/2025 Junior Online Category Manager "
+            "für Fitness DE/AT und Nutrition (30 h, 100 % Remote). Operative Steuerung von 14.000+ SKUs, "
             "Sportnahrungs-Relaunch, A/B-Tests an PDP und Checkout, KPI-Monitoring via GA4/Looker, "
             "Hands-on im CMS/PIM sowie Code-Pflege auf decathlon.at (HTML/CSS).\n\n"
             "Davor 6 Monate Praktikum am gleichen Standort (10/2022–03/2023, nahtloser Übergang). "
@@ -264,16 +264,16 @@ def _fallback_response(history: list[dict]) -> str:
 
     if any(w in last_msg for w in ["fischer", "möbel", "moebel"]):
         return (
-            "Bei Fischer Möbel (D2C-Premium) hat Zikos von 02/2018 bis 09/2022 als Aushilfe im E-Commerce "
+            "Bei Fischer Möbel (D2C-Premium) habe ich von 02/2018 bis 09/2022 als Aushilfe im E-Commerce "
             "Produktdaten gepflegt, SEO-Keyword-Recherche gemacht und technische Produktdokumentationen "
             "erstellt. Arbeitszeugnis: sehr gut."
         )
 
     if any(w in last_msg for w in ["athenum", "macro", "intelligence", "geo"]):
         return (
-            "Aktuelle Freelance-Station (12/2025–04/2026, unentgeltlich): Zikos ist Solution Architect "
+            "Aktuelle Freelance-Station (12/2025–04/2026, unentgeltlich): ich bin Solution Architect "
             "für die Macro-Intelligence-Karte von athenum.xyz — 75 Geo-Layer aus 12 offenen Quellen auf "
-            "einer GPU-nativen Welt-Karte. Konzept, Daten-Pipeline und Frontend selbst gebaut."
+            "einer GPU-nativen Welt-Karte. Konzept, Daten-Pipeline und Frontend habe ich selbst gebaut."
         )
 
     if any(w in last_msg for w in ["skill", "stack", "tools", "tech"]):
@@ -281,11 +281,11 @@ def _fallback_response(history: list[dict]) -> str:
         parts = []
         for cat, items in list(skills.items())[:4]:
             parts.append(f"**{cat}**: {', '.join(items[:6])}")
-        return "Zikos' Kern-Stack:\n\n" + "\n".join(parts) + "\n\nFür Details klicken Sie auf „Skills & Stack“ im Hauptmenü."
+        return "Mein Kern-Stack:\n\n" + "\n".join(parts) + "\n\nFür Details klicken Sie auf „Skills & Stack“ im Hauptmenü."
 
     if any(w in last_msg for w in ["studium", "bachelor", "master", "ausbildung", "bildung"]):
         return (
-            "Ausbildungsweg: Staatlich geprüfter Assistent IKT (Max-Eyth-Schule, 10/2017–02/2020) → "
+            "Mein Ausbildungsweg: Staatlich geprüfter Assistent IKT (Max-Eyth-Schule, 10/2017–02/2020) → "
             "BWL-Bachelor an der HfWU Nürtingen-Geislingen (02/2020–10/2024, Schwerpunkt Digital Business) "
             "→ aktuell Master Digital Business & Management an der HS Sigmaringen (02/2025–02/2027, "
             "remote, zeitflexibel)."
@@ -302,7 +302,7 @@ def _fallback_response(history: list[dict]) -> str:
         )
 
     return (
-        "Ich beantworte gern Fragen zu Zikos' Stationen (Decathlon, Fischer, Athenum), zu Skills & Stack, "
-        "zu eigenen Projekten oder zur Verfügbarkeit. Klick einen Button im Hauptmenü oder schreib direkt, "
-        "was du wissen willst."
+        "Ich beantworte gern Fragen zu meinen Stationen (Decathlon, Fischer, Athenum), zu Skills & Stack, "
+        "zu eigenen Projekten oder zur Verfügbarkeit. Klicken Sie einen Button im Hauptmenü oder schreiben "
+        "Sie direkt, was Sie wissen möchten."
     )
