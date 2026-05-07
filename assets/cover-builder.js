@@ -31,8 +31,8 @@
     const spotId  = `zz-spot-${id}`;
 
     const len = (brand || "").length;
-    const fs = len > 10 ? 44 : len > 8 ? 50 : 54;
-    const ls = len > 10 ? 8  : len > 8 ? 10 : 12;
+    const fs = len > 10 ? 50 : len > 8 ? 58 : 64;
+    const ls = len > 10 ? 7  : len > 8 ? 9  : 11;
 
     return `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${wm} — ${sub}" class="zz-cover">
@@ -50,22 +50,22 @@
   <rect x="0" y="0" width="800" height="500" fill="url(#${paperId})"/>
   <rect x="0" y="0" width="800" height="500" fill="url(#${spotId})"/>
 
-  <text x="400" y="252" text-anchor="middle"
+  <text x="400" y="248" text-anchor="middle"
         font-family="Inter, system-ui, sans-serif"
         font-size="${fs}" font-weight="300" letter-spacing="${ls}"
         fill="#0F1015">${wm}</text>
 
-  <line x1="350" y1="284" x2="450" y2="284" stroke="#0F1015" stroke-width="1.4"/>
+  <line x1="350" y1="282" x2="450" y2="282" stroke="#0F1015" stroke-width="1.4"/>
 
-  <text x="400" y="322" text-anchor="middle"
+  <text x="400" y="326" text-anchor="middle"
         font-family="Inter, system-ui, sans-serif"
-        font-size="22" font-weight="400" letter-spacing="-0.2"
+        font-size="27" font-weight="500" letter-spacing="-0.2"
         fill="#1F222A">${sub}</text>
 
   <line x1="56" y1="430" x2="744" y2="430" stroke="rgba(15,16,21,0.18)" stroke-width="1"/>
-  <text x="400" y="460" text-anchor="middle"
+  <text x="400" y="463" text-anchor="middle"
         font-family="JetBrains Mono, ui-monospace, monospace"
-        font-size="13" letter-spacing="2.6" font-weight="500"
+        font-size="16" letter-spacing="2.2" font-weight="500"
         fill="#0F1015">${st}</text>
 </svg>`.trim();
   }
