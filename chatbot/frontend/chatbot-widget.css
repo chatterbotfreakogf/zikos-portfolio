@@ -1,0 +1,345 @@
+/* Zikos · Karriere-Chatbot Widget
+ * Brand: Cool-Grey + Paper-Off-White, im Stil des Portfolios.
+ * Tokens spiegeln assets/style.css.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --zz-ink:        #0F1015;
+  --zz-ink-soft:   #1F222A;
+  --zz-ink-mute:   #353945;
+  --zz-ink-dim:    #5A5F6B;
+  --zz-paper:      #FAFAF6;
+  --zz-paper-warm: #F4F2EC;
+  --zz-snow:       #FFFFFF;
+  --zz-rule:       rgba(15, 16, 21, 0.18);
+  --zz-rule-soft:  rgba(15, 16, 21, 0.10);
+  --zz-mint:       #4CC1A0;
+  --zz-accent:     #0F1015;
+}
+
+/* ===== Toggle Button (Pill rechts unten) ===== */
+.zz-bot-toggle {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    height: 48px;
+    padding: 0 18px 0 14px;
+    border-radius: 999px;
+    border: 1px solid var(--zz-rule);
+    cursor: pointer;
+    background: var(--zz-ink);
+    color: var(--zz-snow);
+    box-shadow: 0 6px 24px rgba(15, 16, 21, 0.22);
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    z-index: 2147483646;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+}
+.zz-bot-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px rgba(15, 16, 21, 0.30);
+}
+.zz-bot-toggle.active {
+    background: var(--zz-snow);
+    color: var(--zz-ink);
+    border-color: var(--zz-rule);
+}
+.zz-bot-toggle__label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11.5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+/* ===== Chat Window ===== */
+.zz-bot-window {
+    position: fixed;
+    bottom: 84px;
+    right: 22px;
+    width: 410px;
+    height: 600px;
+    background: var(--zz-paper);
+    border: 1px solid var(--zz-rule);
+    border-radius: 4px;
+    box-shadow: 0 24px 60px rgba(15, 16, 21, 0.22), 0 4px 12px rgba(15, 16, 21, 0.08);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 2147483647;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    animation: zz-open 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.zz-bot-window.open { display: flex; }
+
+@keyframes zz-open {
+    from { opacity: 0; transform: translateY(14px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== Header (Editorial Mono-Eyebrow + Display-Title) ===== */
+.zz-bot-header {
+    padding: 18px 20px 16px;
+    background: var(--zz-snow);
+    color: var(--zz-ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--zz-rule);
+}
+.zz-bot-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.zz-bot-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--zz-ink);
+    color: var(--zz-snow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.zz-bot-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.zz-bot-eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--zz-ink-dim);
+}
+.zz-bot-title {
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.005em;
+    color: var(--zz-ink);
+}
+.zz-bot-close {
+    background: transparent;
+    border: 1px solid var(--zz-rule);
+    color: var(--zz-ink);
+    font-size: 18px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    transition: background 0.15s, border-color 0.15s;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.zz-bot-close:hover {
+    background: var(--zz-paper-warm);
+    border-color: var(--zz-ink);
+}
+
+/* ===== Messages ===== */
+.zz-bot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px 18px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    scroll-behavior: smooth;
+    background: var(--zz-paper);
+    hyphens: none;
+    text-align: left;
+}
+
+.zz-msg {
+    max-width: 86%;
+    padding: 11px 14px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    hyphens: none;
+    text-align: left;
+    animation: zz-msg-in 0.22s ease-out;
+    border-radius: 4px;
+}
+
+@keyframes zz-msg-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.zz-msg.bot {
+    background: var(--zz-snow);
+    color: var(--zz-ink);
+    align-self: flex-start;
+    border: 1px solid var(--zz-rule-soft);
+}
+.zz-msg.user {
+    background: var(--zz-ink);
+    color: var(--zz-snow);
+    align-self: flex-end;
+}
+.zz-msg a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 600;
+}
+.zz-msg.bot a { color: var(--zz-ink); }
+.zz-msg.user a { color: var(--zz-snow); }
+.zz-msg strong { font-weight: 700; }
+
+/* ===== Buttons (Hairline-Pills) ===== */
+.zz-bot-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 4px 16px 12px;
+    max-height: 180px;
+    overflow-y: auto;
+    background: var(--zz-paper);
+}
+.zz-bot-buttons button {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--zz-rule);
+    background: var(--zz-snow);
+    font-size: 12.5px;
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--zz-ink);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    hyphens: none;
+}
+.zz-bot-buttons button:hover {
+    background: var(--zz-ink);
+    color: var(--zz-snow);
+    border-color: var(--zz-ink);
+}
+
+/* ===== Input ===== */
+.zz-bot-input {
+    display: flex;
+    padding: 12px 14px;
+    border-top: 1px solid var(--zz-rule);
+    gap: 8px;
+    background: var(--zz-snow);
+}
+.zz-bot-input input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--zz-rule);
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    background: var(--zz-paper);
+    color: var(--zz-ink);
+}
+.zz-bot-input input::placeholder { color: var(--zz-ink-dim); }
+.zz-bot-input input:focus {
+    border-color: var(--zz-ink);
+    box-shadow: 0 0 0 3px rgba(15, 16, 21, 0.08);
+    background: var(--zz-snow);
+}
+.zz-bot-input button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--zz-ink);
+    border-radius: 4px;
+    background: var(--zz-ink);
+    color: var(--zz-snow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, transform 0.15s;
+    flex-shrink: 0;
+}
+.zz-bot-input button:hover {
+    background: var(--zz-ink-soft);
+    transform: translateY(-1px);
+}
+
+/* ===== Typing-Indicator ===== */
+.zz-typing {
+    display: flex;
+    gap: 4px;
+    padding: 11px 14px;
+    align-self: flex-start;
+    background: var(--zz-snow);
+    border-radius: 4px;
+    border: 1px solid var(--zz-rule-soft);
+    animation: zz-msg-in 0.22s ease-out;
+}
+.zz-typing span {
+    width: 6px;
+    height: 6px;
+    background: var(--zz-ink-dim);
+    border-radius: 50%;
+    animation: zz-bounce 1.3s infinite;
+}
+.zz-typing span:nth-child(2) { animation-delay: 0.13s; }
+.zz-typing span:nth-child(3) { animation-delay: 0.26s; }
+
+@keyframes zz-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+/* ===== Footer (Mono-Caps) ===== */
+.zz-bot-footer {
+    padding: 8px 16px 10px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--zz-ink-dim);
+    background: var(--zz-snow);
+    letter-spacing: 0.08em;
+    text-align: center;
+    border-top: 1px solid var(--zz-rule-soft);
+    hyphens: none;
+}
+
+/* ===== Scrollbar ===== */
+.zz-bot-messages::-webkit-scrollbar,
+.zz-bot-buttons::-webkit-scrollbar { width: 4px; }
+.zz-bot-messages::-webkit-scrollbar-track,
+.zz-bot-buttons::-webkit-scrollbar-track { background: transparent; }
+.zz-bot-messages::-webkit-scrollbar-thumb,
+.zz-bot-buttons::-webkit-scrollbar-thumb { background: var(--zz-rule); border-radius: 2px; }
+.zz-bot-messages::-webkit-scrollbar-thumb:hover,
+.zz-bot-buttons::-webkit-scrollbar-thumb:hover { background: var(--zz-ink-mute); }
+
+/* ===== Mobile ===== */
+@media (max-width: 480px) {
+    .zz-bot-window {
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+        border: none;
+    }
+    .zz-bot-toggle {
+        bottom: 16px;
+        right: 16px;
+    }
+    .zz-bot-toggle__label { display: none; }
+    .zz-bot-toggle { padding: 0 14px; }
+}

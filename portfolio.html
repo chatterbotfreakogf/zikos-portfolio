@@ -347,33 +347,20 @@
     </form>
   </dialog>
 
-  <!-- AI Advisor -->
-  <div class="advisor" id="advisor">
-    <button class="advisor__bubble" type="button" aria-expanded="false" aria-controls="advisor-panel" data-advisor-toggle>
-      <span class="advisor__pulse" aria-hidden="true"></span>
-      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-        <path d="M4 5h16v10H7l-3 3V5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-        <circle cx="9" cy="10" r="1" fill="currentColor"/>
-        <circle cx="13" cy="10" r="1" fill="currentColor"/>
-        <circle cx="17" cy="10" r="1" fill="currentColor"/>
-      </svg>
-      <span class="advisor__label">KI-Berater</span>
-    </button>
-    <div class="advisor__panel" id="advisor-panel" role="dialog" aria-modal="false" aria-labelledby="advisor-title" hidden>
-      <header class="advisor__head">
-        <h2 class="advisor__title" id="advisor-title">KI-Berater</h2>
-        <button class="advisor__close" type="button" data-advisor-toggle aria-label="Berater schließen">&times;</button>
-      </header>
-      <div class="advisor__body">
-        <p class="advisor__hint mono mono--dim">Skelett &middot; Modell folgt</p>
-        <p>Hier antwortet sp&auml;ter ein RAG-Modell auf Fragen zu meinen Projekten und meinem Profil.</p>
-      </div>
-      <form class="advisor__form" autocomplete="off" novalidate>
-        <input type="text" placeholder="Frage stellen &hellip;" disabled />
-        <button type="submit" disabled aria-label="Senden">&rarr;</button>
-      </form>
-    </div>
-  </div>
+  <!-- KI-Berater · Karriere-Chatbot (eigener Backend-Service unter chatbot/) -->
+  <link rel="stylesheet" href="chatbot/frontend/chatbot-widget.css?v=1" />
+  <script src="chatbot/frontend/chatbot-widget.js?v=1" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.ZikosBot) return;
+      var backend = (window.ZZ_BOT_BACKEND_URL || "http://localhost:8091");
+      window.ZikosBot.init({
+        backendUrl: backend,
+        title: "Karriere-Bot · Zikos",
+        cssUrl: "chatbot/frontend/chatbot-widget.css?v=1"
+      });
+    });
+  </script>
 
   <script src="assets/scene.js?v=2026-05-06-d" defer></script>
   <script src="assets/cover-builder.js?v=2026-05-06-f" defer></script>

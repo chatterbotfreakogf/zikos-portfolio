@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zikos · Karriere-Chatbot · Demo</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; hyphens: none; }
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: #A0A5B1;
+        color: #0F1015;
+        min-height: 100vh;
+        line-height: 1.6;
+    }
+    .container { max-width: 760px; margin: 0 auto; padding: 60px 24px; text-align: left; }
+    h1 { font-size: 32px; color: #0F1015; margin-bottom: 12px; font-weight: 700; }
+    p.lead { font-size: 17px; color: #1F222A; margin-bottom: 24px; }
+    .meta { font-size: 13px; color: #353945; font-family: 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.06em; }
+    .card {
+        background: #FAFAF6;
+        border: 1px solid rgba(15, 16, 21, 0.18);
+        border-radius: 4px;
+        padding: 22px;
+        margin-top: 28px;
+    }
+    .card h2 { font-size: 16px; margin-bottom: 10px; color: #0F1015; font-weight: 700; }
+    code {
+        background: #ECEEF1;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-size: 12.5px;
+        color: #0F1015;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    pre {
+        background: #0F1015;
+        color: #ECEEF1;
+        padding: 14px;
+        border-radius: 4px;
+        overflow-x: auto;
+        font-size: 12.5px;
+        margin-top: 10px;
+        line-height: 1.55;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .hint { color: #353945; font-weight: 600; font-size: 13px; margin-top: 22px; font-family: 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Zikos · <span style="color:#5A5F6B">Karriere-Chatbot</span></h1>
+    <p class="lead">Recruiter-Bot mit CV-, Stations- und Skill-Wissen — Hybrid Button-Flows + KI-Freitext, schlank und vollständig auf Zikos' Lebenslauf trainiert.</p>
+    <p class="meta">DOMAIN: PROFIL · STATIONEN · SKILLS · PROJEKTE · VERFÜGBARKEIT</p>
+
+    <div class="card">
+        <h2>Einbindung im Portfolio</h2>
+        <p>In <code>portfolio.html</code> kurz vor <code>&lt;/body&gt;</code>:</p>
+        <pre>&lt;script src="https://DEINE-DOMAIN/widget/chatbot-loader.js" async&gt;&lt;/script&gt;</pre>
+        <p style="margin-top:10px">Oder lokal über die statischen Frontend-Assets (siehe README).</p>
+    </div>
+
+    <p class="hint">Klick unten rechts auf das Chat-Symbol für die Live-Demo.</p>
+</div>
+
+<link rel="stylesheet" href="/widget/chatbot-widget.css">
+<script src="/widget/chatbot-widget.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        ZikosBot.init({
+            backendUrl: window.location.origin,
+            title: "Karriere-Bot · Zikos"
+        });
+    });
+</script>
+</body>
+</html>

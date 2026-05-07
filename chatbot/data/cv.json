@@ -1,0 +1,193 @@
+{
+  "profil": {
+    "name": "Zikos Zissis",
+    "geburtsjahr": 1999,
+    "standort": "Plochingen, Baden-Württemberg, Deutschland",
+    "verfuegbarkeit": "Ab sofort, 40h garantiert (Master läuft komplett remote/zeitflexibel)",
+    "selbstbezeichnung": "E-Commerce-Generalist mit Hands-on-Schwerpunkt — Sortimentssteuerung, Conversion-Optimierung, eigene Tools",
+    "anker": [
+      "2,5 Jahre operative Verantwortung für decathlon.de Fitness DE/AT + Nutrition",
+      "14.000+ SKUs",
+      "Hands-on Code (Liquid/HTML/CSS/JS) am Live-Shop",
+      "IT-Ausbildung + BWL-Bachelor + laufender Master Digital Business",
+      "100% Remote-erprobt seit 5+ Jahren"
+    ]
+  },
+
+  "kontakt": {
+    "mail": "zikos.zissis@outlook.com",
+    "telefon": "+49 174 9247044",
+    "whatsapp": "+49 174 9247044",
+    "ort": "Hermannstraße 31b, 73207 Plochingen",
+    "antwortzeit": "Antwort meist binnen 24h"
+  },
+
+  "stationen": [
+    {
+      "zeitraum": "12/2025 – 04/2026",
+      "firma": "athenum.xyz · VenturePoint LLC (Sheridan, WY · USA)",
+      "rolle": "Solution Architect · Macro Intelligence",
+      "modus": "Freelance, unentgeltlich, Remote",
+      "schwerpunkte": [
+        "System-Architektur",
+        "Daten-Pipeline (12 Quellen)",
+        "Frontend GPU-native Welt-Karte",
+        "75 Geo-Layer · 100K+ Datapoints"
+      ],
+      "kennzahlen": "75 Layer, 12 Quellen, 100K+ Datapoints"
+    },
+    {
+      "zeitraum": "04/2023 – 10/2025",
+      "firma": "Decathlon Deutschland SE & Co. KG",
+      "rolle": "Junior Online Category Manager · Fitness DE/AT & Nutrition",
+      "modus": "Festanstellung, 30h, 100% Remote",
+      "schwerpunkte": [
+        "Operative Steuerung Fitness-Range DE/AT in Abstimmung mit Sportleader",
+        "Strategische Steuerung von >14.000 SKUs",
+        "Sportnahrungs-Relaunch (neue Kategorie-Architektur, Mobile-First, UX-Redesign)",
+        "Hypothesengetriebene A/B-Tests an PDP, Funnel, Checkout",
+        "KPI-Monitoring (CR, AtC, AOV, NPS, ROAS) via GA4, Hotjar, Looker Studio",
+        "Technische SEO-Optimierung (Kategorien, Meta-Daten, Suchlogik)",
+        "Hands-on HTML/CSS auf decathlon.at",
+        "Briefing/Begleitung digitaler Kampagnen mit Marketing"
+      ],
+      "kennzahlen": "14.000+ SKUs, Millionen-Umsatzbereich",
+      "zeugnis": "Leistungsbewertung 'erfüllt seine Aufgaben stets zu unserer vollen Zufriedenheit' (Note gut), Verhalten 'stets einwandfrei', Beendigung im besten beiderseitigen Einvernehmen per Aufhebungsvertrag"
+    },
+    {
+      "zeitraum": "10/2022 – 03/2023",
+      "firma": "Decathlon Deutschland SE & Co. KG",
+      "rolle": "Praktikum · Online Category Management",
+      "modus": "Praktikum, 6 Mon., Plochingen",
+      "schwerpunkte": [
+        "Aufbau und Pflege von Kategorien und Produktseiten",
+        "Erstellung von Kaufberatern",
+        "Bearbeitung von Kundenanfragen und -feedback",
+        "Bearbeitung der internen Suche und SEO",
+        "Vorbereitung Sportnahrungs-Relaunch"
+      ],
+      "kennzahlen": "Nahtloser Übergang in die Festanstellung"
+    },
+    {
+      "zeitraum": "02/2018 – 09/2022",
+      "firma": "Fischer Möbel GmbH (D2C-Premium)",
+      "rolle": "Digital Content Assistant · E-Commerce",
+      "modus": "Aushilfe, 4,5 Jahre, Schlierbach",
+      "schwerpunkte": [
+        "Eigenverantwortliche Pflege und QA von Produktdaten im Web-Backend",
+        "SEO-Keyword-Recherche",
+        "Erstellung detaillierter technischer Produktdokumentationen und Anleitungen",
+        "Aufbau strukturierter Daten-Workflows",
+        "Technische Wartung und kontinuierliche Aktualisierung des Web-Auftritts"
+      ],
+      "kennzahlen": "4,5 Jahre durchgehende Mitarbeit",
+      "zeugnis": "Leistungsbewertung 'erfüllt seine Aufgaben stets und in jeder Hinsicht zu unserer vollsten Zufriedenheit' (Note sehr gut), Verhalten 'jederzeit einwandfrei'"
+    }
+  ],
+
+  "bildung": [
+    {
+      "zeitraum": "02/2025 – 02/2027",
+      "institution": "Hochschule Sigmaringen",
+      "abschluss": "Master of Science · Digital Business & Management",
+      "modus": "Remote, individuelle Teilzeit, Abende/Wochenenden",
+      "status": "laufend"
+    },
+    {
+      "zeitraum": "02/2020 – 10/2024",
+      "institution": "Hochschule für Wirtschaft und Umwelt Nürtingen-Geislingen (HfWU)",
+      "abschluss": "Bachelor of Science · Betriebswirtschaft (Schwerpunkt Digital Business & Management)",
+      "modus": "210 ECTS · 7 Semester Regelstudiendauer",
+      "status": "abgeschlossen 27.09.2024"
+    },
+    {
+      "zeitraum": "10/2017 – 02/2020",
+      "institution": "Max-Eyth-Schule, Kirchheim unter Teck",
+      "abschluss": "Staatlich geprüfter Assistent für Informations- und Kommunikationstechnik (inkl. Fachhochschulreife)",
+      "modus": "Berufliche Erstausbildung",
+      "status": "abgeschlossen"
+    }
+  ],
+
+  "skills": {
+    "Analytics & KPI": ["Google Analytics 4", "Google Tag Manager", "Hotjar", "Microsoft Clarity", "Looker Studio", "CR/AtC/AOV/NPS/ROAS"],
+    "Conversion & UX": ["A/B-Testing", "PDP-Optimierung", "Mobile-First", "Bundle & Upsell", "Guided Selling", "Funnel-Analyse"],
+    "Shopify & Theme-Code": ["Shopify Plus", "Liquid", "HTML/CSS/JS", "Theme-Sections", "Custom Apps", "PageSpeed", "Markets"],
+    "Plattformen & ERP": ["JTL WaWi", "Xentral ERP", "Amazon Seller Central", "PIM-Systeme", "decathlon.de Marketplace Ops"],
+    "CRM & E-Mail": ["Klaviyo", "E-Mail-Flows", "Warenkorbabbrecher-Kampagnen", "Marketing-Automation"],
+    "KI & Automatisierung": ["Claude Code (CLI/IDE)", "ChatGPT", "n8n", "Make", "Zapier", "Cursor IDE", "Anthropic API mit Prompt-Caching"],
+    "Programmierung & Daten": ["Python", "API-Integrationen", "Webhooks", "SQL", "PowerShell", "Excel (Sverweise/Pivot/komplexe Massendaten)"],
+    "Workflows & Methodik": ["Jira", "Confluence", "Asana", "Agile/Scrum"],
+    "Design & Content": ["Figma", "Canva"],
+    "Compliance": ["DSGVO im Online-Tracking — Grundverständnis"]
+  },
+
+  "kompetenz_levels": [
+    {"kompetenz": "E-Commerce & Conversion-Optimierung", "level": "Experte"},
+    {"kompetenz": "Shopify Shop-Management & Benchmarking", "level": "Fortgeschritten"},
+    {"kompetenz": "Datenanalyse & A/B-Testing", "level": "Fortgeschritten"},
+    {"kompetenz": "Projektmanagement & Stakeholder-Koordination", "level": "Fortgeschritten"},
+    {"kompetenz": "KI-Workflow-Entwicklung (Claude / GPT)", "level": "Fortgeschritten"},
+    {"kompetenz": "Systemintegration (Shopify · JTL · Klaviyo)", "level": "Fortgeschritten"},
+    {"kompetenz": "Prozessautomatisierung (Make · n8n · APIs)", "level": "Fortgeschritten"}
+  ],
+
+  "projekte": [
+    {
+      "name": "Athenum · Macro Intelligence",
+      "kurz": "75-Layer Geo-Karte für athenum.xyz, GPU-nativ, 12 Datenquellen — Konzept, Pipeline und Frontend selbst gebaut.",
+      "stack": "Next.js 15, Cloudflare Workers, Hetzner, Supabase, Anthropic API"
+    },
+    {
+      "name": "Smart-Cart Drawer & Admin",
+      "kurz": "Shopify-fertiger Cart-Drawer mit Bundle-Logik, Cross-Sell, Admin-Konfigurator und Tutorial-Modus. Kundensicht ↔ Admin per Toggle.",
+      "stack": "HTML/CSS/JS, Shopify-Ready"
+    },
+    {
+      "name": "Lynis Nailshop Chatbot",
+      "kurz": "Live-Beratungs-Bot für alpurial-test.myshopify.com — FastAPI + Featherless KI, 29 Produkte, Cart-Add über Storefront-Ajax.",
+      "stack": "FastAPI, Qwen 2.5-72B, Shopify Script-Tag-API, Render"
+    },
+    {
+      "name": "Athenum X Content Generator",
+      "kurz": "Lokales macOS-System: screenshottet Charts → generiert Persona-Tweets via Claude → Posting-Workflow auf X.",
+      "stack": "Python 3.11, FastAPI, Playwright, Anthropic SDK, Tweepy, React+Vite"
+    },
+    {
+      "name": "Derivescope (Athenum-Affiliate-Site)",
+      "kurz": "Vollautomatisierte Content-Pipeline (n8n + Firecrawl + Claude) für SEO-/Affiliate-getriebene Krypto-Insights-Seite.",
+      "stack": "Next.js 15, n8n, Cloudflare, Anthropic Prompt-Caching"
+    }
+  ],
+
+  "sprachen": [
+    {"sprache": "Deutsch", "niveau": "Muttersprachlich (5/5)"},
+    {"sprache": "Griechisch", "niveau": "Muttersprachlich (5/5)"},
+    {"sprache": "Englisch", "niveau": "Verhandlungssicher (4/5)"}
+  ],
+
+  "interessen": [
+    "Krafttraining & Calisthenics",
+    "E-Commerce & Tech-Trends",
+    "KI-Automatisierung",
+    "Reisen & interkulturelle Kommunikation"
+  ],
+
+  "arbeitsweise": [
+    "Ergebnis vor Prozess",
+    "Ownership ohne Micromanagement",
+    "Hands-on + strategisch",
+    "Datengetrieben & analytisch",
+    "Engpässe finden, Systeme bauen, Ergebnisse liefern",
+    "Remote-erprobt seit 5+ Jahren"
+  ],
+
+  "zeugnis_zitate": [
+    {"quelle": "Decathlon-Arbeitszeugnis (31.10.2025)", "zitat": "sehr stark ausgebildete Kreativität und Problemlösungsfähigkeit"},
+    {"quelle": "Decathlon-Arbeitszeugnis", "zitat": "umsichtig, gewissenhaft und präzise"},
+    {"quelle": "Decathlon-Arbeitszeugnis", "zitat": "wusste alle Beteiligten mit Teamgeist und Begeisterungsfähigkeit zu vollem Einsatz und guten Leistungen zu motivieren"},
+    {"quelle": "Fischer-Möbel-Arbeitszeugnis (28.09.2022)", "zitat": "äußerst tüchtiger Mitarbeiter, seine Arbeitsbefähigung war stets in jeder Hinsicht sehr gut"},
+    {"quelle": "Fischer-Möbel-Arbeitszeugnis", "zitat": "fundiertes, vielseitiges und aktuelles Fachwissen"},
+    {"quelle": "Fischer-Möbel-Arbeitszeugnis", "zitat": "unter hohem Zeit- und Erfolgsdruck den Überblick und einen kühlen Kopf"}
+  ]
+}

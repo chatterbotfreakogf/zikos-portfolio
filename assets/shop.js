@@ -89,14 +89,10 @@
       }
       if (action === "advisor-demo") {
         e.preventDefault();
-        toggleAdvisor(true);
-        const input = advisorPanel?.querySelector("input");
-        if (input) {
-          input.removeAttribute("disabled");
-          input.value = "Was hat Zikos bei Decathlon gemacht?";
-          input.focus();
-          // Cursor ans Ende
-          const v = input.value; input.value = ""; input.value = v;
+        if (window.ZikosBot) {
+          window.ZikosBot.ask("Was hat Zikos bei Decathlon gemacht?");
+        } else {
+          toggleAdvisor(true);
         }
         return;
       }
