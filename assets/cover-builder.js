@@ -35,7 +35,7 @@
     const ls = len > 10 ? 7  : len > 8 ? 9  : 11;
 
     return `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${wm} — ${sub}" class="zz-cover">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" text-rendering="optimizeLegibility" role="img" aria-label="${wm} — ${sub}" class="zz-cover">
   <defs>
     <linearGradient id="${paperId}" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#F2EEE3"/>
@@ -52,21 +52,21 @@
 
   <text x="400" y="248" text-anchor="middle"
         font-family="Inter, system-ui, sans-serif"
-        font-size="${fs}" font-weight="300" letter-spacing="${ls}"
-        fill="#0F1015">${wm}</text>
+        font-size="${fs}" font-weight="400" letter-spacing="${ls}"
+        fill="#08090C">${wm}</text>
 
-  <line x1="350" y1="282" x2="450" y2="282" stroke="#0F1015" stroke-width="1.4"/>
+  <line x1="350" y1="282" x2="450" y2="282" stroke="#08090C" stroke-width="1.6"/>
 
   <text x="400" y="326" text-anchor="middle"
         font-family="Inter, system-ui, sans-serif"
-        font-size="27" font-weight="500" letter-spacing="-0.2"
-        fill="#1F222A">${sub}</text>
+        font-size="26" font-weight="600" letter-spacing="-0.2"
+        fill="#15171F">${sub}</text>
 
-  <line x1="56" y1="430" x2="744" y2="430" stroke="rgba(15,16,21,0.18)" stroke-width="1"/>
+  <line x1="56" y1="430" x2="744" y2="430" stroke="rgba(15,16,21,0.22)" stroke-width="1"/>
   <text x="400" y="463" text-anchor="middle"
         font-family="JetBrains Mono, ui-monospace, monospace"
-        font-size="16" letter-spacing="2.2" font-weight="500"
-        fill="#0F1015">${st}</text>
+        font-size="15" letter-spacing="1.8" font-weight="600"
+        fill="#08090C">${st}</text>
 </svg>`.trim();
   }
 
