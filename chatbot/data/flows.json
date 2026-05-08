@@ -34,7 +34,7 @@
   },
 
   "station_athenum": {
-    "message": "**athenum.xyz · VenturePoint LLC** — Solution Architect, Macro Intelligence (12/2025 – 04/2026, Freelance, unentgeltlich, Remote).\n\nKonzept, Daten-Pipeline und Frontend für die Macro-Intelligence-Karte habe ich eigenständig gebaut:\n- 75 Geo-Layer aus 12 offenen Quellen\n- 100K+ Datapoints\n- GPU-native Welt-Karte\n- Daten-Pipeline und Frontend selbst implementiert\n\nProjektvertrag, eigenständige Verantwortung von Konzept bis Auslieferung.",
+    "message": "**athenum.xyz · VenturePoint LLC** — Solution Architect, Macro Intelligence (12/2025 – 04/2026, Freelance, unentgeltlich, Remote).\n\nKonzept, Daten-Pipeline und Frontend für die Macro-Intelligence-Karte habe ich eigenständig gebaut:\n- 75 Geo-Layer aus 12 offenen Quellen\n- 100K+ Datapoints\n- GPU-native Welt-Karte\n- Daten-Pipeline und Frontend selbst implementiert\n\nProjektvertrag, eigenständige Verantwortung von Konzept bis Auslieferung.\n\n**Warum unentgeltlich?** Das war eine bewusste Entscheidung. Das Projekt war für mich eine Praxis-Sandbox, um meine Skills im realen Einsatz zu testen, KI-gestützt zu entwickeln, dabei zu lernen — und gleichzeitig etwas Sinnvolles auszuliefern. Die Lernkurve und die produktive Reichweite waren mir mehr wert als ein Honorar.",
     "buttons": [
       {"label": "Andere Station", "action": "berufserfahrung"}
     ]
