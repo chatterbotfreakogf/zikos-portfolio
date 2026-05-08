@@ -15,7 +15,7 @@
   },
 
   "profil": {
-    "message": "Kurz zu mir: ich bin **E-Commerce-Generalist** mit Hands-on-Schwerpunkt — Sortimentssteuerung, Conversion-Optimierung und eigene Tools.\n\n**Meine Anker:**\n- 2,5 Jahre operative Verantwortung für decathlon.de Fitness DE/AT + Nutrition\n- 14.000+ SKUs unter Steuerung\n- Hands-on Code (Liquid/HTML/CSS/JS) am Live-Shop\n- IT-Ausbildung + BWL-Bachelor + laufender Master Digital Business\n- 100 % Remote-erprobt seit über 5 Jahren\n\nStandort: Plochingen, BW. Verfügbar ab sofort, 40 h garantiert.",
+    "message": "Kurz zu mir: ich bin **E-Commerce-Generalist** mit Hands-on-Schwerpunkt — Sortimentssteuerung, Conversion-Optimierung und eigene Tools.\n\n**Meine Anker:**\n- 2,5 Jahre operative Verantwortung für decathlon.de Fitness DE/AT + Nutrition\n- 14.000+ SKUs unter Steuerung (Eigen- und Fremdmarken)\n- Hands-on Code (Liquid/HTML/CSS/JS) am Live-Shop\n- IT-Ausbildung + BWL-Bachelor + laufender Master Digital Business\n- Remote-erfahren seit 2018, davon **2,5 Jahre 100 % Remote** bei Decathlon-Festanstellung\n\nStandort: Plochingen, BW. Verfügbar ab sofort, 40 h garantiert.",
     "buttons": [
       {"label": "Mehr zu Decathlon", "action": "station_decathlon"},
       {"label": "Skills im Detail", "action": "skills"},
@@ -41,7 +41,7 @@
   },
 
   "station_decathlon": {
-    "message": "**Decathlon Deutschland SE & Co. KG** — Junior Online Category Manager · Fitness DE/AT & Nutrition (04/2023 – 10/2025, 30 h, 100 % Remote).\n\n**Meine Verantwortung:**\n- Operative Steuerung der Fitness-Range DE/AT in enger Abstimmung mit dem Sportleader\n- Strategische Steuerung von >14.000 SKUs (Millionen-Umsatz)\n- Sportnahrungs-Relaunch: neue Kategorie-Architektur, Mobile-First, UX-Redesign\n- Hypothesengetriebene A/B-Tests an PDP, Funnel und Checkout\n- KPI-Monitoring (CR, AtC, AOV, NPS, ROAS) via GA4, Hotjar, Looker Studio\n- Hands-on HTML/CSS auf decathlon.at\n- Briefing/Begleitung digitaler Kampagnen mit Marketing\n\n**Mein Arbeitszeugnis:** Leistungsbewertung „erfüllt seine Aufgaben stets zu unserer vollen Zufriedenheit“ (Note **gut**), Verhalten „stets einwandfrei“. Beendigung im besten beiderseitigen Einvernehmen per Aufhebungsvertrag.",
+    "message": "**Decathlon Deutschland SE & Co. KG** — Junior Online Category Manager · Fitness DE/AT & Nutrition (04/2023 – 10/2025, 30 h, 100 % Remote).\n\n**Meine Verantwortung:**\n- Operative Steuerung der Fitness-Range DE/AT in enger Abstimmung mit dem Sportleader\n- Strategische Steuerung von >14.000 SKUs — **Eigenmarken** (z. B. Domyos, Corength) **und Fremdmarken** über die Marketplace-Drittanbieter\n- Sportnahrungs-Relaunch: neue Kategorie-Architektur, Mobile-First, UX-Redesign\n- Hypothesengetriebene A/B-Tests an PDP, Funnel und Checkout\n- KPI-Monitoring (CR, AtC, AOV, NPS, ROAS) via GA4, Hotjar, Looker Studio\n- Hands-on HTML/CSS auf decathlon.at, dabei ladezeitschonende Einbindung von 3rd-Party-Skripten\n- **Klaviyo**-Trigger-Mails aufgesetzt (u. a. Warenkorbabbrecher, Post-Purchase)\n- Letzte Freigabe (DE/EN-Validierung) der internationalen Produktdaten vor jedem Go-Live\n- Briefing/Begleitung digitaler Kampagnen mit Marketing\n\n**Mein Arbeitszeugnis:** Leistungsbewertung „erfüllt seine Aufgaben stets zu unserer vollen Zufriedenheit“ (Note **gut**), Verhalten „stets einwandfrei“. Beendigung im besten beiderseitigen Einvernehmen per Aufhebungsvertrag.",
     "buttons": [
       {"label": "Skills aus dieser Rolle", "action": "skills"},
       {"label": "Andere Station", "action": "berufserfahrung"}
@@ -49,14 +49,14 @@
   },
 
   "station_decathlon_prakt": {
-    "message": "**Decathlon Deutschland SE & Co. KG** — Praktikum Online Category Management (10/2022 – 03/2023, 6 Monate, Plochingen).\n\nLaut Praktikantenzeugnis war ich verantwortlich für:\n- Aufbau und Pflege von Kategorien und Produktseiten\n- Erstellung von Kaufberatern\n- Bearbeitung von Kundenanfragen und -feedback\n- Bearbeitung der internen Suche und SEO\n- Vorbereitung des Sportnahrungs-Relaunchs\n\n**Übergang:** Direkter, nahtloser Wechsel in die Festanstellung als Junior Online Category Manager.",
+    "message": "**Decathlon Deutschland SE & Co. KG** — Praktikum Online Category Management (10/2022 – 03/2023, 6 Monate, **37,5 h Vollzeit**, **4 von 5 Tagen Remote**, 1 Tag Plochingen).\n\nLaut Praktikantenzeugnis war ich verantwortlich für:\n- Aufbau und Pflege von Kategorien und Produktseiten\n- Erstellung von Kaufberatern\n- Bearbeitung von Kundenanfragen und -feedback\n- Bearbeitung der internen Suche und SEO\n- Vorbereitung des Sportnahrungs-Relaunchs\n\n**Übergang:** Direkter, nahtloser Wechsel in die Festanstellung als Junior Online Category Manager.",
     "buttons": [
       {"label": "Andere Station", "action": "berufserfahrung"}
     ]
   },
 
   "station_fischer": {
-    "message": "**Fischer Möbel GmbH (D2C-Premium)** — Digital Content Assistant · E-Commerce (02/2018 – 09/2022, Aushilfe, 4,5 Jahre, Schlierbach).\n\n**Meine Aufgaben:**\n- Eigenverantwortliche Pflege und QA von Produktdaten im Web-Backend\n- SEO-Keyword-Recherche\n- Erstellung detaillierter technischer Produktdokumentationen und Anleitungen\n- Aufbau strukturierter Daten-Workflows\n- Technische Wartung und Aktualisierung des Web-Auftritts\n\n**Mein Arbeitszeugnis:** Leistung „erfüllt seine Aufgaben stets und in jeder Hinsicht zu unserer vollsten Zufriedenheit“ (Note **sehr gut**), Verhalten „jederzeit einwandfrei“. Beendigung auf eigenen Wunsch (Studienstart).",
+    "message": "**Fischer Möbel GmbH** — Premium-Outdoor-Möbel (D2C + B2B/Fachhandel) · Digital Content Assistant · E-Commerce (02/2018 – 09/2022, Aushilfe, 4,5 Jahre, **ca. 50 % Remote**, Schlierbach).\n\n**Meine Aufgaben:**\n- Eigenverantwortliche Pflege und QA von Produktdaten im Web-Backend\n- SEO-Keyword-Recherche\n- Erstellung detaillierter technischer Produktdokumentationen und Anleitungen\n- Aufbau strukturierter Daten-Workflows\n- Technische Wartung und Aktualisierung des Web-Auftritts\n\n**Mein Arbeitszeugnis:** Leistung „erfüllt seine Aufgaben stets und in jeder Hinsicht zu unserer vollsten Zufriedenheit“ (Note **sehr gut**), Verhalten „jederzeit einwandfrei“. Beendigung auf eigenen Wunsch (Studienstart).",
     "buttons": [
       {"label": "Andere Station", "action": "berufserfahrung"}
     ]
@@ -87,22 +87,22 @@
   },
 
   "skills_shopify": {
-    "message": "**Shopify & Theme-Code:**\n- Shopify Plus (Storefront + Admin + Markets)\n- Liquid (Theme-Sections, Custom Apps)\n- HTML/CSS/JavaScript (Hands-on am Live-Shop)\n- PageSpeed-Optimierung\n- Custom Apps und Theme-Erweiterungen\n\nIn meinen eigenen Projekten zusätzlich: Shopify Script-Tag-API, Storefront-Ajax (`/cart/add.js`), Section-Replace, Cart-Events.",
+    "message": "**Shopify & Theme-Code:**\n- Shopify Plus (Storefront + Admin + Markets)\n- Liquid (Theme-Sections, Custom Apps)\n- HTML/CSS/JavaScript — am Live-Shop bei Decathlon und in einem privaten Dev-Shop\n- **PageSpeed-Optimierung:** ladezeitschonende Einbindung von 3rd-Party-Skripten und eigenen Tools (Lazy-Loading, conditional Script-Loading, Bild-Optimierung, Above-the-Fold-Priorisierung) — auf decathlon.at und im privaten Dev-Shop angewendet\n- **Custom Apps und Theme-Erweiterungen** — im privaten Dev-Shop von Konzept bis Deploy gebaut. Der Shop ist nicht öffentlich, eingebundene Tools zeige ich gerne per Videocall.\n\nIn meinen eigenen Projekten zusätzlich: Shopify Script-Tag-API, Storefront-Ajax (`/cart/add.js`), Section-Replace, Cart-Events.",
     "buttons": [{"label": "Andere Skill-Kategorie", "action": "skills"}]
   },
 
   "skills_ki": {
-    "message": "**KI & Automatisierung:**\n- **Claude Code** (CLI / VS Code / Cursor IDE) — Tagesgeschäft\n- **Anthropic API** mit Prompt-Caching\n- **n8n** (Workflow-Automation, mehrere Produktiv-Pipelines)\n- **Make** und **Zapier**\n- **ChatGPT** für Recherche und Drafting\n- Konkrete Anwendung: KI-Beratungs-Bots (siehe meine Projekte) und SEO-/Content-Pipelines",
+    "message": "**KI & Automatisierung:**\n- **Claude Code** (CLI / VS Code / Cursor IDE) — Tagesgeschäft\n- **Anthropic API mit Prompt-Caching** — eingesetzt im Athenum-Macro-Intelligence-Projekt\n- **Google Gemini** (über OpenAI-kompatible Schnittstelle) — eingesetzt in genau diesem Karriere-Bot (Gemini Flash Lite)\n- **n8n** (Workflow-Automation, mehrere Produktiv-Pipelines)\n- **Make** und **Zapier**\n- **ChatGPT** für Recherche und Drafting\n- Konkrete Anwendung: KI-Beratungs-Bots (siehe meine Projekte) und SEO-/Content-Pipelines",
     "buttons": [{"label": "Andere Skill-Kategorie", "action": "skills"}]
   },
 
   "skills_plattformen": {
-    "message": "**E-Commerce-Plattformen & ERP:**\n- **JTL (WaWi)**\n- **Xentral (ERP)**\n- **Amazon Seller Central**\n- **decathlon.de Marketplace Operations**\n- **PIM-Systeme** (Pflege, QA, Schnittstellen)\n- CMS-Backends (verschiedene)",
+    "message": "**E-Commerce-Plattformen & ERP:**\n- **decathlon.de Marketplace** — operative Praxis: Eigen- und Fremdmarken (Marketplace-Drittanbieter) im Sortiment Fitness DE/AT verantwortet\n- **PIM-Systeme** (Pflege, QA, Schnittstellen) — aus beiden Decathlon-Phasen und aus Fischer Möbel\n- **JTL (WaWi)**, **Xentral (ERP)**, **Amazon Seller Central** — privat angeeignet und in eigenen Test-Setups konfiguriert (Artikelstamm, Schnittstellen, Bestandsabgleich). Ich kann mich in produktive Setups schnell einarbeiten.\n- CMS-Backends (verschiedene)",
     "buttons": [{"label": "Andere Skill-Kategorie", "action": "skills"}]
   },
 
   "skills_crm": {
-    "message": "**CRM & E-Mail-Marketing:**\n- **Klaviyo** (Hot-Pill in mehreren CV-Varianten)\n- E-Mail-Flows: Welcome, Warenkorbabbrecher, Post-Purchase\n- Marketing-Automation und Segmentierung",
+    "message": "**CRM & E-Mail-Marketing:**\n- **Klaviyo** — bei Decathlon eingesetzt für Trigger-Mails (u. a. Warenkorbabbrecher, Post-Purchase) und in eigenen Test-Shops von Grund auf aufgesetzt (Account, Flows, Segmentierung)\n- E-Mail-Flows: Welcome, Warenkorbabbrecher, Post-Purchase\n- Marketing-Automation und Segmentierung",
     "buttons": [{"label": "Andere Skill-Kategorie", "action": "skills"}]
   },
 
@@ -126,7 +126,7 @@
   },
 
   "projekt_athenum": {
-    "message": "**Athenum · Macro Intelligence** — 75-Layer Geo-Karte für athenum.xyz, GPU-nativ, 12 Datenquellen.\n\nKonzept, Daten-Pipeline und Frontend habe ich selbst gebaut. Stack: Next.js 15, Vanilla-Frontend, Anthropic API mit Prompt-Caching.\n\nGleichzeitig meine aktuelle Freelance-Station (12/2025–04/2026, unentgeltlich).",
+    "message": "**Athenum · Macro Intelligence** — 75-Layer Geo-Karte für athenum.xyz, GPU-nativ, 12 Datenquellen.\n\nKonzept, Daten-Pipeline und Frontend habe ich selbst gebaut. Stack: **Next.js 15**, Cloudflare Workers, Hetzner CAX11, Caddy, Supabase, **Anthropic API mit Prompt-Caching**.\n\nGleichzeitig meine aktuelle Freelance-Station (12/2025–04/2026, unentgeltlich).",
     "buttons": [{"label": "Andere Arbeitsprobe", "action": "projekte"}]
   },
 
@@ -136,7 +136,7 @@
   },
 
   "projekt_chatbot": {
-    "message": "**KI-Berater · Karriere-Bot** — der Bot, mit dem du gerade chattest. Eigenentwicklung von Konzept bis Deploy.\n\n**Was ich selbst gebaut habe:**\n- Frontend-Widget (Vanilla JS, lazy-loaded CSS, Cool-Grey/Paper-Off-White-Branding)\n- Backend (FastAPI, REST + WebSocket, Disk-Session-Store)\n- LLM-Layer mit Keyword-Fallback (offline-fähig, falls API down)\n- Knowledge-Layer in drei sauber getrennten Schichten: `cv.json` (Stammdaten), `flows.json` (Button-Pfade), `system_prompt.txt` (Persona-Regeln)\n- Mascot-Integration mit Walk-In, Sprechblase und Click-to-Open\n\n**Stack:** Python 3.11 · FastAPI · OpenAI-kompatible LLM-API · Vanilla HTML/CSS/JS · Render-Deployment mit Self-Ping.",
+    "message": "**KI-Berater · Karriere-Bot** — der Bot, mit dem du gerade chattest. Eigenentwicklung von Konzept bis Deploy.\n\n**Was ich selbst gebaut habe:**\n- Frontend-Widget (Vanilla JS, lazy-loaded CSS, Cool-Grey/Paper-Off-White-Branding)\n- Backend (FastAPI, REST + WebSocket, Disk-Session-Store)\n- LLM-Layer mit Keyword-Fallback (offline-fähig, falls API down)\n- Knowledge-Layer in drei sauber getrennten Schichten: `cv.json` (Stammdaten), `flows.json` (Button-Pfade), `system_prompt.txt` (Persona-Regeln)\n- Mascot-Integration mit Walk-In, Sprechblase und Click-to-Open\n\n**Stack:** Python 3.11 · FastAPI · **Google Gemini Flash Lite** (über OpenAI-kompatible Schnittstelle) · Vanilla HTML/CSS/JS · Render-Deployment mit Self-Ping.",
     "buttons": [{"label": "Andere Arbeitsprobe", "action": "projekte"}]
   },
 
@@ -148,14 +148,14 @@
   },
 
   "verfuegbarkeit": {
-    "message": "**Meine Verfügbarkeit:** Ab sofort.\n\n**Stundenumfang:** Volle 40-Stunden-Verfügbarkeit für den Job ist garantiert. Mein Master Digital Business läuft komplett remote und zeitflexibel außerhalb der Kernarbeitszeiten (Abende/Wochenenden) — kein Konflikt mit einem Vollzeitjob.\n\n**Modus:** 100 % Remote-erprobt seit über 5 Jahren (Decathlon war 100 % Remote).\n\n**Standort:** Plochingen, Baden-Württemberg. Reise-/Onsite-Anteile nach Absprache möglich.",
+    "message": "**Meine Verfügbarkeit:** Ab sofort.\n\n**Stundenumfang:** Volle 40-Stunden-Verfügbarkeit für den Job ist garantiert. Mein Master Digital Business läuft komplett remote und zeitflexibel außerhalb der Kernarbeitszeiten (Abende/Wochenenden) — kein Konflikt mit einem Vollzeitjob.\n\n**Modus:** Remote-erfahren seit 2018 — davon **2,5 Jahre 100 % Remote** in der Decathlon-Festanstellung, 4 von 5 Tagen Remote im Praktikum, ca. 50 % Remote bei Fischer Möbel.\n\n**Standort:** Plochingen, Baden-Württemberg. Reise-/Onsite-Anteile nach Absprache möglich.",
     "buttons": [
       {"label": "Direkter Kontakt", "action": "kontakt"}
     ]
   },
 
   "sprachen": {
-    "message": "**Meine Sprachen:**\n- **Deutsch** — Muttersprachlich (5/5)\n- **Griechisch** — Muttersprachlich (5/5)\n- **Englisch** — Verhandlungssicher (4/5)\n\nPraktische Anwendung: Bei Decathlon habe ich internationale Produktdaten (EN/DE) für globale Markt-Standards validiert.",
+    "message": "**Meine Sprachen:**\n- **Deutsch** — Muttersprachlich (5/5)\n- **Griechisch** — Muttersprachlich (5/5)\n- **Englisch** — Verhandlungssicher (4/5)\n\nPraktische Anwendung: Bei Decathlon hatte ich die letzte Freigabe (DE/EN-Validierung) der internationalen Produktdaten vor jedem Go-Live.",
     "buttons": [
       {"label": "Andere Frage", "action": "main_menu"}
     ]

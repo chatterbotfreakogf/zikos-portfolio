@@ -7,10 +7,10 @@
     "selbstbezeichnung": "E-Commerce-Generalist mit Hands-on-Schwerpunkt — Sortimentssteuerung, Conversion-Optimierung, eigene Tools",
     "anker": [
       "2,5 Jahre operative Verantwortung für decathlon.de Fitness DE/AT + Nutrition",
-      "14.000+ SKUs",
+      "14.000+ SKUs (Eigen- und Fremdmarken)",
       "Hands-on Code (Liquid/HTML/CSS/JS) am Live-Shop",
       "IT-Ausbildung + BWL-Bachelor + laufender Master Digital Business",
-      "100% Remote-erprobt seit 5+ Jahren"
+      "Remote-erfahren seit 2018: 100 % bei Decathlon-Festanstellung (2,5 Jahre), 4/5 Tage im Praktikum, 50 % bei Fischer Möbel"
     ]
   },
 
@@ -43,12 +43,14 @@
       "modus": "Festanstellung, 30h, 100% Remote",
       "schwerpunkte": [
         "Operative Steuerung Fitness-Range DE/AT in Abstimmung mit Sportleader",
-        "Strategische Steuerung von >14.000 SKUs",
+        "Strategische Steuerung von >14.000 SKUs (Eigenmarken Domyos/Corength + Fremdmarken über Marketplace-Drittanbieter)",
         "Sportnahrungs-Relaunch (neue Kategorie-Architektur, Mobile-First, UX-Redesign)",
         "Hypothesengetriebene A/B-Tests an PDP, Funnel, Checkout",
         "KPI-Monitoring (CR, AtC, AOV, NPS, ROAS) via GA4, Hotjar, Looker Studio",
         "Technische SEO-Optimierung (Kategorien, Meta-Daten, Suchlogik)",
-        "Hands-on HTML/CSS auf decathlon.at",
+        "Hands-on HTML/CSS auf decathlon.at, ladezeitschonende Einbindung von 3rd-Party-Skripten",
+        "Klaviyo-Trigger-Mails aufgesetzt (u. a. Warenkorbabbrecher, Post-Purchase)",
+        "Letzte Freigabe (DE/EN-Validierung) der internationalen Produktdaten vor Go-Live",
         "Briefing/Begleitung digitaler Kampagnen mit Marketing"
       ],
       "kennzahlen": "14.000+ SKUs, Millionen-Umsatzbereich",
@@ -58,7 +60,7 @@
       "zeitraum": "10/2022 – 03/2023",
       "firma": "Decathlon Deutschland SE & Co. KG",
       "rolle": "Praktikum · Online Category Management",
-      "modus": "Praktikum, 6 Mon., Plochingen",
+      "modus": "Praktikum, 6 Mon., 37,5h Vollzeit, 4 von 5 Tagen Remote (1 Tag Plochingen)",
       "schwerpunkte": [
         "Aufbau und Pflege von Kategorien und Produktseiten",
         "Erstellung von Kaufberatern",
@@ -70,9 +72,9 @@
     },
     {
       "zeitraum": "02/2018 – 09/2022",
-      "firma": "Fischer Möbel GmbH (D2C-Premium)",
+      "firma": "Fischer Möbel GmbH (Premium-Outdoor-Möbel · D2C + B2B/Fachhandel)",
       "rolle": "Digital Content Assistant · E-Commerce",
-      "modus": "Aushilfe, 4,5 Jahre, Schlierbach",
+      "modus": "Aushilfe, 4,5 Jahre, ca. 50 % Remote (Schlierbach)",
       "schwerpunkte": [
         "Eigenverantwortliche Pflege und QA von Produktdaten im Web-Backend",
         "SEO-Keyword-Recherche",
@@ -136,7 +138,7 @@
     {
       "name": "Athenum · Macro Intelligence",
       "kurz": "75-Layer Geo-Karte für athenum.xyz, GPU-nativ, 12 Datenquellen — Konzept, Pipeline und Frontend selbst gebaut.",
-      "stack": "Next.js 15, Vanilla-Frontend, Anthropic API mit Prompt-Caching"
+      "stack": "Next.js 15, Cloudflare Workers, Hetzner CAX11, Caddy, Supabase, Anthropic API mit Prompt-Caching"
     },
     {
       "name": "Smart-Cart Drawer & Admin",
@@ -146,7 +148,7 @@
     {
       "name": "KI-Berater · Karriere-Bot",
       "kurz": "Eigenentwicklung dieses Bots — Frontend-Widget, Backend, Knowledge-Layer und Mascot-Integration. Drei sauber getrennte Daten-Schichten (Stammdaten · Flows · Persona).",
-      "stack": "Python 3.11, FastAPI, Vanilla JS-Widget, OpenAI-kompatible LLM-API, Disk-Session-Store, Render-Deployment"
+      "stack": "Python 3.11, FastAPI, Vanilla JS-Widget, Google Gemini Flash Lite (über OpenAI-kompatible Schnittstelle), Disk-Session-Store, Render-Deployment"
     }
   ],
 
@@ -169,7 +171,7 @@
     "Hands-on + strategisch",
     "Datengetrieben & analytisch",
     "Engpässe finden, Systeme bauen, Ergebnisse liefern",
-    "Remote-erprobt seit 5+ Jahren"
+    "Remote-erfahren seit 2018, davon 2,5 Jahre 100 % Remote bei Decathlon"
   ],
 
   "zeugnis_zitate": [
