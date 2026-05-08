@@ -117,7 +117,7 @@
   },
 
   "projekte": {
-    "message": "Eigeninitiierte, production-ready Projekte vom Schreibtisch — eindeutig getrennt von Anstellungen:",
+    "message": "Eigene Projekte:",
     "buttons": [
       {"label": "Athenum Macro Intelligence", "action": "projekt_athenum"},
       {"label": "Smart-Cart Drawer & Admin", "action": "projekt_smartcart"},
