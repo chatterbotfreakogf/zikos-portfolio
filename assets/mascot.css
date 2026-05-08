@@ -1,9 +1,8 @@
 /* ============================================================
-   Mascot · 3D-Avatar mit Sprechblase
-   - Intro: hüpft von rechts in den Bildschirm (Walking-Bounce)
-   - Greeting: bleibt zentral, Sprechblase mit Chat-CTA
-   - Idle (Corner): hockt rechts unten, Kopf folgt der Maus
-   - Click: öffnet ZikosBot (KI-Berater)
+   Mascot · Statisches Bild mit Walk-In + Sprechblase
+   - Walk-In von rechts → zentrale Begrüßung mit Bubble
+   - Klick öffnet ZikosBot (Karriere-Bot)
+   - Schließen → wandert in die Ecke und bleibt dort
    ============================================================ */
 
 :root {
@@ -26,14 +25,13 @@
   .mascot-stage { display: none; }
 }
 
-/* Hide while bot window is open */
 .mascot-stage.is-bot-open {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease, visibility 0.2s;
 }
 
-/* ===== Wrapper · positioniert via [data-pos] ===== */
+/* ===== Wrapper ===== */
 .mascot {
   position: absolute;
   pointer-events: auto;
@@ -52,7 +50,6 @@
           drop-shadow(0 6px 8px rgba(15, 16, 21, 0.10));
 }
 
-/* Pos-Variants */
 .mascot[data-pos="enter-stage"] {
   bottom: 32px;
   right: calc(50vw - 110px);
@@ -64,7 +61,7 @@
   height: 154px;
 }
 
-/* ===== Body & Head Layers ===== */
+/* ===== Inner (Walk + Breathe Animation) ===== */
 .mascot__inner {
   position: relative;
   width: 100%;
@@ -91,27 +88,17 @@
   50%      { transform: translateY(-1.5px) scale(1.012, 0.992); }
 }
 
-.mascot__body,
-.mascot__head {
+/* ===== Static Figure ===== */
+.mascot__figure {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  background-image: url('mascot.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
   pointer-events: none;
-}
-.mascot__body {
-  background-image: url('mascot-body.png');
-}
-.mascot__head {
-  background-image: url('mascot-head.png');
-  --hx: 0px;
-  --hy: 0px;
-  transform: translate3d(var(--hx), var(--hy), 0);
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
 }
 
 /* ===== Speech Bubble ===== */
@@ -153,7 +140,6 @@
   pointer-events: auto;
 }
 
-/* Bubble Tail */
 .mascot__bubble::before {
   content: "";
   position: absolute;
@@ -258,7 +244,6 @@
   border-color: var(--mascot-ink);
 }
 
-/* Idle-Hint: kleines "Klick mich"-Tooltip in der Ecke beim Hover */
 .mascot__hint {
   position: absolute;
   bottom: calc(50% + 6px);
@@ -284,7 +269,6 @@
   transform: translateX(0);
 }
 
-/* Mobile */
 @media (max-width: 640px) {
   .mascot {
     width: 170px;
@@ -306,7 +290,6 @@
   }
 }
 
-/* When ZikosBot pill is fully replaced, hide it */
 body.has-mascot .zz-bot-toggle {
   display: none !important;
 }

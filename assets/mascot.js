@@ -1,15 +1,13 @@
 /**
  * Zikos · Mascot
- * 3D-Avatar der nach Page-Load reinläuft, begrüßt, dann in die Ecke wandert
- * und der Maus mit dem Kopf folgt. Klick öffnet den Karriere-Bot.
+ * Statisches Bild mit Walk-In, Sprechblase und Click-to-Open-Bot.
+ * State-Machine: idle-init → walking-in → greeting → walking-corner → corner-idle
  */
 (function () {
     'use strict';
     if (window.ZikosMascot) return;
 
-    var stage, mascot, head, bubble;
-    var mouseX = -9999, mouseY = -9999;
-    var headX = 0, headY = 0;
+    var stage, mascot;
     var state = 'idle-init';
     var observer = null;
 
@@ -27,8 +25,7 @@
     var STAGE_HTML = ''
         + '<div class="mascot" data-pos="off-stage" tabindex="0" role="button" aria-label="KI-Berater öffnen">'
         +   '<div class="mascot__inner">'
-        +     '<div class="mascot__body" aria-hidden="true"></div>'
-        +     '<div class="mascot__head" aria-hidden="true"></div>'
+        +     '<div class="mascot__figure" aria-hidden="true"></div>'
         +   '</div>'
         +   BUBBLE_HTML
         +   '<span class="mascot__hint" aria-hidden="true">Klick mich</span>'
@@ -44,10 +41,7 @@
         document.body.classList.add('has-mascot');
 
         mascot = stage.querySelector('.mascot');
-        head = stage.querySelector('.mascot__head');
-        bubble = stage.querySelector('.mascot__bubble');
 
-        // Wire interactions
         stage.querySelector('.mascot__bubble-close').addEventListener('click', function (e) {
             e.stopPropagation();
             goToCorner();
@@ -67,20 +61,8 @@
             }
         });
 
-        // Track mouse globally for head-tracking
-        document.addEventListener('mousemove', function (e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        }, { passive: true });
-
-        // Hide mascot when ZikosBot window opens, restore when closed
         attachBotObserver();
-
-        // Start the show after a beat
         setTimeout(walkInToStage, 900);
-
-        // RAF loop
-        requestAnimationFrame(track);
     }
 
     function attachBotObserver() {
@@ -88,14 +70,10 @@
         var win = document.getElementById('zz-bot-window');
         if (!win) return false;
         observer = new MutationObserver(function () {
-            if (win.classList.contains('open')) {
-                stage.classList.add('is-bot-open');
-            } else {
-                stage.classList.remove('is-bot-open');
-            }
+            if (win.classList.contains('open')) stage.classList.add('is-bot-open');
+            else stage.classList.remove('is-bot-open');
         });
         observer.observe(win, { attributes: true, attributeFilter: ['class'] });
-        // Sync state
         if (win.classList.contains('open')) stage.classList.add('is-bot-open');
         return true;
     }
@@ -104,16 +82,12 @@
         if (state !== 'idle-init') return;
         state = 'walking-in';
         mascot.classList.add('is-walking');
-        // Trigger transition by updating data-pos
-        // Force reflow before changing pos so transition runs
         void mascot.offsetWidth;
         mascot.setAttribute('data-pos', 'enter-stage');
-        // After move ends, switch to greeting
         setTimeout(function () {
             mascot.classList.remove('is-walking');
             mascot.classList.add('is-greeting');
             state = 'greeting';
-            // Auto-fall-back to corner if user ignores bubble
             setTimeout(function () {
                 if (state === 'greeting') goToCorner();
             }, 14000);
@@ -122,10 +96,8 @@
 
     function goToCorner() {
         if (state === 'corner-idle' || state === 'walking-corner') return;
-        var was = state;
         state = 'walking-corner';
         mascot.classList.remove('is-greeting');
-        // Walking starts after bubble fades
         setTimeout(function () {
             mascot.classList.add('is-walking');
             mascot.setAttribute('data-pos', 'corner');
@@ -142,10 +114,8 @@
         var doOpen = function () {
             window.ZikosBot.open();
             stage.classList.add('is-bot-open');
-            // Window is now in DOM (lazy-rendered) — attach observer for close
             setTimeout(attachBotObserver, 30);
         };
-        // If currently greeting / walking, transition to corner first
         if (state === 'greeting' || state === 'walking-in') {
             mascot.classList.remove('is-greeting');
             mascot.classList.add('is-walking');
@@ -160,32 +130,6 @@
         } else {
             doOpen();
         }
-    }
-
-    function track() {
-        if (mascot && (state === 'corner-idle' || state === 'greeting')) {
-            var rect = mascot.getBoundingClientRect();
-            var cx = rect.left + rect.width * 0.5;
-            var cy = rect.top + rect.height * 0.21;
-
-            var dx = mouseX - cx;
-            var dy = mouseY - cy;
-            var dist = Math.hypot(dx, dy);
-
-            var max = 7;
-            var tx = 0, ty = 0;
-            if (dist > 1) {
-                var attenuate = Math.min(1, dist / 280);
-                tx = (dx / dist) * max * attenuate;
-                ty = (dy / dist) * max * attenuate;
-            }
-            // Lerp toward target
-            headX += (tx - headX) * 0.10;
-            headY += (ty - headY) * 0.10;
-            head.style.setProperty('--hx', headX.toFixed(2) + 'px');
-            head.style.setProperty('--hy', headY.toFixed(2) + 'px');
-        }
-        requestAnimationFrame(track);
     }
 
     function ready(fn) {
