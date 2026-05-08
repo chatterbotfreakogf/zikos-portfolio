@@ -42,6 +42,15 @@
   transition: opacity 0.2s ease, visibility 0.2s;
 }
 
+/* Bei offenem Cart-/Case-/Macro-Drawer: Männchen ausblenden, sonst sitzt
+   es auf dem CTA-Button. :has() in allen evergreen Browsern verfügbar. */
+body:has(.drawer[aria-hidden="false"]) .mascot-stage,
+body:has(.case-drawer[aria-hidden="false"]) .mascot-stage {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+}
+
 /* ===== Wrapper ===== */
 .mascot {
   position: absolute;

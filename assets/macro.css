@@ -536,9 +536,58 @@
     }
     .macro-stage > .macro-tooltip[aria-hidden="true"] { display: none; }
     .macro-stage__head { padding: 12px 16px; }
-    .macro-pin { width: 24px; height: 24px; font-size: 10px; }
-    .macro-hint { font-size: 8.5px; padding: 4px 8px; letter-spacing: 0.14em; }
-    .macro-back { padding: 6px 10px; font-size: 10px; letter-spacing: 0.14em; }
+  }
+
+  /* Mobile · Touch-taugliche Pins, ruhigeres Aspect, sichtbarer Back-Button */
+  @media (max-width: 560px) {
+    .macro-stage { margin-bottom: 24px; }
+    .macro-stage__head { padding: 10px 14px; }
+    .macro-stage__title { font-size: 11px; letter-spacing: 0.22em; }
+    .macro-stage__sub { font-size: 9.5px; }
+    .macro-stage__demo { font-size: 9px; padding: 5px 8px; letter-spacing: 0.22em; }
+
+    /* Aspect-Ratio entspannen: kein superflaches 16:9 mehr auf Hochkant-Phone.
+       Etwas mehr Höhe → Pins haben ihren Platz, Karte bleibt lesbar. */
+    .macro-viewer { aspect-ratio: 4 / 3; }
+
+    /* Pins als ordentliche Touch-Targets (Apple/Material ≥ 40px) */
+    .macro-pin {
+      width: 36px; height: 36px;
+      font-size: 12px;
+      border-width: 2px;
+    }
+    /* Pulse-Ring entsprechend größer */
+    .macro-pin::before { inset: -5px; }
+
+    .macro-hint {
+      font-size: 9px;
+      padding: 6px 10px;
+      letter-spacing: 0.16em;
+      bottom: 10px;
+    }
+
+    .macro-back {
+      top: 10px; left: 10px;
+      padding: 10px 14px;       /* min-height ≈ 36 → mit Border ≥ 38 */
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+    }
+
+    /* Tooltip im Mobile-Layout (statisch unter dem Viewer) ein bisschen luftiger */
+    .macro-stage > .macro-tooltip {
+      padding: 14px 16px 18px;
+    }
+    .macro-tooltip__name { font-size: 14.5px; }
+    .macro-tooltip__intel { font-size: 12.5px; line-height: 1.5; }
+
+    /* Layer-Pills: gleichmäßig große Touch-Pillen */
+    .macro-controls { padding: 12px 14px; }
+    .macro-pill { padding: 10px 12px; font-size: 12px; min-height: 40px; }
+
+    /* Tutorial-Bubble */
+    .macro-bubble { padding: 14px 16px; margin-bottom: 24px; }
+    .macro-bubble__title { font-size: 16px; }
+    .macro-bubble__text { font-size: 13px; }
   }
 
   @media (prefers-reduced-motion: reduce) {

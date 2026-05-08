@@ -801,10 +801,148 @@
     .nav { display: none; }
   }
 
-  @media (max-width: 540px) {
-    .grid { grid-template-columns: 1fr; }
+  /* ============================================================
+     MOBILE · 360–560px (iPhone SE–16 Pro Max, kleinere Androids)
+     - Grid 1-spaltig, Padding rund 16-18px
+     - Drawer fullscreen mit safe-area-inset im Footer
+     - Touch-Targets ≥ 44px für CTA, qty-Buttons, Close
+     - Card-Typografie behält Hierarchie, nur leicht entspannt
+     ============================================================ */
+  @media (max-width: 560px) {
+    body[data-page="shop"] { --pad-x: 16px; }
+
+    /* TOPBAR / NAV ------------------------------------------------ */
+    .topbar__row { padding: 12px var(--pad-x); gap: 12px; }
+    .brand__mark { width: 30px; height: 30px; }
+    .brand__name { font-size: 14px; }
+    .topbar__logout { font-size: 11.5px; padding: 8px 4px; }
+    .subnav { padding: 8px var(--pad-x) 10px; gap: 14px; }
+    .subnav__link { padding: 6px 0; }
+
+    /* SECTION HEADS ---------------------------------------------- */
+    .shop { padding-top: 22px; padding-bottom: 56px; }
+    .section-head { margin-bottom: 18px; row-gap: 8px; }
+    .section-head__title { font-size: clamp(26px, 8vw, 32px); line-height: 1.08; }
+
+    /* GRID (Tile-Karten) ---------------------------------------- */
+    .grid { grid-template-columns: 1fr; gap: 16px; }
+    .card { border-radius: 12px; }
+    .card__body { padding: 14px 16px 16px; }
+    .card__title { font-size: 15.5px; }
+    .card__excerpt { font-size: 13.5px; -webkit-line-clamp: 5; }
+    .card__foot { gap: 10px; }
+    .card__cta { font-size: 11.5px; }
+
+    /* ADVISOR ---------------------------------------------------- */
     .advisor__label { display: none; }
     .advisor__bubble { padding: 12px; }
+
+    /* ============================================================
+       CART DRAWER fullscreen + Touch-tauglich
+       ============================================================ */
+    .drawer__panel {
+      width: 100vw;
+      max-width: 100vw;
+      border-left: 0;
+      box-shadow: none;
+    }
+    .drawer__head {
+      padding: 18px 18px 14px;
+      gap: 12px;
+    }
+    .drawer__head-row { gap: 12px; }
+    .drawer__title { font-size: 22px; }
+    .drawer__seq { font-size: 10px; }
+    .drawer__view-btn { padding: 10px 14px; font-size: 10.5px; }
+    .drawer__close {
+      width: 40px; height: 40px;   /* Touch-Ziel */
+      font-size: 22px;
+    }
+
+    .drawer__body {
+      padding: 16px 18px 20px;
+      /* schiefes Scrollverhalten auf iOS verhindern */
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+    }
+
+    .drawer__foot {
+      padding: 14px 18px calc(16px + env(safe-area-inset-bottom));
+      gap: 12px;
+    }
+    .drawer__foot::before { left: 18px; right: 18px; }
+
+    /* Cart-Lines kompakter, Thumbnail kleiner ------------------- */
+    .line {
+      grid-template-columns: 16px 48px 1fr;
+      column-gap: 12px;
+      row-gap: 8px;
+      padding: 14px 0;
+    }
+    .line__index { font-size: 10px; }
+    .line__thumb { width: 48px; height: 48px; }
+    .line__thumb svg { width: 28px; height: 28px; }
+    .line__title { font-size: 14.5px; }
+    .line__price { font-size: 14.5px; }
+    .line__meta { font-size: 10px; }
+    .line--bundle::before { top: 14px; bottom: 14px; }
+
+    /* qty-Pille auf Touch-Größe (≥ 44×40) ---------------------- */
+    .line__qty {
+      border-width: 1px;
+    }
+    .qty__btn {
+      width: 38px; height: 38px;
+      font-size: 16px;
+    }
+    .qty__val {
+      min-width: 36px;
+      height: 38px;
+      font-size: 13px;
+    }
+    .line__remove {
+      width: 32px; height: 32px;
+      font-size: 14px;
+    }
+
+    /* Bundle-Suggestion + Continue ----------------------------- */
+    .bundle { padding: 18px 16px 14px; margin-top: 22px; }
+    .bundle__main { gap: 12px; }
+    .bundle__title { font-size: 17px; }
+    .bundle__stamp { font-size: 32px; }
+    .bundle__stamp-pct { font-size: 16px; }
+
+    .continue { gap: 12px; padding-top: 14px; margin-top: 22px; }
+    .continue__title { font-size: 13.5px; }
+    .continue__sub { font-size: 10px; }
+
+    /* Totals-Block + CTA ---------------------------------------- */
+    .totals__val { font-size: 26px; }
+    .cta {
+      padding: 16px 18px;       /* min-height ≈ 50px → Touch ok */
+      font-size: 12px;
+      letter-spacing: 0.14em;
+    }
+    .cart-actions { gap: 10px; }
+
+    /* Threshold-Bar etc. --------------------------------------- */
+    .thresh { font-size: 11px; }
+  }
+
+  /* Extra tighten für sehr kleine Phones (320–399px) */
+  @media (max-width: 399px) {
+    body[data-page="shop"] { --pad-x: 14px; }
+    .drawer__head { padding: 16px 14px 12px; }
+    .drawer__body { padding: 14px 14px 18px; }
+    .drawer__foot { padding: 12px 14px calc(14px + env(safe-area-inset-bottom)); }
+    .drawer__foot::before { left: 14px; right: 14px; }
+    .drawer__title { font-size: 20px; }
+    .line { grid-template-columns: 14px 44px 1fr; column-gap: 10px; }
+    .line__thumb { width: 44px; height: 44px; }
+    .qty__btn { width: 36px; height: 36px; }
+    .qty__val { min-width: 32px; height: 36px; }
+    .bundle__title { font-size: 16px; }
+    .totals__val { font-size: 24px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
