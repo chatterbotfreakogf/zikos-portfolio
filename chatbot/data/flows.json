@@ -5,7 +5,7 @@
       {"label": "Profil & Kurzfassung", "action": "profil"},
       {"label": "Berufserfahrung", "action": "berufserfahrung"},
       {"label": "Skills & Stack", "action": "skills"},
-      {"label": "Eigene Projekte", "action": "projekte"},
+      {"label": "Eigene Projekte (Production-Ready)", "action": "projekte"},
       {"label": "Bildung", "action": "bildung"},
       {"label": "Verfügbarkeit", "action": "verfuegbarkeit"},
       {"label": "Sprachen", "action": "sprachen"},
@@ -117,7 +117,7 @@
   },
 
   "projekte": {
-    "message": "Eigeninitiierte Projekte vom Schreibtisch — eindeutig getrennt von Anstellungen:",
+    "message": "Eigeninitiierte, production-ready Projekte vom Schreibtisch — eindeutig getrennt von Anstellungen:",
     "buttons": [
       {"label": "Athenum Macro Intelligence", "action": "projekt_athenum"},
       {"label": "Smart-Cart Drawer & Admin", "action": "projekt_smartcart"},
