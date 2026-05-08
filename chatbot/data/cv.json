@@ -8,7 +8,7 @@
     "anker": [
       "2,5 Jahre operative Verantwortung für decathlon.de Fitness DE/AT + Nutrition",
       "14.000+ SKUs (Eigen- und Fremdmarken)",
-      "Hands-on Code (Liquid/HTML/CSS/JS) am Live-Shop",
+      "Hands-on HTML/CSS auf decathlon.at (Live-Shop) · Liquid + Custom Apps im eigenen privaten Shopify-Dev-Shop (NICHT bei Decathlon — Decathlon hat ein Eigenbau-Backend, kein Shopify)",
       "IT-Ausbildung + BWL-Bachelor + laufender Master Digital Business",
       "Remote-erfahren seit 2018: 100 % bei Decathlon-Festanstellung (2,5 Jahre), 4/5 Tage im Praktikum, 50 % bei Fischer Möbel"
     ]
@@ -114,7 +114,7 @@
   "skills": {
     "Analytics & KPI": ["Google Analytics 4", "Google Tag Manager", "Hotjar", "Microsoft Clarity", "Looker Studio", "CR/AtC/AOV/NPS/ROAS"],
     "Conversion & UX": ["A/B-Testing", "PDP-Optimierung", "Mobile-First", "Bundle & Upsell", "Guided Selling", "Funnel-Analyse"],
-    "Shopify & Theme-Code": ["Shopify Plus", "Liquid", "HTML/CSS/JS", "Theme-Sections", "Custom Apps", "PageSpeed", "Markets"],
+    "Shopify & Theme-Code (privater Dev-Shop, NICHT Decathlon)": ["Shopify Plus", "Liquid", "HTML/CSS/JS", "Theme-Sections", "Custom Apps", "PageSpeed", "Markets"],
     "Plattformen & ERP": ["JTL WaWi", "Xentral ERP", "Amazon Seller Central", "PIM-Systeme", "decathlon.de Marketplace Ops"],
     "CRM & E-Mail": ["Klaviyo", "E-Mail-Flows", "Warenkorbabbrecher-Kampagnen", "Marketing-Automation"],
     "KI & Automatisierung": ["Claude Code (CLI/IDE)", "ChatGPT", "n8n", "Make", "Zapier", "Cursor IDE", "Anthropic API mit Prompt-Caching"],

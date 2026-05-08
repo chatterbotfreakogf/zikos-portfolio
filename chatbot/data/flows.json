@@ -15,7 +15,7 @@
   },
 
   "profil": {
-    "message": "Kurz zu mir: ich bin **E-Commerce-Generalist** mit Hands-on-Schwerpunkt — Sortimentssteuerung, Conversion-Optimierung und eigene Tools.\n\n**Meine Anker:**\n- 2,5 Jahre operative Verantwortung für decathlon.de Fitness DE/AT + Nutrition\n- 14.000+ SKUs unter Steuerung (Eigen- und Fremdmarken)\n- Hands-on Code (Liquid/HTML/CSS/JS) am Live-Shop\n- IT-Ausbildung + BWL-Bachelor + laufender Master Digital Business\n- Remote-erfahren seit 2018, davon **2,5 Jahre 100 % Remote** bei Decathlon-Festanstellung\n\nStandort: Plochingen, BW. Verfügbar ab sofort, 40 h garantiert.",
+    "message": "Kurz zu mir: ich bin **E-Commerce-Generalist** mit Hands-on-Schwerpunkt — Sortimentssteuerung, Conversion-Optimierung und eigene Tools.\n\n**Meine Anker:**\n- 2,5 Jahre operative Verantwortung für decathlon.de Fitness DE/AT + Nutrition\n- 14.000+ SKUs unter Steuerung (Eigen- und Fremdmarken)\n- Hands-on **HTML/CSS auf decathlon.at** (Live-Shop) · **Liquid und Custom Apps im eigenen Shopify-Dev-Shop** (privat, nicht bei Decathlon)\n- IT-Ausbildung + BWL-Bachelor + laufender Master Digital Business\n- Remote-erfahren seit 2018, davon **2,5 Jahre 100 % Remote** bei Decathlon-Festanstellung\n\nStandort: Plochingen, BW. Verfügbar ab sofort, 40 h garantiert.",
     "buttons": [
       {"label": "Mehr zu Decathlon", "action": "station_decathlon"},
       {"label": "Skills im Detail", "action": "skills"},
@@ -87,7 +87,7 @@
   },
 
   "skills_shopify": {
-    "message": "**Shopify & Theme-Code:**\n- Shopify Plus (Storefront + Admin + Markets)\n- Liquid (Theme-Sections, Custom Apps)\n- HTML/CSS/JavaScript — am Live-Shop bei Decathlon und in einem privaten Dev-Shop\n- **PageSpeed-Optimierung:** ladezeitschonende Einbindung von 3rd-Party-Skripten und eigenen Tools (Lazy-Loading, conditional Script-Loading, Bild-Optimierung, Above-the-Fold-Priorisierung) — auf decathlon.at und im privaten Dev-Shop angewendet\n- **Custom Apps und Theme-Erweiterungen** — im privaten Dev-Shop von Konzept bis Deploy gebaut. Der Shop ist nicht öffentlich, eingebundene Tools zeige ich gerne per Videocall.\n\nIn meinen eigenen Projekten zusätzlich: Shopify Script-Tag-API, Storefront-Ajax (`/cart/add.js`), Section-Replace, Cart-Events.",
+    "message": "**Shopify & Theme-Code — wichtige Klarstellung vorab:** Decathlon nutzt **kein** Shopify, sondern ein internes Eigenbau-Backend. Meine Shopify-Praxis kommt aus einem **privaten Dev-Shop**, den ich für eigene Projekte betreibe.\n\n**Im privaten Shopify-Dev-Shop:**\n- Shopify Plus (Storefront + Admin + Markets)\n- Liquid (Theme-Sections, Custom Apps)\n- Custom Apps und Theme-Erweiterungen von Konzept bis Deploy\n- Shopify Script-Tag-API, Storefront-Ajax (`/cart/add.js`), Section-Replace, Cart-Events\n\n**Bei Decathlon:**\n- Hands-on **HTML/CSS** auf decathlon.at\n- Ladezeitschonende Einbindung von 3rd-Party-Skripten\n\n**PageSpeed-Optimierung** (auf decathlon.at und im Dev-Shop angewendet): Lazy-Loading, conditional Script-Loading, Bild-Optimierung, Above-the-Fold-Priorisierung.\n\nDer Dev-Shop ist nicht öffentlich, eingebundene Tools zeige ich gerne per Videocall.",
     "buttons": [{"label": "Andere Skill-Kategorie", "action": "skills"}]
   },
 
