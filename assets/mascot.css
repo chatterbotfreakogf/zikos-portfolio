@@ -21,8 +21,19 @@
   pointer-events: none;
   z-index: 2147483645;
 }
+
+/* Reduced motion (Samsung One UI „Animationen entfernen", iOS „Reduce Motion",
+   Akku-Sparmodi): NICHT die Stage verstecken — nur Bewegung killen, sonst hat
+   der Nutzer keinen Zugang zum Bot. Das Männchen sitzt dann statisch in der
+   Ecke, JS überspringt die Walk-In-Sequenz. */
 @media (prefers-reduced-motion: reduce) {
-  .mascot-stage { display: none; }
+  .mascot,
+  .mascot__inner,
+  .mascot__bubble,
+  .mascot__bubble-eyebrow::before {
+    animation: none !important;
+    transition: opacity 0.18s ease, visibility 0s !important;
+  }
 }
 
 .mascot-stage.is-bot-open {
@@ -271,22 +282,61 @@
 
 @media (max-width: 640px) {
   .mascot {
-    width: 170px;
-    height: 200px;
+    width: 156px;
+    height: 184px;
   }
   .mascot[data-pos="enter-stage"] {
-    bottom: 24px;
-    right: calc(50vw - 85px);
+    bottom: 28px;
+    right: calc(50vw - 78px);
   }
   .mascot[data-pos="corner"] {
-    width: 100px;
-    height: 118px;
+    width: 96px;
+    height: 114px;
     bottom: 14px;
     right: 14px;
   }
+
+  /* Bubble centered above mascot, pointer aligned with mascot center.
+     Math: right:50% anchors bubble's right margin-edge at mascot center
+     (78px from mascot's right). Negative margin-right of half the bubble
+     width shifts the border-edge right by that amount, exposing the
+     bubble's horizontal center at the anchor (= mascot center). */
   .mascot__bubble {
-    width: 240px;
+    width: min(300px, calc(100vw - 24px));
+    right: 50%;
+    margin-right: calc(min(300px, calc(100vw - 24px)) / -2);
+    transform-origin: bottom center;
     font-size: 13px;
+    padding: 14px 14px 13px;
+  }
+  .mascot__bubble::before {
+    right: 50%;
+    margin-right: -9px;
+  }
+  .mascot__bubble-title { font-size: 14px; }
+  .mascot__bubble-text  { font-size: 12.5px; margin-bottom: 11px; }
+  .mascot__bubble-cta   { padding: 10px 16px; font-size: 11px; }
+  .mascot__bubble-close { width: 30px; height: 30px; font-size: 16px; }
+
+  /* Hover-Hint kann auf Touch nie erscheinen — ausblenden. */
+  .mascot__hint { display: none; }
+}
+
+/* Sehr kleine Geräte (iPhone SE 1st gen, ältere Androids) */
+@media (max-width: 360px) {
+  .mascot {
+    width: 138px;
+    height: 162px;
+  }
+  .mascot[data-pos="enter-stage"] {
+    bottom: 22px;
+    right: calc(50vw - 69px);
+  }
+  .mascot[data-pos="corner"] {
+    width: 86px;
+    height: 102px;
+    bottom: 12px;
+    right: 12px;
   }
 }
 

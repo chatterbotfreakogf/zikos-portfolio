@@ -10,6 +10,7 @@
     var stage, mascot;
     var state = 'idle-init';
     var observer = null;
+    var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
     var BUBBLE_HTML = ''
         + '<div class="mascot__bubble" role="dialog" aria-live="polite" aria-label="Begrüßung">'
@@ -62,7 +63,24 @@
         });
 
         attachBotObserver();
-        setTimeout(walkInToStage, 900);
+
+        if (reduceMotion) {
+            // Statische Variante: kein Walk-In, kurz Begrüßung mittig, dann
+            // direkt in die Ecke. So funktioniert der Bot auch bei aktivem
+            // „Animationen entfernen" (Samsung One UI, iOS Reduce Motion).
+            mascot.setAttribute('data-pos', 'enter-stage');
+            mascot.classList.add('is-greeting');
+            state = 'greeting';
+            setTimeout(function () {
+                if (state !== 'greeting') return;
+                mascot.classList.remove('is-greeting');
+                mascot.setAttribute('data-pos', 'corner');
+                mascot.classList.add('is-idle');
+                state = 'corner-idle';
+            }, 6000);
+        } else {
+            setTimeout(walkInToStage, 900);
+        }
     }
 
     function attachBotObserver() {
@@ -117,6 +135,14 @@
             setTimeout(attachBotObserver, 30);
         };
         if (state === 'greeting' || state === 'walking-in') {
+            if (reduceMotion) {
+                mascot.classList.remove('is-greeting');
+                mascot.setAttribute('data-pos', 'corner');
+                mascot.classList.add('is-idle');
+                state = 'corner-idle';
+                doOpen();
+                return;
+            }
             mascot.classList.remove('is-greeting');
             mascot.classList.add('is-walking');
             mascot.setAttribute('data-pos', 'corner');
