@@ -136,7 +136,7 @@
     {
       "name": "Athenum · Macro Intelligence",
       "kurz": "75-Layer Geo-Karte für athenum.xyz, GPU-nativ, 12 Datenquellen — Konzept, Pipeline und Frontend selbst gebaut.",
-      "stack": "Next.js 15, Cloudflare Workers, Hetzner, Supabase, Anthropic API"
+      "stack": "Next.js 15, Vanilla-Frontend, Anthropic API mit Prompt-Caching"
     },
     {
       "name": "Smart-Cart Drawer & Admin",
@@ -144,14 +144,9 @@
       "stack": "HTML/CSS/JS, Shopify-Ready"
     },
     {
-      "name": "Athenum X Content Generator",
-      "kurz": "Lokales macOS-System: screenshottet Charts → generiert Persona-Tweets via Claude → Posting-Workflow auf X.",
-      "stack": "Python 3.11, FastAPI, Playwright, Anthropic SDK, Tweepy, React+Vite"
-    },
-    {
-      "name": "Derivescope (Athenum-Affiliate-Site)",
-      "kurz": "Vollautomatisierte Content-Pipeline (n8n + Firecrawl + Claude) für SEO-/Affiliate-getriebene Krypto-Insights-Seite.",
-      "stack": "Next.js 15, n8n, Cloudflare, Anthropic Prompt-Caching"
+      "name": "KI-Berater · Karriere-Bot",
+      "kurz": "Eigenentwicklung dieses Bots — Frontend-Widget, Backend, Knowledge-Layer und Mascot-Integration. Drei sauber getrennte Daten-Schichten (Stammdaten · Flows · Persona).",
+      "stack": "Python 3.11, FastAPI, Vanilla JS-Widget, OpenAI-kompatible LLM-API, Disk-Session-Store, Render-Deployment"
     }
   ],
 
