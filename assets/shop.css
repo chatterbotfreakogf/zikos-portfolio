@@ -512,6 +512,15 @@
     gap: 16px;
     flex-wrap: wrap;
   }
+  .foot__legal {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(14px, 1.6vw, 22px);
+  }
+  @media (max-width: 540px) {
+    .foot__row { justify-content: flex-start; }
+    .foot__legal { width: 100%; order: 3; gap: 18px; }
+  }
 
   /* ============================================================
      CART DRAWER — editorial paper canvas, hairline grid

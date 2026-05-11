@@ -1,8 +1,8 @@
 /* Zikos · Karriere-Chatbot Widget
  * Brand: Cool-Grey + Paper-Off-White, im Stil des Portfolios.
  * Tokens spiegeln assets/style.css.
+ * Schriften werden zentral via assets/style.css (self-hosted) geladen.
  */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   --zz-ink:        #0F1015;

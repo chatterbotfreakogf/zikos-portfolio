@@ -1,0 +1,18 @@
+Self-hosted fonts on this site
+==============================
+
+The following font files are bundled with this site under the
+SIL Open Font License, Version 1.1 (OFL-1.1):
+
+- inter-latin-{300,400,500,600,700}.woff2
+  Inter Font Family
+  Copyright (c) 2016, The Inter Project Authors (https://github.com/rsms/inter)
+  Licensed under SIL OFL 1.1: https://scripts.sil.org/OFL
+
+- jetbrains-mono-latin-{400,500}.woff2
+  JetBrains Mono Font Family
+  Copyright (c) 2020, JetBrains s.r.o. (https://www.jetbrains.com/lp/mono/)
+  Licensed under SIL OFL 1.1: https://scripts.sil.org/OFL
+
+Both font families are redistributed in WOFF2 format (latin subset).
+The full license text is available at https://scripts.sil.org/OFL.
